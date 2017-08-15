@@ -1,0 +1,52 @@
+/* pages/payment/index.wxss */
+.detail,.payment{
+    width: 90.333%;
+    /*height: 230rpx;*/
+    margin:auto;
+    /*padding-top: 15px;*/
+    clear: both;
+}
+.head{
+    font-size: 14px;
+    color: #9E9E9E;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1px solid #9E9E9E;
+    width: 100%;
+}
+.d_item{
+    font-size: 16px;
+    /*color: #9E9E9E;*/
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1px solid #9E9E9E;
+    width: 100%;
+    clear: both;
+}
+.footer{
+    height: 90rpx;
+    width: 100%;
+    border-top: 1px solid #9E9E9E;
+    font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    line-height: 90rpx;
+    background-color: white;
+    martin-top:-190rpx;
+    /*padding-left: 13px;*/
+}
+.footer .btn{
+    /*width: 50%;*/
+    display: inline-block;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+}
+.pay{
+    width: 70%;
+    background-color: #1FDB3D;
+    color: white;
+}
+.laterpay{
+    width: 30%;
+}

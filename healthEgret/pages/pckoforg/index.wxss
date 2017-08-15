@@ -1,0 +1,149 @@
+/* pages/pckoforg/index.wxss */
+.org{
+    height: 100rpx;
+    line-height: 100rpx;
+    position: relative;
+    padding-left: 15px
+}
+.org .btn{
+    position: absolute;
+    font-size: 12px;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: white;
+    background-color: #FF4081;
+    width: 80px;right: 0;
+    text-align: center;
+    top: 50%;
+    margin-top: -30rpx;
+    right: 15px
+}
+.footer{
+    height: 90rpx;
+    width: 100%;
+    border-top: 1px solid #9E9E9E;
+    font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    line-height: 90rpx;
+    background-color: white;
+    martin-top:-190rpx;
+    /*padding-left: 13px;*/
+}
+.footer .submitBtn{
+    width: 324rpx;
+    display: inline-block;
+    background-color: #1FDB3D;
+    color: white;
+    height: 91rpx;
+    line-height: 91rpx;
+    text-align: center;float: right;
+}
+
+
+/*别处公用*/
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.commodity_attr_box {
+  width: 100%;
+  /*overflow: hidden;*/
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  height: 714rpx;
+}
+.commodity_attr_box .next{
+    height: 106rpx;
+    background-color: #28C225;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    line-height: 106rpx;
+}
+.head{
+    width: 688rpx;
+    height: 200rpx;
+    line-height: 200rpx;
+    border-bottom: 1px solid #9E9E9E;
+    /*position: absolute;
+    left: 50%;
+    margin-left: -344rpx;
+    top:-25rpx;
+    z-index: 100;*/
+    position: relative;
+    margin: auto;
+    top: -35rpx;
+    
+}
+.commodity_attr_box .head image{
+    width: 180rpx;
+    height: 180rpx;
+    position: absolute;
+    /*top:50%;
+    margin-top: -90px;*/
+}
+.head_txt{
+    display: inline-block;
+    margin-left: 198rpx;
+    /*line-height: normal;*/
+}
+.ctype{
+   width: 688rpx; 
+   height: 140rpx;
+   font-size: 12px;
+   margin: auto;
+   border-bottom: 1px solid #9E9E9E;
+      
+}
+.block{
+    display: inline-block;
+    width: 118rpx;
+    height: 58rpx;
+    line-height: 58rpx;
+    border: 1px solid #9E9E9E;
+    text-align: center;
+     border-radius: 15rpx;
+}
+.selected{
+    background-color: #28C225;
+    color: white;
+    border: 1px solid #28C225;
+}
+.num{
+   width: 688rpx; 
+   height: 90rpx;
+   line-height: 90rpx;
+   font-size: 12px;
+   margin: auto;
+   border-bottom: 1px solid #9E9E9E;
+}
+.money{
+   width: 688rpx; 
+   /*height: 80rpx;*/
+   /*line-height: 80rpx;*/
+   font-size: 12px;
+   margin: auto;
+   /*border-bottom: 1px solid #9E9E9E;*/
+}
+
+.ctn{
+    width: 100%;
+    
+}
+

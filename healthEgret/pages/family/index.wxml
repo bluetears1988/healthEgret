@@ -1,0 +1,19 @@
+<!--pages/family/index.wxml-->
+<!--<text>pages/family/index.wxml</text>-->
+<view class="addFamily">
+    <view class="addBtn" bindtap="addmember">
+        <image src="../../images/plus.png" mode="scaleToFill" style="width:16px;height:16px;"></image>
+    添加家庭成员
+    </view>
+</view>
+<view wx:if="{{members}}">
+    <view class="member" wx:for="{{members}}" bindtap="detail">
+        <image bindtap="detail" id="{{item.id}}" src="{{item.portrait}}" mode="scaleToFill" class="portrait"></image>
+        <text class="name">{{item.name}}</text>
+        <text class="h_state">健康状况 {{item.score}}分</text>
+        <image bindtap="call" data-telephone="{{item.telephone}}" src="../../images/telephone.png" mode="scaleToFill" class="telephone"></image>
+        <image bindtap="send" data-telephone="{{item.telephone}}" src="../../images/message.png" mode="scaleToFill" class="messages"></image>
+    </view>
+</view>
+<!--<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}"></view>-->

@@ -1,10 +1,165 @@
 <!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!--<view class="container">-->
+<view class="page">
+  <view class="swiper">
+      <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+              autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for-items="{{bannerUrls}}" wx:key="item.id">
+              <swiper-item>
+                <block wx:if="{{item}}">
+                  <image src="{{item}}"  mode="aspectFill"/>
+                </block>
+                <block wx:else>
+                  <image src="../../images/default_pic.png" mode="aspectFill" width="355" height="150"></image>
+                </block>
+              </swiper-item>
+          </block>
+      </swiper>
+    </view>
+    <!--<view class="weui-search-bar" style="width: 100%;">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="请输入搜索词"/>
+          </view>
+          <label class="weui-search-bar__label" bindtap="search">
+              <icon class="weui-icon-search" type="search" size="14"></icon>
+              <view class="weui-search-bar__text">搜索套餐和机构</view>
+          </label>
+      </view>
+    </view>-->
+    <view class="nav">
+      <view class="location" bindtap="change_city"></view>
+      <view class="tab">
+        <view class="pkg {{tab_pkg?'select':''}}" bindtap="tabpkgTran">套餐</view>
+        <view class="organization {{tab_org?'select':''}}" bindtap="taborgTran">机构</view>
+      </view>
+    </view>
+    <view class="{{tab_pkg?'show':'hidden'}}">
+    <view class="pick-area">
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                价格排序
+            </view>
+        </picker>
+      </view>
+      <view class="section" bindtap="sales_pri" style="border-left: 1px solid #9E9E9E;">
+          <view class="picker">
+              销量优先
+          </view>
+      </view>
+      <view class="section" style="border-left: 1px solid #9E9E9E;">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                筛选
+            </view>
+        </picker>
+      </view>
+    </view>
+    <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
+    <view wx:if="{{infos}}">
+      <view class="card" wx:for="{{infos}}">
+        <image bindtap="detail" id="{{item.id}}" src="{{item.img}}" mode="scaleToFill"></image>
+        <view class="info" bindtap="detail" id="{{item.id}}">
+          <view class="p-name">
+            <text class="info_item" style="font-size:16px;font-weight:bold">{{item.nm}}</text>
+            <block wx:if="{{!item.all}}">
+              <text class="female" wx:if="{{item['female']}}">
+              </text>
+              <text class="male" wx:if="{{item['male']}}"></text>
+            </block>  
+          </view>
+          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+            <text style="font-size:12px;color:#666666">适用人群：</text>
+            <text style="font-size:12px;color:#666666">{{item.people}}</text>
+          </view>
+          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+            <text style="font-size:12px;color:#666666">{{item.o_nm}}等{{item.o_num}}家机构</text>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access arrow"></view>
+          <!--<view class="info_item" style="height:1px;border-bottom:1px solid #9E9E9E;margin-top:8px;"></view>-->
+          <view class="info_item" style="border-top:1px solid #9E9E9E;margin-top:8px;position:relative;height:30px;line-height:30px">
+            <view style="display:inline-block;position:absolute;">
+              <text style="font-size:12px;color:#F5053D">￥</text>
+              <text style="font-size:18px;color:#F5053D;font-weight:bold">{{item.zprice}}</text>
+              <text style="font-size:12px;color:#666666;margin-left:8px;text-decoration:line-through;">￥{{item.price}}</text>
+            </view>
+            <block wx:if="{{item.sales > 0}}"><text style="font-size:12px;color:#666666;position:absolute;right:0;">销量{{item.sales}}件</text></block>
+          </view>
+        </view>
+        <!--<button class="buy" bindtap="buyTickets">购买</button>-->
+      </view>
+    </view>
+    <view wx:else class="weui-loadmore weui-loadmore_line"><text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</text></view>
+    </scroll-view>
+    <view class="weui-loadmore weui-loadmore_line">
+        <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经全部加载完毕</text>
+    </view>
+    <!--<view class="shopCar" bindtap="shopCarDetail"><image src="../../images/shop_car.png"></image></view>    -->
+</view>
+<view class="{{tab_org?'show':'hidden'}}">
+  <view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                    <!--<view class="weui-cells weui-cells_after-title">
+                      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd">
+                              <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                          </view>
+                          <view class="weui-cell__bd">cell standard</view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"><text style="color:#F5053D;">￥300</text>起</view>
+                      </navigator>
+                      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd">
+                              <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                          </view>
+                          <view class="weui-cell__bd">cell standard</view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"><text style="color:#F5053D;">￥200</text>起</view>
+                      </navigator>
+                  </view>-->
+                  <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
+                  <view wx:if="{{o_infos}}">
+                    <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail">
+                        <image bindtap="o_detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill"></image>
+                        <view class="info" bindtap="org_detail" id="{{item.oid}}">
+                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                            <text style="font-size:16px;font-weight:bold">{{item.o_nm}}</text>
+                            <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
+                          </view>
+                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                            <text style="font-size:12px;color:#666666">{{item.address}}</text>
+                            <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
+                          </view>
+                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                            <text style="font-size:12px;color:#666666">{{item.score}}分</text>
+                            <text style="margin-left:10px;font-size:12px;color:#666666">{{item.distance}}Km</text>
+                          </view>
+                      </view>
+                      <view class="bottom_price"><text style="color:#F5053D;">￥{{item.bprice}}</text>起></view>
+                    </view>
+                  </view>
+                  <view wx:else class="weui-loadmore weui-loadmore_line"><text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</text></view>
+                </scroll-view>
+                  <view class="weui-loadmore weui-loadmore_line">
+                    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经全部加载完毕</text>
+                  </view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+                <!--<view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>-->
+            </view>
+        </view>
+    </view>
+</view>
+</view>
 </view>

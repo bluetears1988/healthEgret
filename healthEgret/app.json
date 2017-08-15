@@ -1,12 +1,61 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/groups/index",
+    "pages/family/index",
+    "pages/users/index",
+    "pages/detail/index",
+    "pages/member/index",
+    "pages/shopcar/index",
+    "pages/report/index",
+    "pages/addmember/index",
+    "pages/ordersubmit/index",
+    "pages/payment/index",
+    "pages/orderlist/index",
+    "pages/orderdetail/index",
+    "pages/city/index",
+    "pages/organization/index",
+    "pages/comment/index",
+    "pages/pckoforg/index",
+    "pages/orgintro/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#37383c",
+    "navigationBarTitleText": "一家健康",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color":"#333",
+    "selectedColor":"#d24a58",
+    "backgroundColor":"#f6f6f7",
+    "borderStyle":"white",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text":"首页",
+        "iconPath":"images/home.png",
+        "selectedIconPath":"images/home_clk.png"
+      },
+      {
+        "pagePath": "pages/groups/index",
+        "text": "团健康",
+        "iconPath":"images/group.png",
+        "selectedIconPath":"images/group_clk.png"
+       },
+       {
+        "pagePath": "pages/family/index",
+        "text": "一家人",
+        "iconPath":"images/group.png",
+        "selectedIconPath":"images/group_clk.png"
+       },
+      {
+        "pagePath": "pages/users/index",
+        "text": "我的",
+        "iconPath":"images/my.png",
+        "selectedIconPath":"images/my_clk.png"
+      }
+    ]
   }
+
 }

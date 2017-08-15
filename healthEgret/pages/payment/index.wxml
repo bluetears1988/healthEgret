@@ -1,0 +1,42 @@
+<!--pages/payment/index.wxml-->
+<!--<text>pages/payment/index.wxml</text>-->
+<view class="gap"></view>
+<view class="detail">
+    <view class="head">订单详情</view>
+    <view class="d_item">
+        <text style="float:left;">{{item.nm}}</text>
+        <text style="float:right;color:#9E9E9E">{{item.num}}x￥{{item.zprice}}</text>        
+    </view>
+    <view class="d_item">
+        <text style="float:left;color:#9E9E9E">机构</text>
+        <text style="float:right;">{{item.org}}</text>        
+    </view>
+    <view class="d_item">
+        <text style="float:right;color:#F5053D;">共计￥{{item.count}}</text>        
+    </view>
+</view>
+<view class="gap"></view>
+<view class="payment">
+    <view class="head">选择支付方式</view>
+    <view class="d_item">
+        <text style="float:left;">微信支付</text>
+        <view style="display:inline-block;float:right">
+            <label class="checkbox">
+                <checkbox value="0" checked="true"/>
+            </label>       
+        </view>       
+    </view>
+    <view class="d_item">
+        <text style="float:left;">支付宝支付</text>
+        <view style="display:inline-block;float:right">
+            <label class="checkbox">
+                <checkbox value="0" checked=""/>
+            </label>       
+        </view>
+    </view>
+</view>
+<view class="gap"></view>
+<view class="footer">
+    <view class="pay btn">立即支付</view>
+    <view class="laterpay btn" bindtap="laterpay">稍后支付</view>
+</view>

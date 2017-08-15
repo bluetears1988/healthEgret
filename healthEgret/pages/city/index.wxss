@@ -1,0 +1,29 @@
+/* pages/city/index.wxss */
+.city_group{
+    width: 100%;
+    font-size: 14px;
+}
+.city_group .head{
+    margin-left: 22px;
+    height: 40px;
+    line-height: 40px;
+    color: #9E9E9E;
+}
+.city_group .city_btns{
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12px;
+}
+.city_group .city_btns .citybtn{
+   display: inline-block;
+   margin-left: 22px;
+}
+.city_group .city_btns .city{
+    border: 1px solid #9E9E9E;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    width: 100rpx;
+    border-radius: 3px;
+    text-align: center;
+}

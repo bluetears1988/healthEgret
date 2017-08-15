@@ -1,0 +1,95 @@
+/* pages/orderlist/index.wxss */
+.ctn{
+    height: 400rpx;
+    width: 100%;
+    border-bottom: 1px solid #9E9E9E;
+    border-top: 1px solid #9E9E9E;    
+}
+.item{
+    width: 90%;
+    margin: auto;
+    height: 100%;
+    /*border-bottom: 1px solid #9E9E9E;*/
+    
+}
+.head{
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1px solid #9E9E9E;
+    position: relative;
+}
+.time{
+    display: inline-block;
+    font-size: 12px;
+    line-height: normal;
+    height: 100%;
+    position: absolute;
+    padding-top: 20rpx;
+}
+.unpaid{
+    float:right;
+    color:#F5053D;
+    font-size: 16px;
+}
+.btns{
+    height: 90rpx;
+    line-height: 90rpx;
+    position: relative;
+    clear: both;
+}
+button{
+    display: inline-block;
+    height: 30px;
+    line-height:30px; 
+    font-size: 12px;
+    border: 1px solid #9E9E9E;
+    float: right;
+    margin-left: 10px;
+    
+}
+.paybtn{
+    color: white;
+    background-color: #28C225;
+    border: 1px solid #28C225;
+}
+.bd{
+    height: 190rpx;
+    border-bottom: 1px solid #9E9E9E;
+    position: relative;
+}
+.bd image{
+    width: 144rpx;
+    height: 144rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -72rpx;
+}
+.bd .info{
+    font-size: 14px;
+    position: absolute;
+    height: 144rpx;
+    top:50%;
+    left: 164rpx;
+    /*right: 30px;*/
+    margin-top: -72rpx;
+    line-height: normal;
+}
+.info_item{
+    height: 22px;
+    line-height: 22px;
+}
+.number{
+    height: 18px;
+    line-height: 18px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -9px;
+}
+.btn_group{
+    height: 90rpx;
+    position: absolute;
+    top: 0;
+    margin-top: 15rpx;
+    right:0;
+}

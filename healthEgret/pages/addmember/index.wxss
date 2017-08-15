@@ -1,0 +1,30 @@
+/* pages/addmember/index.wxss */
+.addmember{
+    padding-left: 40rpx;
+    padding-right: 40rpx;
+    padding-top: 40rpx;
+}
+.addmember .item{
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1px solid #BEC2C9;
+}
+.placeholder{
+    color: #BEC2C9;
+}
+.radio_g{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+.radio{
+    /*margin-left: 15px*/
+}
+.addBtn{
+    margin-top: 30px;
+    height: 50px;
+    width: 380rpx;
+    background-color: #28C225;
+    color: white;
+    border-radius: 25px;
+}

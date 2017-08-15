@@ -1,0 +1,65 @@
+<!--pages/pckoforg/index.wxml-->
+<!--<text>pages/pckoforg/index.wxml</text>-->
+<view class="pkg"></view>
+<view class="org">
+    <text style="font-size:16px;font-weight:bold">{{org.nm}}</text>
+    <text style="font-size:14px;color:#666666;margin-left:10px">{{org.distance}}Km</text>
+    <view wx:if="{{org.from}}" class="btn">其他机构</view>
+    <view wx:if="{{!org.from}}" class="btn">其他套餐</view>
+</view>
+<view class="gap"></view>
+<view class="ctn">
+    <view class="weui-tab">
+        <view class="weui-navbar">
+            <block wx:for="{{tabs}}" wx:key="*this">
+                <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+            </block>
+            <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        </view>
+        <view class="weui-tab__panel">
+            <view class="weui-tab__content" hidden="{{activeIndex != 0}}">选项一的内容</view>
+            <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+            <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
+        </view>
+    </view>
+</view>
+<view class="footer">
+    <view style="display:inline-block;position:absolute;left:10px">
+        <text style="font-size:12px;color:#F5053D">￥</text>
+        <text style="font-size:18px;color:#F5053D;font-weight:bold">{{pkg.zprice}}</text>
+        <text style="font-size:12px;color:#666666;margin-left:8px;text-decoration:line-through;">￥{{pkg.price}}</text>
+    </view>
+    <view class="submitBtn" bindtap="showModal">立即预约</view>
+</view>
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+      <view class="head">
+        <image id="{{card.id}}" src="{{card.img}}" mode="scaleToFill"></image>
+        <view class="head_txt">
+          <view class="head_txt_nm" style="line-height:normal">{{card.nm}}</view>
+          <view class="head_txt_price" style="line-height:normal;color:#F5053D;">￥{{card.zprice}}</view>
+        </view>
+      </view>
+      <view class="ctype">
+        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">卡类别</view>
+        <view>
+          <view class="block selected">短信</view>
+          <view class="block" style="margin-left:30px;">实体卡</view>
+        </view>
+      </view>
+      <view class="num">
+        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">购买数量</view>
+        <view>
+        </view>
+      </view>
+      <view class="money">
+        <view style="font-size:12px;font-weight:bold;margin-bottom:4px;margin-top:12px;"><text>商品金额</text><text style="float:right;margin-right:30px;color:#F5053D;"></text></view>
+        <view style="font-size:12px;font-weight:bold;"><text>运费</text><text style="float:right;margin-right:30px">￥0.0</text></view>
+        <view style="font-size:12px;font-weight:bold;"><text>体检机构</text><text style="float:right;margin-right:30px">万年县人民医院</text></view>
+      </view>
+      <view class="next" bindtap="next">下一步</view>
+    </view>
+    
+

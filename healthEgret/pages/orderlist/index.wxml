@@ -1,0 +1,64 @@
+<!--pages/orderlist/index.wxml-->
+<!--<text>pages/orderlist/index.wxml</text>-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">全部</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                    <view class="ctn" bindtap="orderdetail">
+                    <view class="gap"></view>
+                    <view class="item" bindtap="orderdetail">
+                        <view class="head">
+                            <view class="time">
+                                <view>1+品质</view>
+                                <view>{{item.date}}</view>
+                            </view>
+                            <text class="unpaid">待支付</text>
+                        </view>
+                        <view class="bd">
+                            <image id="{{item.id}}" src="{{item.img}}" mode="scaleToFill" bindtap="orderdetail"></image>
+                            <view class="info" bindtap="detail" id="{{item.id}}">
+                                <view class="info_item" style="font-weight:bold">{{item.nm}}</view>
+                                <view class="info_item" style="color:#8A868A">{{item.ctype}}-{{item.org}}</view>
+                                <!--<view class="info_item" style="color:#8A868A"></view>-->
+                                <view class="info_item" style="color:#FF4081">￥{{item.zprice}}</view>
+                            </view>
+                            <view class="number" bindtap="orderdetail"> 
+                                <text class="">共{{item.num}}件</text>
+                                <text class="p_num">></text>
+                            </view>
+                            
+                        </view>
+                        <view class="btns">
+                            <text>总价：</text><text style="color:#F5053D;">￥{{item.count}}</text>
+                            <view class="btn_group">
+                                <button class="pay paybtn">支付</button>
+                                <button class="change">更改</button>
+                                <button class="cancal">取消</button>
+                                
+                                
+                            </view>
+                        </view>
+                    </view>
+                   </view> 
+                   <view class="gap"></view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                    <view class="booked"></view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+                    <view class="reported"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

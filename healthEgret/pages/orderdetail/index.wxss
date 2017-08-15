@@ -1,0 +1,90 @@
+/* pages/orderdetail/index.wxss */
+.product{
+    height: 220rpx;
+    position: relative;
+    border-bottom: 1px solid #9E9E9E;
+    width: 100%;
+    /*right: 0;*/
+}
+.product image{
+    width: 180rpx;
+    height: 180rpx;
+    top:50%;
+    margin-top:-90rpx;
+    position: absolute;
+    left: 22px;
+}
+.product .info{
+    height: 180rpx;
+    position: absolute;
+    left: 242rpx;
+    top:50%;
+    margin-top:-90rpx;
+    right: 0;
+}
+.ordercode{
+    padding-left: 22px;
+    height: 90rpx;
+    border-bottom: 1px solid #9E9E9E;
+    line-height: 90rpx;
+}
+.project_info{
+    width: 100%;
+}
+.project_info .head{
+    height: 80rpx;
+    line-height:80rpx; 
+    padding-left: 22px;
+    border-bottom: 1px solid #9E9E9E;
+
+}
+.project_info .info{
+    font-size: 14px;
+    width: 100%;
+    padding-left: 22px;
+    /*height: 155rpx;*/
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+}
+.project_info .info .info_item{
+
+}
+.footer{
+    height: 90rpx;
+    width: 100%;
+    border-top: 1px solid #9E9E9E;
+    font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    line-height: 90rpx;
+    background-color: white;
+    martin-top:-190rpx;
+    /*padding-left: 13px;*/
+}
+.btns{
+    height: 90rpx;
+    line-height: 90rpx;
+    position: relative;
+    clear: both;
+}
+button{
+    display: inline-block;
+    height: 30px;
+    line-height:30px; 
+    font-size: 12px;
+    border: 1px solid #9E9E9E;
+    float: right;
+    margin-left: 10px;
+}
+.paybtn{
+    color: white;
+    background-color: #28C225;
+    border: 1px solid #28C225;
+}
+.btn_group{
+    height: 90rpx;
+    position: absolute;
+    top: 0;
+    margin-top: 15rpx;
+    right:0;
+}

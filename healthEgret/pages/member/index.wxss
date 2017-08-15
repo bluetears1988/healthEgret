@@ -1,0 +1,101 @@
+/* pages/member/index.wxss */
+.member{
+    height: 200rpx;
+    background-color:  #E5E1E6;
+    position: relative;
+}
+.info{
+    height: 114rpx;
+    line-height: 114rpx;
+    width: 640rpx;
+    border-radius: 57rpx;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -57rpx;
+    margin-left: -320rpx;
+}
+.portrait{
+    border-radius: 50%;
+    width: 160rpx;
+    height: 160rpx;
+    position: absolute;
+    top:50%;
+    /*left: -40rpx;*/
+    margin-top: -80rpx;
+}
+.name{
+    font-size: 14px;
+    margin-left: 180rpx;
+}
+.h_state{
+    font-size: 14px;
+    margin-left: 4px;
+    color: #28C225;
+}
+.telephone,.messages{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+}
+.telephone{
+    right: 112rpx;
+}
+.messages{
+    right: 24rpx;
+}
+.tips{
+    height: 160rpx;
+    background-color: #ACD17D;
+    font-size: 14px;
+    color: white;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+button{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 76rpx;
+    line-height: 76rpx;
+    background-color: #28C225;
+    border-radius: 0;
+    color: white;
+}
+.records{
+    width:100%;
+    margin-top: 30rpx;
+}
+.title{
+    width: 204rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    color: white;
+    background-color: #B7E67C;
+    font-size: 14px;
+    text-align: center;
+    margin:auto;
+
+}
+.backFamily{
+    position: fixed;
+    bottom: 148rpx;
+    right: 50rpx;
+    z-index: 100;
+}
+.backFamily image{
+    width:90rpx;
+    height:90rpx;
+}
+.detail{
+    margin-top: 5px;
+}
+.detail .year{
+    margin-left: 17px;
+    color: #5D8C22;
+    font-size: 16px;
+    font-weight: bold;
+}

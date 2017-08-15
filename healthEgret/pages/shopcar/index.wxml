@@ -1,0 +1,35 @@
+<!--pages/shopcar/index.wxml-->
+<!--<text>pages/shopcar/index.wxml</text>-->
+<view class="gap"></view>
+<view class="youxuan">
+    <label class="checkbox">
+        <checkbox value="0" checked="false"/>1+优选
+    </label>
+</view>
+<view class="allcheck">
+    <view style="height:110rpx;line-height:110rpx;margin-left:40rpx;">
+        <label class="checkbox">
+            <checkbox value="0" checked="false"/>全选
+        </label>
+    </view>
+    <view class="total">
+        <view class="count">合计:{{count}}</view>
+        <view class="tips">不含运费及优惠扣减</view>
+    </view>
+    <view class="clearing">去结算({{num}})</view>
+</view>
+<view class="products" wx:for="{{products}}">
+    <view class="product">
+        <label class="checkbox">
+            <checkbox value="0" checked="false"/>
+        </label>
+         <image bindtap="detail" id="{{item.id}}" src="{{item.img}}" mode="scaleToFill"></image>
+         <view class="info" bindtap="detail" id="{{item.id}}">
+            <view class="info_item" style="font-weight:bold">{{item.nm}}</view>
+            <view class="info_item" style="color:#8A868A">{{item.type}}</view>
+            <view class="info_item" style="color:#FF4081">￥{{item.zprice}}</view>
+            <view class="info_item" style="color:#FF4081">￥{{item.zprice}}</view>
+         </view>
+         
+    </view>
+</view>

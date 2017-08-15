@@ -1,0 +1,128 @@
+/* pages/organization/index.wxss */
+.title{
+    height: 355rpx;
+    width: 100%;
+    background-image: url(http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg);
+    background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
+    position: relative;
+}
+.title_bd{
+    width: 100%;
+    font-size: 14px;
+    height: 150rpx;
+    line-height: 150rpx;
+    position: absolute;
+    background: #000;
+    opacity: 0.6;
+    overflow: hidden;
+    z-index: 1000;
+    bottom: 0;
+    color: white;
+    font-weight: bold;
+}
+.title_txt{
+    width: 100%;
+    height: 150rpx;
+    line-height: 150rpx;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1000;
+    bottom: 0;
+    color: white;
+    /*font-weight: bold;*/
+    line-height: 150rpx;
+    padding-top: 25rpx;
+}
+.txt_item{
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 14px;
+    margin-left: 10px;
+    /*line-height: normal;*/
+}
+.block{
+    width: 100%;
+}
+.block .head{
+    height: 62rpx;
+    line-height: 62rpx;
+    width: 100%;
+    font-size: 16px;
+    border-left: 4px solid #28C225;
+    padding-left: 10px;
+    border-bottom: 1px solid #9E9E9E;
+}
+.block .bd{
+    width: 95%;
+    /*margin-top: 10px;*/
+    margin-left: 10px;
+    /*margin-bottom: 10px;*/
+    /*color: #9E9E9E;*/
+    font-size: 12px;
+}
+.mtb10{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.block .bd .b_txt{
+    /*height: 42rpx;*/
+}
+.project{
+    position: relative;
+    height: 150rpx;
+    /*margin-left: 10px;*/
+    border-bottom: 1px solid #9E9E9E;
+    /*clear: both;*/
+}
+.project image{
+    position: absolute;
+    left: 10px;
+    width:60px; 
+    height: 60px;
+    border-radius:50%;
+    top:50%;
+    margin-top:-30px;
+}
+.project .info{
+ /*display: inline-block;*/
+ position: absolute;
+ height: 100rpx;
+ top: 50%;
+ margin-top: -50rpx;
+ left:85px;
+}
+.p_btn{
+    font-size: 14px;
+    height: 65rpx;
+    line-height: 65rpx;
+    width: 160rpx;
+    background-color: #28C225;
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -32.5rpx;
+}
+.ft{
+    font-size: 16px;
+    height: 80rpx;
+    width: 100%;
+    text-align: center;
+    line-height: 80rpx;
+    /*border-bottom: 1px solid #9E9E9E;*/
+}
+.message{
+    width: 100%;
+    /*height: 150rpx;*/
+    border-bottom: 1px solid #9E9E9E;
+    /*position: relative;*/
+}
+.message .info{
+ /*display: inline-block;*/
+ /*height: 100rpx;*/
+ /*position: absolute;*/
+ /*height: 150rpx;
+ top: 50%;
+ margin-top: -50rpx;*/
+ /*left:85px;*/
+}

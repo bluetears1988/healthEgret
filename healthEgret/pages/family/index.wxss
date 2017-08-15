@@ -1,0 +1,86 @@
+/* pages/family/index.wxss */
+.addFamily{
+    height: 200rpx;
+    width: 100%;
+    background-color: #E5E1E6;
+    position: relative;
+    /*line-height: 200rpx;*/
+    /*position: relative;*/
+}
+.addBtn{
+    width: 640rpx;
+    height: 114rpx;
+    line-height: 114rpx;
+    /*margin: auto;*/
+    background-color: white;
+    /*margin-top: 44rpx;*/
+    border-radius: 52rpx;
+    text-align: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -57rpx;
+    margin-left: -320rpx;
+}
+.member{
+    height: 200rpx;
+    line-height: 200rpx;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px dashed #E5E1E6;
+}
+.portrait{
+    border-radius: 50%;
+    width: 160rpx;
+    height: 160rpx;
+    position: absolute;
+    top:50%;
+    left: 10px;
+    margin-top: -80rpx;
+}
+.name{
+    font-size: 16px;
+    margin-left: 200rpx;
+}
+.h_state{
+    font-size: 16px;
+    margin-left: 6px;
+    color: #28C225;
+}
+.telephone,.messages{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+
+}
+.telephone{
+    right: 112rpx;
+}
+.messages{
+    right: 24rpx;
+}
+/*.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}*/

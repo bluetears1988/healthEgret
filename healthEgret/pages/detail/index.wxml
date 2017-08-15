@@ -1,0 +1,165 @@
+<!--pages/detail/index.wxml-->
+<!--<text>pages/detail/index.wxml</text>-->
+<!--<view class="container">-->
+<!--<view class="page">-->
+
+    <view class="swiper">
+    <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+              autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for-items="{{bannerUrls}}" wx:key="item.id">
+              <swiper-item>
+                <block wx:if="{{item}}">
+                  <image src="{{item}}"  mode="aspectFill" width="355" height="150"/>
+                </block>
+                <block wx:else>
+                  <image src="../../images/default_pic.png" mode="aspectFill" width="355" height="150"></image>
+                </block>
+              </swiper-item>
+          </block>
+      </swiper>
+    </view>
+    <view class="detail">
+      <view class="detail_item" style="height:50px;line-height:50px;">
+          <text style="font-size:16px;height:52px;line-height:52px;font-weight:bold">{{card.nm}}</text>
+          <!--<text style="font-size:12px;display:block;height:45px;line-height:45px;">收藏</text>-->
+          <view style="display:inline-block;position:absolute;height:52px;line-height:52px;right:40px;top:50%;margin-top:-26px;">
+            <view class="collect" wx:if="{{card['collect']}}">
+              <!--<image src="../../images/shoucang2.png" wx:if="{{card['collect']}}"></image>
+              <image src="../../images/shoucang1.png" wx:else></image>-->
+            </view>
+            <view class="collect_not" wx:if="{{!card['collect']}}">
+              <!--<image src="../../images/shoucang2.png" wx:if="{{card['collect']}}"></image>
+              <image src="../../images/shoucang1.png" wx:else></image>-->
+            </view>
+            <view style="font-size:12px;margin-top:13px;">收藏</view>
+          </view>
+      </view>
+      <view class="detail_item" style="height:18px;line-height:18px;">
+          <text style="font-size:12px;color:#F5053D">￥</text>
+          <text style="font-size:18px;color:#F5053D;font-weight:bold">{{card.zprice}}</text>
+          <text style="font-size:12px;color:#F5053D">起</text>
+          <text style="font-size:12px;color:#666666;margin-left:18px;text-decoration:line-through;">￥{{card.price}}</text>
+      </view>
+      <view class="detail_item" style="height:20px;line-height:20px;margin-top:4px">
+          <text style="font-size:12px;color:#666666;">运费{{card.ship}}</text>
+          <block wx:if="{{card.sales > 0}}"><text style="font-size:12px;color:#666666;float:right">销量{{card.sales}}件</text></block>
+          <block wx:if="{{card.collect_num > 0}}"><text style="font-size:12px;color:#666666;float:right;margin-right:35px">收藏{{card.collect_num}}</text></block>
+          
+      </view>
+      <view class="detail_item item_group" style="height:20px;line-height:20px;margin-top:7px">
+          <view class="item"><image src="../../images/tuikuan2.png"></image><text>随时退款</text></view>
+          <view class="item"><image src="../../images/report2.png"></image><text>电子报告</text></view>
+          <view class="item"><image src="../../images/service.png"></image><text>品质服务</text></view>
+      </view>
+      <view class="detail_item" style="font-size:14px;border-top:1px solid #666666;margin-top:5px;height:20px;line-height:20px">
+        <icon type="warn" size="25" color="green" style="margin-top:4px;margin-right:3px"/>
+        <text>套餐包含{{card.count}}个检查项目</text>
+      </view>
+    </view>
+    <view class="gap"></view>
+    <view class="feature">
+      <view class="title">套餐特色</view>
+    </view>
+    <view class="useflow">
+      <view class="">使用流程</view>
+    </view>
+    <view class="weui-cell weui-cell_access" url="" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">查看城市与机构</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view class="gap"></view>
+    <view class="project">
+      <view class="p_title">体检项目内容</view>
+      <view class="p_content">
+        <view class="">套餐特色</view>
+      </view>
+    </view>
+    <view class="useflow">
+      <view class="">注意事项</view>
+    </view>
+    <view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
+    <view class="footer">
+      <view class="kefu">
+        <view class="kefu_img"></view>
+        <view class="kefu_txt">客服</view>
+      </view>
+      <!--<view class="cart">
+        <view class="cart_img"></view>
+        <view class="cart_txt">体检车</view>
+      </view>-->
+      <!--<view class="addCart">加入体检车</view>-->
+      <view class="order" bindtap="showModal">立即预约</view>
+      <view class="s_organize" bindtap="selectOrg">选择体检机构</view>
+    </view>
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus || selectOrgModal}}"></view>
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+      <view class="head">
+        <image id="{{card.id}}" src="{{card.img}}" mode="scaleToFill"></image>
+        <view class="head_txt">
+          <view class="head_txt_nm" style="line-height:normal">{{card.nm}}</view>
+          <view class="head_txt_price" style="line-height:normal;color:#F5053D;">￥{{card.zprice}}</view>
+        </view>
+      </view>
+      <view class="ctype">
+        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">卡类别</view>
+        <view>
+          <view class="block selected">短信</view>
+          <view class="block" style="margin-left:30px;">实体卡</view>
+        </view>
+      </view>
+      <view class="num">
+        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">购买数量</view>
+        <view>
+        </view>
+      </view>
+      <view class="money">
+        <view style="font-size:12px;font-weight:bold;margin-bottom:4px;margin-top:12px;"><text>商品金额</text><text style="float:right;margin-right:30px;color:#F5053D;"></text></view>
+        <view style="font-size:12px;font-weight:bold;"><text>运费</text><text style="float:right;margin-right:30px">￥0.0</text></view>
+        <view style="font-size:12px;font-weight:bold;"><text>体检机构</text><text style="float:right;margin-right:30px">万年县人民医院</text></view>
+      </view>
+      <view class="next" bindtap="next">下一步</view>
+    </view>
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{selectOrgModal}}">
+        <view class="o_head">请选择体检机构</view>
+        <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
+            
+              <view class="weui-cells weui-cells_after-title">
+              <!--<view wx:for="{{organizes}}">-->
+                <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{organizes}}">
+                    <view class="weui-cell__hd">
+                        <label class="radio" style="width:20xp;height:20px">
+                          <radio value="{{item.value}}" checked="{{item.checked}}" id="{{item.id}}"/>
+                        </label>
+                        <image src="{{item.img}}" id="{{item.id}}" bindtap="detail"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <!--<image bindtap="detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill" style="width:90rpx;height:90rpx;"></image>-->
+                        <view class="info" bindtap="org_detail" id="{{item.id}}">
+                        <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                        <text style="font-size:16px;font-weight:bold">{{item.o_nm}}</text>
+                        </view>
+                        <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                          <text style="font-size:14px;color:#F5053D;">￥{{item.zprice}}</text>
+                          <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.price}}</text>
+                          <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
+                          <text style="font-size:12px;color:#666666">{{item.score}}分</text>
+                          <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
+                          <text style="font-size:12px;color:#666666">{{item.distance}}Km</text>
+                          <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
+                        </view>
+                      </view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </navigator>
+                <!--<navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                    <view class="weui-cell__hd">
+                        <image src="../../images/help2.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                    </view>
+                    <view class="weui-cell__bd">帮助手册</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </navigator>-->
+               <!--</view>-->
+            </view>
+        </scroll-view>
+    </view>
+<!--</view>-->

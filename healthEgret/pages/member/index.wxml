@@ -1,0 +1,33 @@
+<!--pages/member/index.wxml-->
+<!--<text>pages/member/index.wxml</text>-->
+<view class="member">
+    <view class="info">
+        <image id="{{member.id}}" src="{{member.portrait}}" mode="scaleToFill" class="portrait"></image>
+        <text class="name">{{member.name}}</text>
+        <text class="h_state">健康状况 {{member.score}}分</text>
+        <image bindtap="call" data-telephone="{{member.telephone}}" src="../../images/telephone.png" mode="scaleToFill" class="telephone"></image>
+        <image bindtap="send" data-telephone="{{member.telephone}}" src="../../images/message.png" mode="scaleToFill" class="messages"></image>
+    </view>
+</view>
+<view class="tips">健康小提示:</view>
+<view class="records">
+    <view class="title">体检记录</view>
+    <view wx:if="{{member.details}}">
+        <view class="detail" wx:for="{{member.details}}" wx:for-index="year">
+            <view class="year">{{year}}</view>
+            <view wx:for="{{item}}" wx:for-item="package"> 
+                <view class="weui-cells weui-cells_after-title" id="{{package.rid}}" bindtap="reportDetail">
+                    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" id="{{package.rid}}" bindtap="reportDetail">
+                        <view class="weui-cell__hd">
+                           {{package.time}}
+                        </view>
+                        <view class="weui-cell__bd" style="margin-left:20px;color:#28C225">{{package.nm}}</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="backFamily"><image src="../../images/family.png" bindtap="backFamily"></image></view>
+<button>取消关注</button>

@@ -1,0 +1,24 @@
+<!--pages/city/index.wxml-->
+<!--<text>pages/city/index.wxml</text>-->
+<view class="gap"></view>
+<view class="city_group">
+    <view class="head">定位城市</view>
+    <view wx:if="{{open}}" class="city_btns">
+        <view class="citybtn">
+           <text class="city">上饶</text>
+        </view>
+    </view>
+    <view wx:else>
+        <text>所在城市暂时未开通预约服务</text>
+    </view>
+</view>
+<view class="city_group">
+    <view class="head">热门城市</view>
+    <view wx:if="{{hot}}" class="city_btns">
+        <view wx:for="{{hot}}" class="citybtn">
+            <text class="city">{{item.nm}}</text>
+        </view>
+    </view>
+    <view wx:else><text>暂无其他</text></view>
+    
+</view>
