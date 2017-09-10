@@ -137,6 +137,9 @@
   top:50%;
   margin-top: -30rpx;
   left: 20rpx;
+  color: white;
+  text-align: center;
+  font-size:12px;
 }
 .tab{
   height: 60rpx;

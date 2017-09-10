@@ -26,7 +26,8 @@ Page({
     tabs: ["距离优先", "推荐最多"],
     activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    address:""
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -91,29 +92,42 @@ Page({
 
     //获取当前经纬度信息
     wx.getLocation({
+      type: 'gcj02',
       success: ({latitude, longitude}) => {
+        // 调用后台API，获取地址信息
+        wx.request({
+          url: 'http://127.0.0.1:3000/api/address/location',
 
-        //调用后台API，获取地址信息
-        // wx.request({
-        //   url: 'http://localhost:3000/lbs/location',
+          data: {
+            latitude: latitude,
+            longitude: longitude,
+          },
 
-        //   data: {
-        //     latitude: latitude,
-        //     longitude: longitude
-        //   },
+          success: (res) => {
+            //  console.dirxml(res.data);
+            // let info = res.data.result.ad_info.city;
+            let city = res.data.regeocode.addressComponent.city;
+            let township = res.data.regeocode.addressComponent.township;
+            var streetnumber = res.data.regeocode.addressComponent.streetNumber.streetnumber;
+            var street = res.data.regeocode.addressComponent.streetNumber.street;
+            let streetinfo = street?street:'' + streetnumber?streetnumber:'';
+            let info = city + township + streetinfo;
+            console.dirxml(info);
+            this.setData({ address: info })
+          },
 
-        //   success: (res) => {
-        //     let info = res.data.data.result.ad_info
-        //     this.setData({ address: info })
-        //   },
+          fail: (res) => {
+            // console.dirxml(res.data);
+          },
 
-        //   fail: () => {
-        //   },
-
-        //   complete: () => {
-        //   }
-        // })
+          complete: (res) => {
+            // console.dirxml(res.data);
+          }
+        })
       }
+      // success: function(res){
+      //   console.dirxml(res)
+      // }
     })
 
     var that = this;

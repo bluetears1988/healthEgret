@@ -70,4 +70,9 @@ Page({
           url: '/pages/comment/index'
       }) 
   },
+  backHome: function(e){
+    wx.navigateTo({
+          url: '/pages/index/index'
+      })
+  },
 })

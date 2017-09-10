@@ -63,10 +63,6 @@
     <view class="useflow">
       <view class="">使用流程</view>
     </view>
-    <view class="weui-cell weui-cell_access" url="" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">查看城市与机构</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </view>
     <view class="gap"></view>
     <view class="project">
       <view class="p_title">体检项目内容</view>
@@ -77,11 +73,15 @@
     <view class="useflow">
       <view class="">注意事项</view>
     </view>
-    <view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
+    <view class="backHome" bindtap="backTop"><image src="../../images/backhome.png" bindtap="backTop"></image></view>
     <view class="footer">
-      <view class="kefu">
-        <view class="kefu_img"></view>
-        <view class="kefu_txt">客服</view>
+      <view class="home" bindtap="backHome">
+        <view class="home_img" bindtap="backHome"></view>
+        <view class="home_txt" bindtap="backHome">首页</view>
+      </view>
+      <view class="kefu" bindtap="kefu">
+        <view class="kefu_img" bindtap="kefu"></view>
+        <view class="kefu_txt" bindtap="kefu">客服</view>
       </view>
       <!--<view class="cart">
         <view class="cart_img"></view>

@@ -138,17 +138,39 @@
     color: white;
     float: right;
 }
-.kefu{
+.home{
+    width: 40px;
+    height: 100%;
+    text-align: center;
     position: absolute;
-    right: 640rpx;
+    /*right: 645rpx;*/
     /*margin-left: 30rpx;*/
      /*float: right;*/
+     left: 5px;
 }
-.cart{
+.home_img{
+    width: 20px;
+    height: 20px;
+    background-image: url(../../images/kefu2.png);
+    background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
     position: absolute;
-    right: 520rpx;
-    /*float: right;*/
+    top:19rpx;
+    left: 50%;
+    margin-left: -10px;
+
+}
+.home_txt{
+    font-size:12px;
+    margin-top:65rpx;
+}
+.kefu{
+    width: 40px;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    right: 570rpx;
     /*margin-left: 30rpx;*/
+     /*float: right;*/
 }
 .kefu_img{
     width: 20px;
@@ -157,10 +179,18 @@
     background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
     position: absolute;
     top:19rpx;
+    left: 50%;
+    margin-left:-10px;
 }
 .kefu_txt{
     font-size:12px;
     margin-top:65rpx;
+}
+.cart{
+    position: absolute;
+    right: 520rpx;
+    /*float: right;*/
+    /*margin-left: 30rpx;*/
 }
 .cart_img{
     width: 20px;
@@ -281,5 +311,4 @@
     margin-top: -20rpx;
     padding-left: 20px;
     font-size: 16px;
-    
 }

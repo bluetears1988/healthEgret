@@ -1,0 +1,122 @@
+/*.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+.textStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textContainer {
+  margin-top: 200px;
+}*/
+.container{
+    background-color: #f2f2f2;
+}
+.page-body{
+  width: 90%;
+  margin:0 auto;
+}
+.group_item{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 28rpx;
+    padding-left: 20rpx;
+    padding-top: 15rpx;
+    padding-bottom: 15rpx;
+}
+.price{
+    /*margin-top: 18rpx;*/
+    display: inline-block;
+    color: red;
+    font-size: 20px;
+}
+.shichang_price{
+    margin-left: 8px;
+    font-size: 16px;
+    color: gray;
+    text-decoration:line-through;
+}
+.checkedCount{
+    margin-left: 15px;
+    display: inline-block;
+}
+.haveChecked{
+    display: inline-block;
+    width: 200rpx;
+    color: red;
+    border: 1px solid red;
+    font-size: 30rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+}
+.haveChecked_label{
+    font-size: 26rpx;
+    margin-right: 20rpx;
+}
+.open{
+    display: inline-block;
+    font-size: 30rpx;
+    width: 150rpx;
+    border: 1px solid red;
+    height: 40rpx;
+    line-height: 40rpx;
+    background-color: red;
+    color: white;
+    border-top-right-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+    padding-left: 10rpx;
+}
+.title{
+    width: 90%;
+    display: -webkit-box !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:3;
+    font-size:18px;
+}
+.backHome{
+    position: fixed;
+    bottom: 148rpx;
+    right: 50rpx;
+    z-index: 100;
+}
+.backHome image{
+    width:90rpx;
+    height:90rpx;
+}
+.uploadWrap{height:160rpx; width:100%; display: flex; display: -webkit-box; flex-direction: column;}  
+.upload_Item{ width: 160rpx; height: 160rpx;  flex: 1;}  
+.upload_Item_img{ width: 160rpx; height: 160rpx;} 
+
+.section{
+  display: inline-block;
+  text-align: center;
+  padding: 10rpx;
+  width: 100%;
+}
+.pick-area{
+  border-top: 1px solid #9E9E9E;
+  border-bottom: 1px solid #9E9E9E;
+  color: #9E9E9E;
+  /*background-color: 	#CEFFCE;*/
+  display: flex;
+  flex-direction: row;
+  /*align-items: center;*/
+  justify-content: space-between;
+  /*padding: 200rpx 0;*/
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
+  width: 100%;
+}

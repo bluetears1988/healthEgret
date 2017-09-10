@@ -115,6 +115,7 @@
     </view>
     <view class="ft" bindtap="all_comment">点击查看全部评论∨</view>
 </view>
+<view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
 </view>
 </view>
 <view class="gap"></view>

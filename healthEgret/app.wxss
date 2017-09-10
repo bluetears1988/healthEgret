@@ -33,4 +33,10 @@ swiper-item{
     height:20rpx;
     background-color: #E5E1E6;
 }
+.show{
+  display: block;
+}
+.hidden{
+  display: none;
+}
 @import 'weui.wxss';

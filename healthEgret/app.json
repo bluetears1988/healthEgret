@@ -18,7 +18,8 @@
     "pages/organization/index",
     "pages/comment/index",
     "pages/pckoforg/index",
-    "pages/orgintro/index"
+    "pages/orgintro/index",
+    "pages/packageDetail/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

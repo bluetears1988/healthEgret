@@ -1,0 +1,74 @@
+<!--<view class="container">
+  <view class="textContainer">
+    <text class="textStyle">{{text}}</text>
+  </view>
+</view>-->
+<view class="container">
+<scroll-view scroll-x="true" style="white-space: nowrap; display: flex" >
+    <!--<view style="background: red; width: 200px; height: 100px; display: inline-block" ></view>
+    <view style="background: green; width: 200px; height: 100px; display: inline-block"></view>
+    <view style="background: blue; width: 200px; height: 100px; display: inline-block"></view>
+    <view style="background: yellow; width: 200px; height: 100px; display: inline-block"></view>-->
+    <!--<view class=""  wx:key="id" >-->
+      <view wx:for="{{pkgUrls}}" style="background: {{item.color}}; width: 200px; height: 100px; display: inline-block">
+        <!--<image class="upload_Item_img" src="{{item.imgurl}}" data-id="{{item.id}}" bindtap="changePkg"></image>  -->
+        <view>{{item.pkgname}}</view>  
+      </view>  
+    <!--</view> -->
+</scroll-view>
+<!--<scroll-view scroll-x="true">  
+  <view class="uploadWrap" scroll-x="true" >  
+    <view class="upload_Item" wx:for="{{pkgUrls}}" wx:key="id">  
+      <image class="upload_Item_img" src="{{item.imgurl}}" data-id="{{item.id}}" bindtap="changeMainImgFn2"></image>  
+      <icon type="clear" size="16" class="upload_Btn" color="#f64400"></icon>  
+      <view class="upload_mask {{upload_ImgSelId2==item.id? 'show':' ' }}">{{item.pkgname}}</view>  
+    </view>  
+  </view>  
+</scroll-view> -->
+<view class="{{tab_pkg?'show':'hidden'}}" style="width:100%">
+    <view class="pick-area">
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                价格排序
+            </view>
+        </picker>
+      </view>
+      <view class="section" bindtap="sales_pri" style="border-left: 1px solid #9E9E9E;">
+          <view class="picker">
+              销量优先
+          </view>
+      </view>
+      <!--<view class="section" style="border-left: 1px solid #9E9E9E;">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                筛选
+            </view>
+        </picker>
+      </view>-->
+    </view>
+</view>
+<scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore">
+  <block wx:for-items="{{groups}}" wx:key="item">
+      <view class="group_item">
+          <view class="title">
+              {{item.title}}
+          </view>
+          <view class="price">
+              <text><text style="font-size:16px">¥</text>{{item.shichang_price}}</text>
+          </view>
+          <view class="price shichang_price">
+              <text>¥{{item.shichang_price}}</text>
+          </view>
+          <view class="checkedCount">
+              <view class="haveChecked"><text class="haveChecked_label">已体检：{{item.count}}人</text><text></text></view>
+              <view class="open"><text>马上预约></text></view>
+          </view>
+      </view>
+  </block>
+</scroll-view>
+<view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
+<view class="weui-loadmore weui-loadmore_line">
+  <text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</text>
+</view>
+</view>

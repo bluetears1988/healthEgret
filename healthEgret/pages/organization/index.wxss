@@ -126,3 +126,13 @@
  margin-top: -50rpx;*/
  /*left:85px;*/
 }
+.backHome{
+    position: fixed;
+    bottom: 148rpx;
+    right: 50rpx;
+    z-index: 100;
+}
+.backHome image{
+    width:90rpx;
+    height:90rpx;
+}
