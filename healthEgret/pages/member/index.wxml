@@ -2,7 +2,7 @@
 <!--<text>pages/member/index.wxml</text>-->
 <view class="member">
     <view class="info">
-        <image id="{{member.id}}" src="{{member.portrait}}" mode="scaleToFill" class="portrait"></image>
+        <!--<image id="{{member.id}}" src="{{member.portrait}}" mode="scaleToFill" class="portrait"></image>-->
         <text class="name">{{member.name}}</text>
         <text class="h_state">健康状况 {{member.score}}分</text>
         <image bindtap="call" data-telephone="{{member.telephone}}" src="../../images/telephone.png" mode="scaleToFill" class="telephone"></image>
@@ -31,3 +31,6 @@
 </view>
 <view class="backFamily"><image src="../../images/family.png" bindtap="backFamily"></image></view>
 <button>取消关注</button>
+<view class="weui-loadmore weui-loadmore_line">
+    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经有{{num}}次体检</text>
+</view>

@@ -5,6 +5,8 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
   data: {
+    sexy:[{'name':'通用','value':0},{'name':'男','value':1},{'name':'女','value':2}],
+    hosipital_type:[{'name':'公立医院','value':1},{'name':'公立三甲','value':2},{'name':'专科医院','value':3},{'name':'体检机构','value':4},],
     infos: [{"id":1,"nm":"妇女专项体检套餐","female":true,"male":false,"all":false,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"o_nm":"万年县人民医院","o_num":6,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"},
     {"id":2,"nm":"妇女专项体检套餐","female":false,"male":true,"all":true,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
     o_infos:[{"oid":2,"o_nm":"万年县人民医院","address":"县政府路108号","score":"4.5","distance":"1.2","bprice":"200","img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
@@ -27,7 +29,11 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    address:""
+    address:"",
+    salesFirstSelected:false,
+    priceSortUp:false,
+    filterShow:false,
+    showModalStatus:false
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -57,6 +63,68 @@ Page({
     wx.navigateTo({
           url: '/pages/shopcar/index?id=' + id
       })
+  },
+  salesFirst: function(){
+    this.setData({
+      salesFirstSelected:true,
+      priceSortUp:false,
+      filterShow:false
+    })
+  },
+  filter: function(){
+    this.setData({
+      salesFirstSelected:false,
+      priceSortUp:false,
+      filterShow:true,
+    });
+    this.showModal();
+  },
+  showModal: function () {
+      // 显示遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: true
+      })
+      // setTimeout(function () {
+      //   animation.translateY(300).step()
+      //   this.setData({
+      //     animationData: animation.export()
+      //   })
+      // }.bind(this), 200)
+  },
+  hideModal: function () {
+      // 隐藏遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      // animation.translateY(300).step()
+      // this.setData({
+      //   animationData: animation.export(),
+      // })
+      animation.translateY(0).step()
+        this.setData({
+          animationData: animation.export(),
+          showModalStatus: false,
+          filterShow:false
+        })
+      // setTimeout(function () {
+      //   animation.translateY(0).step()
+      //   this.setData({
+      //     animationData: animation.export(),
+      //     showModalStatus: false,
+      //     filterShow:false
+      //   })
+      // }.bind(this), 200)
   },
   onLoad: function () {
     console.log('onLoad')
@@ -92,7 +160,7 @@ Page({
 
     //获取当前经纬度信息
     wx.getLocation({
-      type: 'gcj02',
+      type: 'gcj02',//默认为"wgs84"返回gps坐标
       success: ({latitude, longitude}) => {
         // 调用后台API，获取地址信息
         wx.request({

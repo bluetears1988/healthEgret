@@ -1,10 +1,23 @@
 <!--pages/addmember/index.wxml-->
 <!--<text>pages/addmember/index.wxml</text>-->
 <view class="addmember">
-    <view class="item"><text class="placeholder">选填：昵称，如爸爸</text></view>
-    <view class="item"><text class="placeholder">必填：真实姓名，如李明</text></view>
-    <view class="item"><text class="placeholder">选填：手机号</text></view>
-    <view class="item"><text class="placeholder">必填：身份证号</text></view>
+    <view class="item">
+        <!--<text class="placeholder">必填：真实姓名，如李明</text>-->
+        <input class="input" type="number" placeholder="真实姓名，如李明(必填)" placeholder-style="color: #BEC2C9" bindinput="nameInput" auto-focus="true"/>
+    </view>
+    <view class="item">
+        <!--<text class="placeholder">必填：身份证号</text>-->
+        <input class="input" type="number" placeholder="身份证号(必填)" placeholder-style="color: #BEC2C9" bindinput="cardIDInput" />
+    </view>
+    <view class="item">
+        <!--<text class="placeholder">选填：昵称，如爸爸</text>-->
+        <input class="input" type="number" placeholder="昵称，如爸爸(选填)" placeholder-style="color: #BEC2C9" bindinput="nickNameInput" />
+    </view>
+    <view class="item">
+        <!--<text class="placeholder">选填：手机号</text>-->
+        <input class="input" type="number" placeholder="手机号(选填)" placeholder-style="color: #BEC2C9" bindinput="phoneInput" />
+    </view>
+    
     <view class="radio_g">
         <radio-group class="radio-group" bindchange="radioChange">
             <label class="radio" wx:for="{{sexy}}">

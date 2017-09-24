@@ -1,6 +1,7 @@
 // pages/family/index.js
 Page({
   data:{
+    num:2,
     "members":[{"id":1,"portrait":"http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg","name":"小姑子","score":100,"telephone":"18810296418"},
     {"id":2,"portrait":"http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg","name":"小姑子","score":100,"telephone":"18810296418"}],
   },

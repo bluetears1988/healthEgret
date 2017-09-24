@@ -52,5 +52,10 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
-  }
+  },
+  search() {
+    wx.navigateTo({
+          url: '/pages/search/index'
+      })
+  },
 })

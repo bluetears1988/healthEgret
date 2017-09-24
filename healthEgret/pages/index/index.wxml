@@ -39,22 +39,24 @@
     <view class="pick-area">
       <view class="section">
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <view class="picker">
+            <view class="picker section_txt">
                 价格排序
+            </view>
+            <view class="arrow_gp">
+              <view class="arrow_up"></view>
+              <view class="arrow_down"></view>
             </view>
         </picker>
       </view>
-      <view class="section" bindtap="sales_pri" style="border-left: 1px solid #9E9E9E;">
-          <view class="picker">
+      <view class="section" bindtap="salesFirst" style="border-left: 1px solid #9E9E9E;">
+          <view class="{{salesFirstSelected?'pick-area-click':''}}">
               销量优先
           </view>
       </view>
-      <view class="section" style="border-left: 1px solid #9E9E9E;">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <view class="picker">
+      <view class="section" style="border-left: 1px solid #9E9E9E;" bindtap="filter">
+            <view class="{{filterShow?'pick-area-click':''}}">
                 筛选
             </view>
-        </picker>
       </view>
     </view>
     <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
@@ -83,6 +85,7 @@
             <view style="display:inline-block;position:absolute;">
               <text style="font-size:12px;color:#F5053D">￥</text>
               <text style="font-size:18px;color:#F5053D;font-weight:bold">{{item.zprice}}</text>
+              <text style="font-size:12px;color:#F5053D">起</text>
               <text style="font-size:12px;color:#666666;margin-left:8px;text-decoration:line-through;">￥{{item.price}}</text>
             </view>
             <block wx:if="{{item.sales > 0}}"><text style="font-size:12px;color:#666666;position:absolute;right:0;">销量{{item.sales}}件</text></block>
@@ -162,4 +165,44 @@
     </view>
 </view>
 </view>
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+      <view class="box_slogan">1+品质</view>
+      <scroll-view scroll-y="true">
+      <view class="box_body">
+      <view>
+        <view class="box_body_item"> 
+          <view class="title">适用性别</view>
+        </view>
+        <view style="height:60px;width:100%;line-height:60px;font-size:14px;"> 
+          <view class="content" style="margin-left:20px">
+            <radio-group class="radio-group" bindchange="radioChange">
+              <label class="radio" wx:for="{{sexy}}">
+                <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        </view>
+        <view>
+          <view class="box_body_item"> 
+            <view class="title">医院类型</view>
+          </view>
+          <view style="height:60px;width:100%;line-height:60px;font-size:14px;"> 
+            <view class="content" style="margin-left:20px">
+              <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio" wx:for="{{hosipital_type}}">
+                  <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+      </view>
+      </scroll-view>
+      <view class="box_footer">
+        <view style="display:inline-block;height:100%;width:20%;text-align: left;font-size:14px;position:absolute;left:10px">清除筛选</view>
+        <view style="display:inline-block;height:100%;width:35%;text-align: center;background-color:#28C225;color:white;position:absolute;right:0px;">完成</view>
+      </view>
+    </view>
 </view>

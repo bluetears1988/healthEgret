@@ -20,5 +20,10 @@ Page({
     wx.navigateTo({
         url: '/pages/orderlist/index'
     }) 
+  },
+  reportlist: function(e){
+    wx.navigateTo({
+        url: '/pages/reportList/index'
+    }) 
   }
 })

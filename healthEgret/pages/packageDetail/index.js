@@ -1,5 +1,7 @@
 Page({
   data:{
+    priceSortUp:false,
+    filterShow:false,
     text:"Page packageDetail",
     groups:[
       {

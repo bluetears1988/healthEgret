@@ -29,8 +29,12 @@
     <view class="pick-area">
       <view class="section">
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <view class="picker">
+            <view class="picker section_txt">
                 价格排序
+            </view>
+            <view class="arrow_gp">
+              <view class="arrow_up"></view>
+              <view class="arrow_down"></view>
             </view>
         </picker>
       </view>

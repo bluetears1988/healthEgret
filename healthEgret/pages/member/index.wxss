@@ -26,31 +26,31 @@
     margin-top: -80rpx;
 }
 .name{
-    font-size: 14px;
-    margin-left: 180rpx;
+    font-size: 20px;
+    margin-left: 50rpx;
 }
 .h_state{
-    font-size: 14px;
-    margin-left: 4px;
+    font-size: 20px;
+    margin-left: 8px;
     color: #28C225;
 }
 .telephone,.messages{
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     position: absolute;
     top: 50%;
-    margin-top: -11px;
+    margin-top: -15px;
 }
 .telephone{
-    right: 112rpx;
+    right: 114rpx;
 }
 .messages{
-    right: 24rpx;
+    right: 26rpx;
 }
 .tips{
     height: 160rpx;
     background-color: #ACD17D;
-    font-size: 14px;
+    font-size: 18px;
     color: white;
     padding-left: 20px;
     padding-top: 10px;
@@ -70,14 +70,19 @@ button{
     margin-top: 30rpx;
 }
 .title{
-    width: 204rpx;
+    /*width: 204rpx;
     height: 70rpx;
     line-height: 70rpx;
     color: white;
     background-color: #B7E67C;
     font-size: 14px;
     text-align: center;
-    margin:auto;
+    margin:auto;*/
+    border-left: 10px solid #28C225;
+    padding-left: 3px;
+    font-size: 16px;
+    color: #28C225;
+    font-weight: bold;
 
 }
 .backFamily{

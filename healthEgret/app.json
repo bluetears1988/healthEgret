@@ -19,7 +19,9 @@
     "pages/comment/index",
     "pages/pckoforg/index",
     "pages/orgintro/index",
-    "pages/packageDetail/index"
+    "pages/packageDetail/index",
+    "pages/search/index",
+    "pages/reportList/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -40,7 +42,7 @@
       },
       {
         "pagePath": "pages/groups/index",
-        "text": "团健康",
+        "text": "分类",
         "iconPath":"images/group.png",
         "selectedIconPath":"images/group_clk.png"
        },

@@ -5,9 +5,14 @@
     padding-top: 40rpx;
 }
 .addmember .item{
+    margin-top: 20px;
     height: 90rpx;
     line-height: 90rpx;
     border-bottom: 1px solid #BEC2C9;
+}
+.input{
+    height: 90rpx;
+    line-height: 90rpx;
 }
 .placeholder{
     color: #BEC2C9;
@@ -15,16 +20,18 @@
 .radio_g{
     width: 100%;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .radio{
     /*margin-left: 15px*/
 }
 .addBtn{
-    margin-top: 30px;
+    margin-top: 20px;
     height: 50px;
-    width: 380rpx;
+    line-height: 50px;
+    width: 100%;
     background-color: #28C225;
     color: white;
     border-radius: 25px;
+    font-size: 20px;
 }

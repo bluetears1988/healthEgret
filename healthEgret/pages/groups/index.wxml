@@ -1,7 +1,7 @@
 <!--pages/groups/index.wxml-->
 <!--<text>pages/groups/index.wxml</text>-->
 <import src="cell.wxml" /> 
-<view class="weui-search-bar" style="width: 100%;">
+<!--<view class="weui-search-bar" style="width: 100%;">
     <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -12,7 +12,7 @@
             <view class="weui-search-bar__text">搜索套餐和机构</view>
         </label>
     </view>
-</view>
+</view>-->
 <scroll-view scroll-y="true" class="pages-wrapper"> 
     <view wx:for="{{pageItems}}" wx:key="{{text}}"> 
     <view class="pages-row"> 
