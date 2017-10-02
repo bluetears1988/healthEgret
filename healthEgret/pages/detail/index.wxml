@@ -109,6 +109,10 @@
       </view>
       <view class="num">
         <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">购买数量</view>
+        <view style="display:inline-block">
+          <span bindtap="numDec">-</span>
+          <input type="number" id="quantity" />
+          <span bindtap="numAdd">+</span>
         <view>
         </view>
       </view>
