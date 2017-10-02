@@ -33,7 +33,12 @@ Page({
     salesFirstSelected:false,
     priceSortUp:false,
     filterShow:false,
-    showModalStatus:false
+    showModalStatus:false,
+    sortByPriceSelected:false,
+    arrow_up:false,
+    arrow_down:false,
+    filterSexy:'',
+    filterType:''
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -64,8 +69,31 @@ Page({
           url: '/pages/shopcar/index?id=' + id
       })
   },
+  sortByPrice: function(){  
+    this.setData({
+      sortByPriceSelected:true,
+      salesFirstSelected:false,
+      priceSortUp:false,
+      filterShow:false
+    })
+
+    if(this.data.arrow_up){
+      this.setData({
+        arrow_up: false,
+        arrow_down: true
+      })
+    }else{
+      this.setData({
+        arrow_up: true,
+        arrow_down: false
+      })
+    }
+  },
   salesFirst: function(){
     this.setData({
+      sortByPriceSelected:false,
+      arrow_up: false,
+      arrow_down: false,
       salesFirstSelected:true,
       priceSortUp:false,
       filterShow:false
@@ -73,6 +101,7 @@ Page({
   },
   filter: function(){
     this.setData({
+      sortByPriceSelected:false,
       salesFirstSelected:false,
       priceSortUp:false,
       filterShow:true,
@@ -244,5 +273,17 @@ Page({
     wx.navigateTo({
         url: '../organization/index'
     })
+  },
+  sexyRadioChange: function(e) {
+    this.setData({
+      filterSexy: e.detail.value,
+    });
+    
+  },
+  typeRadioChange: function(e) {
+    this.setData({
+      filterType: e.detail.value,
+    });
+    
   }
 })

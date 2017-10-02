@@ -37,16 +37,17 @@
     </view>
     <view class="{{tab_pkg?'show':'hidden'}}">
     <view class="pick-area">
-      <view class="section">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <view class="picker section_txt">
+      <view class="section" bindtap="sortByPrice">
+        <!--<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+           
+        </picker>-->
+            <view class="section_txt {{sortByPriceSelected?'pick-area-click':''}}">
                 价格排序
             </view>
             <view class="arrow_gp">
-              <view class="arrow_up"></view>
-              <view class="arrow_down"></view>
+              <view class="arrow_up {{arrow_up?'bc_red_up':'bc_gray_up'}} "></view>
+              <view class="arrow_down {{arrow_down?'bc_red_down':'bc_gray_down'}}"></view>
             </view>
-        </picker>
       </view>
       <view class="section" bindtap="salesFirst" style="border-left: 1px solid #9E9E9E;">
           <view class="{{salesFirstSelected?'pick-area-click':''}}">
@@ -66,11 +67,11 @@
         <view class="info" bindtap="detail" id="{{item.id}}">
           <view class="p-name">
             <text class="info_item" style="font-size:16px;font-weight:bold;height:28px;line-height:28px;">{{item.nm}}</text>
-            <block wx:if="{{!item.all}}">
+            <!--<block wx:if="{{!item.all}}">
               <text class="female" wx:if="{{item['female']}}">
               </text>
               <text class="male" wx:if="{{item['male']}}"></text>
-            </block>  
+            </block>  -->
           </view>
           <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
             <text style="font-size:12px;color:#666666">适用人群：</text>
@@ -84,9 +85,9 @@
           <view class="info_item" style="border-top:1px solid #9E9E9E;margin-top:8px;position:relative;height:30px;line-height:30px">
             <view style="display:inline-block;position:absolute;">
               <text style="font-size:12px;color:#F5053D">￥</text>
-              <text style="font-size:18px;color:#F5053D;font-weight:bold">{{item.zprice}}</text>
+              <text style="font-size:18px;color:#F5053D;font-weight:bold;margin-right:3px">{{item.zprice}}</text>
               <text style="font-size:12px;color:#F5053D">起</text>
-              <text style="font-size:12px;color:#666666;margin-left:8px;text-decoration:line-through;">￥{{item.price}}</text>
+              <text style="font-size:12px;color:#666666;margin-left:10px;text-decoration:line-through;">￥{{item.price}}</text>
             </view>
             <block wx:if="{{item.sales > 0}}"><text style="font-size:12px;color:#666666;position:absolute;right:0;">销量{{item.sales}}件</text></block>
           </view>
@@ -135,21 +136,26 @@
                   <view wx:if="{{o_infos}}">
                     <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail">
                         <image bindtap="o_detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill"></image>
-                        <view class="info" bindtap="org_detail" id="{{item.oid}}">
-                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                        <view class="info" bindtap="org_detail" id="{{item.oid}}" style="margin-top: -95rpx;">
+                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
                             <text style="font-size:16px;font-weight:bold">{{item.o_nm}}</text>
                             <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
                           </view>
-                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
                             <text style="font-size:12px;color:#666666">{{item.address}}</text>
                             <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
                           </view>
-                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                          <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
                             <text style="font-size:12px;color:#666666">{{item.score}}分</text>
-                            <text style="margin-left:10px;font-size:12px;color:#666666">{{item.distance}}Km</text>
+                            <text style="margin-left:10px;font-size:14px;color:#F5053D;font-weight:bold">{{item.distance}}Km</text>
                           </view>
                       </view>
-                      <view class="bottom_price"><text style="color:#F5053D;">￥{{item.bprice}}</text>起></view>
+                      <view class="bottom_price">
+                          <text style="color:#F5053D;font-weight:bold;margin-right:2px">￥{{item.bprice}}</text>
+                          <text style="color:#F5053D;">起</text>
+                          <view class="weui-cell__ft weui-cell__ft_in-access arrow" style="margin-top:-2px;"></view>
+                      </view>
+                      
                     </view>
                   </view>
                   <view wx:else class="weui-loadmore weui-loadmore_line"><text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</text></view>
@@ -158,7 +164,40 @@
                     <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经全部加载完毕</text>
                   </view>
                 </view>
-                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                    <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
+                      <view wx:if="{{o_infos}}">
+                        <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail">
+                            <image bindtap="o_detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill"></image>
+                            <view class="info" bindtap="org_detail" id="{{item.oid}}" style="margin-top: -95rpx;">
+                              <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
+                                <text style="font-size:16px;font-weight:bold">{{item.o_nm}}</text>
+                                <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
+                              </view>
+                              <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
+                                <text style="font-size:12px;color:#666666">{{item.address}}</text>
+                                <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
+                              </view>
+                              <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
+                                <text style="font-size:14px;color:#F5053D;font-weight:bold">{{item.score}}分</text>
+                                <text style="margin-left:10px;font-size:12px;">{{item.distance}}Km</text>
+                              </view>
+                          </view>
+                          <view class="bottom_price">
+                              <text style="color:#F5053D;font-weight:bold;margin-right:2px">￥{{item.bprice}}</text>
+                              <text style="color:#F5053D;">起</text>
+                              <view class="weui-cell__ft weui-cell__ft_in-access arrow" style="margin-top:-2px;"></view>
+                          </view>
+                          
+                        </view>
+                      </view>
+                    <view wx:else class="weui-loadmore weui-loadmore_line"><text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</text></view>
+                  </scroll-view>
+                  <view class="weui-loadmore weui-loadmore_line">
+                    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经全部加载完毕</text>
+                  </view>
+                
+                </view>
                 <!--<view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>-->
             </view>
         </view>
@@ -175,8 +214,8 @@
           <view class="title">适用性别</view>
         </view>
         <view style="height:60px;width:100%;line-height:60px;font-size:14px;"> 
-          <view class="content" style="margin-left:20px">
-            <radio-group class="radio-group" bindchange="radioChange">
+          <view class="content" style="margin-left:20px;font-size:12px">
+            <radio-group class="radio-group" bindchange="sexyRadioChange">
               <label class="radio" wx:for="{{sexy}}">
                 <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
               </label>
@@ -188,9 +227,9 @@
           <view class="box_body_item"> 
             <view class="title">医院类型</view>
           </view>
-          <view style="height:60px;width:100%;line-height:60px;font-size:14px;"> 
+          <view style="height:60px;width:100%;line-height:60px;font-size:12px;"> 
             <view class="content" style="margin-left:20px">
-              <radio-group class="radio-group" bindchange="radioChange">
+              <radio-group class="radio-group" bindchange="typeRadioChange">
                 <label class="radio" wx:for="{{hosipital_type}}">
                   <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
                 </label>

@@ -60,6 +60,6 @@ swiper-item{
   z-index: 2000;
   background: #fff;
   padding-top: 20rpx;
-  height: 714rpx;
+  height: 700rpx;
 }
 @import 'weui.wxss';

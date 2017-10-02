@@ -32,6 +32,7 @@
   line-height: normal;
 }
 .organization_info .bottom_price{
+  width: 75px;
   position: absolute;
   right: 35px;
   font-size: 16px;
@@ -206,7 +207,6 @@
   /*background-color: lightgray;*/
 }
 .box_body_item .title{
-  
   color: white;
   height: 34px;
   line-height: 34px;
@@ -243,7 +243,19 @@
   height:0; 
   border-width:4px;
   border-style:solid dashed dashed dashed;
-  border-color:transparent transparent #F5053D transparent;
+  /*border-color:transparent transparent #9E9E9E transparent;*/
+}
+.bc_red_up{
+   border-color:transparent transparent #F5053D transparent;
+}
+.bc_gray_up{
+   border-color:transparent transparent #9E9E9E transparent;
+}
+.bc_red_down{
+   border-color:#F5053D transparent transparent  transparent;
+}
+.bc_gray_down{
+   border-color:#9E9E9E transparent transparent  transparent;
 }
 .arrow_gp .arrow_down{
   position:absolute;
@@ -256,5 +268,5 @@
   height:0; 
   border-width:4px;
   border-style:solid dashed dashed dashed;
-  border-color:#F5053D transparent transparent  transparent;
+  /*border-color:#F5053D transparent transparent  transparent;*/
 }

@@ -136,3 +136,24 @@
     width:90rpx;
     height:90rpx;
 }
+.bottom-arrow:before{  
+    content:"";  
+    border:7px solid #999;  
+    border-bottom:none;  
+    border-right-color:transparent;  
+    border-left-color:transparent;  
+    position:relative;  
+    top:12px;  
+    left:6px;  
+    border-radius:2px; 
+}
+.bottom-arrow:after{  
+    content:"";  
+    border:5px solid #fff;  
+    border-bottom:none;  
+    border-right-color:transparent;  
+    border-left-color:transparent;  
+    position:relative;  
+    top:10px;  
+    left:-6px;  
+}

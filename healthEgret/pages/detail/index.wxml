@@ -103,8 +103,8 @@
       <view class="ctype">
         <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">卡类别</view>
         <view>
-          <view class="block selected">短信</view>
-          <view class="block" style="margin-left:30px;">实体卡</view>
+          <view class="block {{elecard?'selected':''}}" bindtap="selectCardType" id="elecard">电子卡</view>
+          <view class="block {{elecard?'':'selected'}}" style="margin-left:30px;" bindtap="selectCardType" id="entitycard">实体卡</view>
         </view>
       </view>
       <view class="num">
@@ -128,11 +128,11 @@
                 <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{organizes}}">
                     <view class="weui-cell__hd">
                         <label class="radio" style="width:20xp;height:20px">
-                          <radio value="{{item.value}}" checked="{{item.checked}}" id="{{item.id}}"/>
+                          <radio value="{{item.value}}" checked="{{item.checked}}" id="{{item.id}}" bindchange="radioChange"/>
                         </label>
-                        <image src="{{item.img}}" id="{{item.id}}" bindtap="detail"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
+                      <image src="{{item.img}}" id="{{item.id}}" bindtap="itemChecked"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
                     </view>
-                    <view class="weui-cell__bd">
+                    <view class="weui-cell__bd" bindtap="o_p_detail">
                         <!--<image bindtap="detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill" style="width:90rpx;height:90rpx;"></image>-->
                         <view class="info" bindtap="org_detail" id="{{item.id}}">
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">

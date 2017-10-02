@@ -17,6 +17,7 @@ Page({
     {"code":123,"o_nm":"万年县中医院","zprice":"198","price":"386","distance":"3.5","img":"http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg","score":"5"}],
     showModalStatus:false,
     selectOrgModal:false,
+    elecard:true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -106,5 +107,29 @@ Page({
     wx.navigateTo({
           url: '/pages/ordersubmit/index?id=' + id + '&ctype=' + ctype + '&num=' + num
       }) 
+  },
+  o_p_detail: function(e){
+    wx.navigateTo({
+          url: '/pages/pckoforg/index'
+      }) 
+  },
+  itemChecked: function(e){
+
+    console.dirxml(e);
+
+  },
+  radioChange: function(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+  },
+  selectCardType: function(e){
+    if(e.target.id == 'elecard'){
+      this.setData({
+          elecard: true
+        })
+    }else{
+      this.setData({
+          elecard: false
+        })
+    }
   }
 })
