@@ -1,0 +1,17 @@
+<!--pages/collectList/index.wxml-->
+<view class="container">
+ <view class="gap"></view>
+    <scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore" style="height:{{height}}px">
+       
+        <block wx:for-items="{{collects}}" wx:key="item">
+            <view class="collect" bindtap="cardDetail" id="{{item.id}}">
+                <image id="{{item.id}}" src="{{item.img}}" mode="scaleToFill" bindtap="cardDetail"></image>
+                <view style="width:90%;text-align:left;margin-left: 10px">{{item.name}}</view>
+                <view style="margin-left: 10px;width:90%;">
+                    <text>￥{{item.bprice}}起</text>
+                    <text style="float:right"><text style="font-size:14px;display:inline-block;margin-right:3px">收藏</text>{{item.collcetNum}}</text>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>

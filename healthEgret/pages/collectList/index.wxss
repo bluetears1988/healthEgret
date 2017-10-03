@@ -1,0 +1,19 @@
+/* pages/collectList/index.wxss */
+.container{
+    background-color: #f2f2f2;
+}
+.page-body{
+  width: 100%;
+  margin:0 auto;
+}
+.collect{
+    display:inline-block;
+    width:50%;
+    height: 250px;
+    font-size: 16px;
+}
+.collect image{
+    width: 90%;
+    height: 180px;
+    margin-left: 10px
+}
