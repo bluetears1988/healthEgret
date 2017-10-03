@@ -1,1 +1,55 @@
 /* pages/report/index.wxss */
+.container{
+    background-color: #f2f2f2;
+}
+.page-body{
+    width: 100%;
+    margin:0 auto;
+    clear: both;
+}
+.report_detail_item{
+    width: 100%;
+    background-color: #fff;
+    /*margin-top: 28rpx;*/
+    /*padding-left: 20rpx;
+    padding-right: 20rpx;*/
+    /*padding-top: 15rpx;
+    padding-bottom: 15rpx;*/
+    /*border-radius: 12rpx;*/
+    float: left;
+    clear: both;
+}
+.d_title{
+    width: 100%;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #9E9E9E;
+    border-left: 10px solid #28C225;
+    padding-left: 3px;
+}
+.abnormal_item,.project_item{
+    width: 100%;
+    font-size: 14px;
+    padding-left: 13px;
+    padding-top: 15rpx;
+    padding-bottom: 15rpx;
+    border-bottom: 1px solid #9E9E9E;
+    /*height: 155px;
+    line-height: 155px;*/
+}
+.summary{
+    width: 100%;
+    font-size: 14px;
+}
+.summary_content{
+    width: 90%;
+    border: 1px solid #28C225;
+    margin: 0 auto;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    /*padding-top:10px;*/
+    padding-bottom: 10px
+
+}

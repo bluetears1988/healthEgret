@@ -294,6 +294,7 @@
    font-size: 12px;
    margin: auto;
    border-bottom: 1px solid #9E9E9E;
+   position: relative;
 }
 .money{
    width: 688rpx; 

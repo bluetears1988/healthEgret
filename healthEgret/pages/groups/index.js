@@ -2,7 +2,7 @@
 var routes = require('router');  
 Page({
   data:{
-    cellHeight: '120px',  
+    cellHeight: '155px',  
     pageItems: []
   },
   onLoad:function(options){
@@ -22,6 +22,8 @@ Page({
           row.push(routes.PageItems[i]);  
         }  
       }  
+
+      console.dirxml(pageItems);
       // wx.getSystemInfo({  
       //   success: function (res) {  
       //     var windowWidth = res.windowWidth;  

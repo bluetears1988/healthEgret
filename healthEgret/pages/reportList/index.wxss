@@ -1,1 +1,48 @@
 /* pages/reportList/index.wxss */
+.container{
+    background-color: #f2f2f2;
+}
+.page-body{
+  width: 90%;
+  margin:0 auto;
+}
+.report{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 28rpx;
+    /*padding-left: 20rpx;
+    padding-right: 20rpx;*/
+    /*padding-top: 15rpx;
+    padding-bottom: 15rpx;*/
+    border-radius: 12rpx;
+    float: left;
+    clear: both;
+}
+.report_title{
+    float: left;
+    margin-left: 10px;
+    width: 90%;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #9E9E9E;
+}
+.report_item{
+    width: 90%;
+    float: left;
+    margin-left: 10px;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+
+}
+.reportDetail{
+    float: left;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #28C225;
+    color: white;
+    border-radius: 0  0 12rpx 12rpx;
+}

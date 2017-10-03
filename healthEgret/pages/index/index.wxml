@@ -62,7 +62,7 @@
     </view>
     <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
     <view wx:if="{{infos}}">
-      <view class="card" wx:for="{{infos}}">
+      <view class="card" wx:for="{{infos}}" wx:key="item.id">
         <image bindtap="detail" id="{{item.id}}" src="{{item.img}}" mode="scaleToFill"></image>
         <view class="info" bindtap="detail" id="{{item.id}}">
           <view class="p-name">
@@ -134,7 +134,7 @@
                   </view>-->
                   <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
                   <view wx:if="{{o_infos}}">
-                    <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail">
+                    <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail" wx:key="item.oid">
                         <image bindtap="o_detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill"></image>
                         <view class="info" bindtap="org_detail" id="{{item.oid}}" style="margin-top: -95rpx;">
                           <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
@@ -167,7 +167,7 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                     <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
                       <view wx:if="{{o_infos}}">
-                        <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail">
+                        <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail" wx:key="item.oid">
                             <image bindtap="o_detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill"></image>
                             <view class="info" bindtap="org_detail" id="{{item.oid}}" style="margin-top: -95rpx;">
                               <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
@@ -216,7 +216,7 @@
         <view style="height:60px;width:100%;line-height:60px;font-size:14px;"> 
           <view class="content" style="margin-left:20px;font-size:12px">
             <radio-group class="radio-group" bindchange="sexyRadioChange">
-              <label class="radio" wx:for="{{sexy}}">
+              <label class="radio" wx:for="{{sexy}}" wx:key="item">
                 <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
               </label>
             </radio-group>
@@ -230,7 +230,7 @@
           <view style="height:60px;width:100%;line-height:60px;font-size:12px;"> 
             <view class="content" style="margin-left:20px">
               <radio-group class="radio-group" bindchange="typeRadioChange">
-                <label class="radio" wx:for="{{hosipital_type}}">
+                <label class="radio" wx:for="{{hosipital_type}}" wx:key="item">
                   <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
                 </label>
               </radio-group>

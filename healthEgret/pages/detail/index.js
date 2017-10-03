@@ -17,7 +17,10 @@ Page({
     {"code":123,"o_nm":"万年县中医院","zprice":"198","price":"386","distance":"3.5","img":"http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg","score":"5"}],
     showModalStatus:false,
     selectOrgModal:false,
-    elecard:true
+    elecard:true,
+    count: 0,
+    totalPrice:0,
+    onePrice: 198
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -129,6 +132,23 @@ Page({
     }else{
       this.setData({
           elecard: false
+        })
+    }
+  },
+  numDec: function(){
+    if(this.data.count > 0){
+      this.setData({
+          count: --this.data.count,
+          totalPrice: this.data.count*this.data.onePrice
+        })
+    }
+  },
+  numAdd: function(){
+    if(this.data.count < 20){
+      this.setData({
+          count: ++this.data.count,
+          totalPrice: this.data.count*this.data.onePrice
+
         })
     }
   }

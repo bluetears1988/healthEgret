@@ -21,7 +21,8 @@
     "pages/orgintro/index",
     "pages/packageDetail/index",
     "pages/search/index",
-    "pages/reportList/index"
+    "pages/reportList/index",
+    "pages/collectList/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

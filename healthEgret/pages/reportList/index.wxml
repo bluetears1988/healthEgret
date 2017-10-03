@@ -1,2 +1,37 @@
 <!--pages/reportList/index.wxml-->
-<text>pages/reportList/index.wxml</text>
+<view class="container">
+<scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore" style="height:{{height}}px">
+    <block wx:for-items="{{reports}}" wx:key="item">
+        <view class="report" >
+            <view class="report_title">
+                <text style="color:#9E9E9E">{{item.id}}</text>
+                <text style="color:#28C225;float:right;margin-right:10px">{{item.status}}</text>
+            </view>
+            <view class="report_item">
+                <text style="color:#9E9E9E">体检人：</text>
+                <text style="font-size:14px;float:right;margin-right:10px">{{item.name}}</text>
+            </view>
+            <view class="report_item">
+                <text style="color:#9E9E9E">体检日期：</text>
+                <text style="font-size:14px;float:right;margin-right:10px">{{item.date}}</text>
+            </view>
+            <view class="report_item">
+                <text style="color:#9E9E9E">套餐名称：</text>
+                <text style="font-size:14px;float:right;margin-right:10px">{{item.pkgname}}</text>
+            </view>
+            <view class="report_item">
+                <text style="color:#9E9E9E">体检机构：</text>
+                <text style="font-size:14px;float:right;margin-right:10px">{{item.organization}}</text>
+            </view>
+            <view class="reportDetail" bindtap="reportDetail">查看报告</view>
+        </view>
+    </block>
+</scroll-view>
+<!--<view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>-->
+    <!--<view class="weui-loadmore weui-loadmore_line">
+        <text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</text>
+    </view>-->
+<view class="weui-loadmore weui-loadmore_line">
+    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">共有{{num}}个体检报告</text>
+</view>
+</view>
