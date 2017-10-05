@@ -2,6 +2,7 @@
 //获取应用实例
 var app = getApp();
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+// var amapFile = require('../../libs/amap-wx.js');
 
 Page({
   data: {
@@ -187,11 +188,25 @@ Page({
     //     }
     // })
 
+
+    // var myAmapFun = new amapFile.AMapWX({key:'30b51a1d3f87e7ee63ee08599b532b17'});
+    // myAmapFun.getRegeo({
+    //   success: function(data){
+    //     //成功回调
+    //     console.dirxml(data);
+    //   },
+    //   fail: function(info){
+    //     //失败回调
+    //     console.log(info)
+    //   }
+    // })
     //获取当前经纬度信息
     wx.getLocation({
-      type: 'gcj02',//默认为"wgs84"返回gps坐标
+      type: 'wgs84',//默认为"wgs84"返回gps坐标
       success: ({latitude, longitude}) => {
         // 调用后台API，获取地址信息
+
+        console.dirxml({latitude, longitude});
         wx.request({
           url: 'http://127.0.0.1:3000/api/address/location',
 
@@ -201,8 +216,6 @@ Page({
           },
 
           success: (res) => {
-            //  console.dirxml(res.data);
-            // let info = res.data.result.ad_info.city;
             let city = res.data.regeocode.addressComponent.city;
             let township = res.data.regeocode.addressComponent.township;
             var streetnumber = res.data.regeocode.addressComponent.streetNumber.streetnumber;
@@ -222,9 +235,6 @@ Page({
           }
         })
       }
-      // success: function(res){
-      //   console.dirxml(res)
-      // }
     })
 
     var that = this;
