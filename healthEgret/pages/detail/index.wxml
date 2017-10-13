@@ -41,7 +41,7 @@
           <text style="font-size:12px;color:#666666;margin-left:18px;text-decoration:line-through;">￥{{card.price}}</text>
       </view>
       <view class="detail_item" style="height:20px;line-height:20px;margin-top:4px">
-          <!--<text style="font-size:12px;color:#666666;">运费{{card.ship}}</text>-->
+          <text style="font-size:12px;color:#666666;">运费{{card.ship}}</text>
           <block wx:if="{{card.sales > 0}}"><text style="font-size:12px;color:#666666;float:right">销量{{card.sales}}件</text></block>
           <block wx:if="{{card.collect_num > 0}}"><text style="font-size:12px;color:#666666;float:right;margin-right:35px">收藏{{card.collect_num}}</text></block>
           
@@ -108,23 +108,21 @@
         </view>
       </view>
       <view class="num">
-        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">
-          <text>购买数量</text>
-          <view style="float:right">
-            <text bindtap="numDec" style="display:inline-block;width:30px;font-size:24px;color:#9E9E9E">-</text>
-            <text  style="display:inline-block;width:30px;font-size:20px;">{{count}}</text>
-            <!--<input type="number" id="quantity" style="display:inline-block;width:30px;font-size:18px;height:100%" value="0" disabled maxlength='3'/>-->
-            <text bindtap="numAdd" style="display:inline-block;width:30px;font-size:24px;color:#9E9E9E">+</text>
-          </view>   
+        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">购买数量</view>
+        <view style="display:inline-block">
+          <span bindtap="numDec">-</span>
+          <input type="number" id="quantity" />
+          <span bindtap="numAdd">+</span>
+        <view>
         </view>
-        
       </view>
       <view class="money">
-        <view style="font-size:12px;font-weight:bold;margin-bottom:4px;margin-top:12px;"><text>商品金额</text><text style="float:right;margin-right:30px;color:#F5053D;">￥{{totalPrice}}.0</text></view>
-        <view style="font-size:12px;font-weight:bold;" wx:if="{{!elecard}}"><text>运费</text><text style="float:right;margin-right:30px">￥0.0</text></view>
+        <view style="font-size:12px;font-weight:bold;margin-bottom:4px;margin-top:12px;"><text>商品金额</text><text style="float:right;margin-right:30px;color:#F5053D;"></text></view>
+        <view style="font-size:12px;font-weight:bold;"><text>运费</text><text style="float:right;margin-right:30px">￥0.0</text></view>
         <view style="font-size:12px;font-weight:bold;"><text>体检机构</text><text style="float:right;margin-right:30px">万年县人民医院</text></view>
       </view>
       <view class="next" bindtap="next">下一步</view>
+    </view>
     </view>
     <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{selectOrgModal}}">
         <view class="o_head">请选择体检机构</view>

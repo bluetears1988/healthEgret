@@ -208,7 +208,7 @@ Page({
 
         console.dirxml({latitude, longitude});
         wx.request({
-          url: 'http://127.0.0.1:3000/api/address/location',
+          url: 'https://www.afamilyhealth.cn:3000/api/address/location',
 
           data: {
             latitude: latitude,
