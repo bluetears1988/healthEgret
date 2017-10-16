@@ -123,7 +123,7 @@
                 </picker>
             </view>
         </view>
-        <view>
+        <view class="weui-cells weui-cells_after-title">
             <view class="weui-cells__title">备注</view>
                 <view class="weui-cells weui-cells_after-title">
                     <view class="weui-cell weui-cell_input">
@@ -134,7 +134,6 @@
                 </view>
             </view>
         </view>
-    </view>
 </view>
 <view class="gap"></view>
 <view style="height:80rpx;font-size:12px;width:100%;line-height:80rpx;background-color: #E5E1E6;padding-left:13px;position:fixed;bottom:90rpx">
