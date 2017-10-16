@@ -42,6 +42,7 @@ Page({
     arrow_down:false,
     filterSexy:'',
     filterType:'',
+    currentCity:''
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -72,7 +73,8 @@ Page({
           url: '/pages/shopcar/index?id=' + id
       })
   },
-  sortByPrice: function(){  
+  sortByPrice: function(){
+    var that = this;
     this.setData({
       sortByPriceSelected:true,
       salesFirstSelected:false,
@@ -80,19 +82,47 @@ Page({
       filterShow:false
     })
 
+    var asc = null;
     if(this.data.arrow_up){
       this.setData({
         arrow_up: false,
         arrow_down: true
-      })
+      });
+
+      asc = 1;
     }else{
       this.setData({
         arrow_up: true,
         arrow_down: false
-      })
+      });
+
+      asc = -1;
     }
+
+    wx.request({
+        url: 'https://www.afamilyhealth.cn/api/card',
+
+        data: {
+          city:that.data.currentCity,
+          'sort.bprice':asc
+        },
+
+        success: (res) => {
+          console.dirxml("infos", res.data.data);
+          this.setData({ infos: res.data.data })
+        },
+
+        fail: (res) => {
+          // console.dirxml(res.data);
+        },
+
+        complete: (res) => {
+          // console.dirxml(res.data);
+        }
+    });
   },
   salesFirst: function(){
+    var that = this;
     this.setData({
       sortByPriceSelected:false,
       arrow_up: false,
@@ -100,7 +130,33 @@ Page({
       salesFirstSelected:true,
       priceSortUp:false,
       filterShow:false
-    })
+    });
+
+    wx.request({
+          url: 'https://www.afamilyhealth.cn/api/card',
+
+          data: {
+            city:that.data.currentCity,
+            'sort.sales':-1
+          },
+
+          success: (res) => {
+            console.dirxml("infos", res.data.data);
+            this.setData({ infos: res.data.data })
+          },
+
+          fail: (res) => {
+            // console.dirxml(res.data);
+          },
+
+          complete: (res) => {
+            // console.dirxml(res.data);
+          }
+      });
+
+
+
+
   },
   filter: function(){
     this.setData({
@@ -224,7 +280,7 @@ Page({
             var street = res.data.regeocode.addressComponent.streetNumber.street;
             let streetinfo = street?street:'' + streetnumber?streetnumber:'';
             let info = city + township + streetinfo;
-            // that.currentCity = city;
+            that.data.currentCity = city;
             console.dirxml(city);
             this.setData({ address: info });
 
@@ -318,10 +374,35 @@ Page({
     // console.log(this.data.tab_pkg);
   },
   tabClick: function (e) {
+      var that = this;
       this.setData({
           sliderOffset: e.currentTarget.offsetLeft,
           activeIndex: e.currentTarget.id
       });
+
+      if(that.data.activeIndex === 1){
+        wx.request({
+              url: 'https://www.afamilyhealth.cn/api/institution',
+
+              data: {
+                city:that.data.currentCity,
+                'sort.score':-1
+              },
+
+              success: (res) => {
+                console.dirxml("o_infos", res.data.data);
+                this.setData({ o_infos: res.data.data })
+              },
+
+              fail: (res) => {
+                // console.dirxml(res.data);
+              },
+
+              complete: (res) => {
+                // console.dirxml(res.data);
+              }
+          });
+      }
   },
   change_city: function(e){
     wx.navigateTo({

@@ -30,7 +30,7 @@
 
 <view class="people">
     <view class="head">
-        <text style="margin-left:13px;">体检人信息</text>
+        <text style="margin-left:13px;font-weight:bold">体检人信息</text>
         <text style="float:right;margin-right:21px;">共{{orderInfo.num}}人</text>
     </view>
     <view class="bd">
@@ -90,7 +90,7 @@
 </view>
 <view class="p_book">
     <view class="head">
-        <text style="margin-left:13px;">预约人信息</text>
+        <text style="margin-left:13px;font-weight:bold">预约人信息</text>
     </view>
     <view class="bd">
         <view class="weui-cells weui-cells_after-title">
@@ -131,14 +131,14 @@
 </view>
 <view class="other">
     <view class="head">
-        <text style="margin-left:13px;">其他信息</text> 
+        <text style="margin-left:13px;font-weight:bold">其他信息</text> 
     </view>
     <view class="bd">
         <view>
             <view style="font-size:14px;font-weight:bold;height:40px;line-height:40px;clear:both">
                 <!--<text style="float:left;margin-left:13px">报告领取</text>-->
                  <picker bindchange="bindReportPickerChange" value="{{reportIndex}}" range="{{reportArray}}" style="margin-left:13px">
-                    <view class="picker" style="display:inline-block">
+                    <view class="picker" style="display:inline-block;font-weight:normal">
                      报告领取：{{reportArray[reportIndex]}}
                     </view>
                     <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
@@ -150,7 +150,7 @@
             <view style="font-size:14px;font-weight:bold;height:40px;line-height:40px;clear:both">
                 <!--<text style="float:left;margin-left:13px">支付方式</text>-->
                 <picker bindchange="bindPayPickerChange" value="{{payIndex}}" range="{{payArray}}" style="margin-left:13px">
-                    <view class="picker" style="display:inline-block">
+                    <view class="picker" style="display:inline-block;font-weight:normal">
                      支付方式：{{payArray[payIndex]}}
                     </view>
                     <i class="bottom-arrow" style="float:right;margin-right:30px"></i>

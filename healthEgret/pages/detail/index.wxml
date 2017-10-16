@@ -66,7 +66,7 @@
     <view class="useflow">
       <view class="">注意事项</view>
     </view>
-    <view class="backHome" bindtap="backTop"><image src="../../images/backhome.png" bindtap="backTop"></image></view>
+    <!--不可删<view class="backHome" bindtap="backTop"><image src="../../images/backhome.png" bindtap="backTop"></image></view>-->
     <view class="footer">
       <view class="home" bindtap="backHome">
         <view class="home_img" bindtap="backHome"></view>

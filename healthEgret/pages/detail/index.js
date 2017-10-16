@@ -106,6 +106,7 @@ Page({
     // 页面关闭
   },
   backHome: function(e){
+    console.log("23234");
     wx.navigateTo({
           url: '/pages/index/index'
       })
