@@ -164,11 +164,11 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                     <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
                       <view wx:if="{{o_infos}}">
-                        <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail" wx:key="item.oid">
-                            <image bindtap="o_detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill"></image>
-                            <view class="info" bindtap="org_detail" id="{{item.oid}}" style="margin-top: -95rpx;">
+                        <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail" wx:key="item._id">
+                            <image bindtap="o_detail" id="{{item._id}}" src="{{item.img}}" mode="scaleToFill"></image>
+                            <view class="info" bindtap="org_detail" id="{{item._id}}" style="margin-top: -95rpx;">
                               <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
-                                <text style="font-size:16px;font-weight:bold">{{item.o_nm}}</text>
+                                <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
                                 <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
                               </view>
                               <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
