@@ -13,7 +13,7 @@
         <text style="margin-left:13px;">1+品质</text>
         <text style="float:right;margin-right:21px;">共{{orderInfo.num}}件</text>
     </view>
-    <view class="bd">
+    <view class="bd" style="height:100px">
         <image src="{{orderInfo.img}}" mode="scaleToFill"></image>
          <view class="info" bindtap="detail">
             <view class="info_item" style="font-weight:bold">{{orderInfo.card}}</view>
@@ -125,6 +125,7 @@
         </view>
     </view>
 </view>
+<view class="gap"></view>
 <view style="height:80rpx;font-size:12px;width:100%;line-height:80rpx;background-color: #E5E1E6;padding-left:13px;position:fixed;bottom:90rpx">
     <label class="checkbox">
         <checkbox value="0" checked="false"/>
