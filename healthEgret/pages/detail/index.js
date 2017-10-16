@@ -24,6 +24,27 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    console.log(options.query)  
+    // wx.request({
+    //     url: 'https://www.afamilyhealth.cn/api/card',
+
+    //     data: {
+    //       _id:city
+    //     },
+
+    //     success: (res) => {
+    //       console.dirxml("o_infos", res.data.data);
+    //       this.setData({ o_infos: res.data.data })
+    //     },
+
+    //     fail: (res) => {
+    //       // console.dirxml(res.data);
+    //     },
+
+    //     complete: (res) => {
+    //       // console.dirxml(res.data);
+    //     }
+    // });
   },
   onReady:function(){
     // 页面渲染完成
