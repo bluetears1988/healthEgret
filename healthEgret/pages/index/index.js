@@ -227,6 +227,28 @@ Page({
             that.currentCity = city;
             console.dirxml(city);
             this.setData({ address: info })
+
+
+            wx.request({
+                url: 'https://www.afamilyhealth.cn/api/card',
+
+                data: {
+                  city:that.currentCity
+                },
+
+                success: (res) => {
+                  console.dirxml("infos", res.data.data);
+                  this.setData({ infos: res.data.data })
+                },
+
+                fail: (res) => {
+                  // console.dirxml(res.data);
+                },
+
+                complete: (res) => {
+                  // console.dirxml(res.data);
+                }
+            });
           },
 
           fail: (res) => {
@@ -250,26 +272,7 @@ Page({
         }
     });
 
-    wx.request({
-          url: 'https://www.afamilyhealth.cn/api/card',
-
-          data: {
-            city:that.currentCity
-          },
-
-          success: (res) => {
-            console.dirxml("infos", res.data.data);
-            this.setData({ infos: res.data.data })
-          },
-
-          fail: (res) => {
-            // console.dirxml(res.data);
-          },
-
-          complete: (res) => {
-            // console.dirxml(res.data);
-          }
-    });
+    
 
   },
   detail: function (res) {
