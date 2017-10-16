@@ -59,6 +59,35 @@
         <text style="margin-left:13px;">预约人信息</text>
     </view>
     <view class="bd">
+        <view class="weui-cells weui-cells_after-title">
+            <!--<view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">姓名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="(选填)请输入姓名"/>
+                </view>
+            </view>-->
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">手机号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入手机号" />
+                </view>
+                <view class="weui-cell__ft">
+                    <view class="weui-vcode-btn">获取验证码</view>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">验证码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="(必填)请输入短信验证码" />
+                </view>
+            </view>
+        </view>
     </view>
     <!--<view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">体检机构</text><text style="float:right;margin-right:30px">{{item.organize}}</text></view>-->
     <view class="gap"></view>
