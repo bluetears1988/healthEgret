@@ -11,7 +11,8 @@ Page({
     // infos: [{"id":1,"nm":"妇女专项体检套餐","female":true,"male":false,"all":false,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"o_nm":"万年县人民医院","o_num":6,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"},
     // {"id":2,"nm":"妇女专项体检套餐","female":false,"male":true,"all":true,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
     infos:[],
-    o_infos:[{"oid":2,"o_nm":"万年县人民医院","address":"县政府路108号","score":"4.5","distance":"1.2","bprice":"200","img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
+    o_infos:[],
+    // o_infos:[{"oid":2,"o_nm":"万年县人民医院","address":"县政府路108号","score":"4.5","distance":"1.2","bprice":"200","img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
     id: '',
     indicatorDots: true,
     vertical: false,
@@ -238,6 +239,27 @@ Page({
                 success: (res) => {
                   console.dirxml("infos", res.data.data);
                   this.setData({ infos: res.data.data })
+                },
+
+                fail: (res) => {
+                  // console.dirxml(res.data);
+                },
+
+                complete: (res) => {
+                  // console.dirxml(res.data);
+                }
+            });
+
+             wx.request({
+                url: 'https://www.afamilyhealth.cn/api/institution',
+
+                data: {
+                  city:city
+                },
+
+                success: (res) => {
+                  console.dirxml("o_infos", res.data.data);
+                  this.setData({ o_infos: res.data.data })
                 },
 
                 fail: (res) => {
