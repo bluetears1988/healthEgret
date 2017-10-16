@@ -21,16 +21,9 @@
     <view class="detail">
       <view class="detail_item" style="height:50px;line-height:50px;">
           <text style="font-size:16px;height:52px;line-height:52px;font-weight:bold">{{card.name}}</text>
-          <!--<text style="font-size:12px;display:block;height:45px;line-height:45px;">收藏</text>-->
           <view style="display:inline-block;position:absolute;height:52px;line-height:52px;right:40px;top:50%;margin-top:-26px;">
-            <view class="collect" wx:if="{{isCollected}}">
-              <!--<image src="../../images/shoucang2.png" wx:if="{{card['collect']}}"></image>
-              <image src="../../images/shoucang1.png" wx:else></image>-->
-            </view>
-            <view class="collect_not" wx:if="{{!isCollected}}">
-              <!--<image src="../../images/shoucang2.png" wx:if="{{card['collect']}}"></image>
-              <image src="../../images/shoucang1.png" wx:else></image>-->
-            </view>
+            <view class="collect" wx:if="{{isCollected}}"></view>
+            <view class="collect_not" wx:if="{{!isCollected}}"></view>
             <view style="font-size:12px;margin-top:13px;">收藏</view>
           </view>
       </view>
@@ -89,81 +82,71 @@
       </view>-->
       <!--<view class="addCart">加入体检车</view>-->
       <view class="order" bindtap="showModal">立即预约</view>
-      <view class="s_organize" bindtap="selectOrg">选择体检机构</view>
+      <view class="s_organize {{selectedOrg?'fs_12':''}}" bindtap="selectOrg">{{selectedOrg?org:'选择体检机构'}}</view>
     </view>
     <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus || selectOrgModal}}"></view>
     <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-      <view class="head">
-        <image id="{{card.id}}" src="{{card.images[0]}}" mode="scaleToFill"></image>
-        <view class="head_txt">
-          <view class="head_txt_nm" style="line-height:normal">{{card.name}}</view>
-          <view class="head_txt_price" style="line-height:normal;color:#F5053D;">￥{{card.zprice}}</view>
+          <view class="head">
+            <image id="{{card.id}}" src="{{card.images[0]}}" mode="scaleToFill"></image>
+            <view class="head_txt">
+              <view class="head_txt_nm" style="line-height:normal">{{card.name}}</view>
+              <view class="head_txt_price" style="line-height:normal;color:#F5053D;">￥{{onePrice?onePrice:'0.0'}}</view>
+            </view>
+          </view>
+          <view class="ctype">
+            <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">卡类别</view>
+            <view>
+              <view class="block {{elecard?'selected':''}}" bindtap="selectCardType" id="elecard">电子卡</view>
+              <view class="block {{elecard?'':'selected'}}" style="margin-left:30px;" bindtap="selectCardType" id="entitycard">实体卡</view>
+            </view>
+          </view>
+          <view class="num">
+            <view style="font-size:12px;font-weight:bold;display:inline-block">购买数量</view>
+            <view style="display:inline-block;float:right;margin-right:20px;">
+              <span bindtap="numDec" style="display:inline-block;font-size:26px;margin-right:12px;">-</span>
+              <span style="display:inline-block;font-size:28px;">{{count}}</span>
+              <span bindtap="numAdd" style="display:inline-block;font-size:26px;margin-left:12px;">+</span>
+            <view>
+            </view>
+          </view>
+          <view class="money">
+            <view style="font-size:12px;font-weight:bold;width:100%;height:24px;line-height:24px"><text>商品金额</text><text style="float:right;color:#F5053D;">￥{{totalPrice}}.0</text></view>
+            <view style="font-size:12px;font-weight:bold;width:100%;height:24px;line-height:24px"><text>运费</text><text style="float:right;">￥0.0</text></view>
+            <view style="font-size:12px;font-weight:bold;width:100%;height:24px;line-height:24px"><text>体检机构</text><text style="float:right;">{{org}}</text></view>
+          </view>
+          <button class="next" bindtap="next" type="default" disabled="{{!(selectedOrg && count)}}">下一步</button>
         </view>
-      </view>
-      <view class="ctype">
-        <view style="font-size:12px;font-weight:bold;margin-bottom:8px;">卡类别</view>
-        <view>
-          <view class="block {{elecard?'selected':''}}" bindtap="selectCardType" id="elecard">电子卡</view>
-          <view class="block {{elecard?'':'selected'}}" style="margin-left:30px;" bindtap="selectCardType" id="entitycard">实体卡</view>
-        </view>
-      </view>
-      <view class="num">
-        <view style="font-size:12px;font-weight:bold;display:inline-block">购买数量</view>
-        <view style="display:inline-block;float:right;margin-right:20px;">
-          <span bindtap="numDec" style="display:inline-block;font-size:26px;margin-right:12px;">-</span>
-          <!--<input type="number" id="quantity" style="display:inline-block"/>-->
-          <span style="display:inline-block;font-size:28px;">{{count}}</span>
-          <span bindtap="numAdd" style="display:inline-block;font-size:26px;margin-left:12px;">+</span>
-        <view>
-        </view>
-      </view>
-      <view class="money">
-        <view style="font-size:12px;font-weight:bold;width:100%;height:24px;line-height:24px"><text>商品金额</text><text style="float:right;color:#F5053D;">￥{{totalPrice}}.0</text></view>
-        <view style="font-size:12px;font-weight:bold;width:100%;height:24px;line-height:24px"><text>运费</text><text style="float:right;">￥0.0</text></view>
-        <view style="font-size:12px;font-weight:bold;width:100%;height:24px;line-height:24px"><text>体检机构</text><text style="float:right;">万年县人民医院</text></view>
-      </view>
-      <view class="next" bindtap="next">下一步</view>
-    </view>
     </view>
     <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{selectOrgModal}}">
-        <view class="o_head">请选择体检机构</view>
+        <view class="o_head">请先选择体检机构</view>
         <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
               <view class="weui-cells weui-cells_after-title">
-              <!--<view wx:for="{{organizes}}">-->
-                <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{organizes}}">
+              <radio-group bindchange="radioChange">
+                <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{organizes}}" wx:key="item._id">
                     <view class="weui-cell__hd">
-                        <label class="radio" style="width:20xp;height:20px">
-                          <radio value="{{item.value}}" checked="{{item.checked}}" id="{{item.id}}" bindchange="radioChange"/>
-                        </label>
-                      <image src="{{item.img}}" id="{{item.id}}" bindtap="itemChecked"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
+                          <label class="radio" style="width:20xp;height:20px">
+                            <radio value="{{item.name}}#{{item.currentCard.real_price}}" id="{{item._id}}" checked="{{org===item.name}}" bindtap="hideModal"/>
+                          </label>
+                      <image src="{{item.img}}" id="{{item._id}}" data-org="{{item.name}}" data-real_price="{{item.currentCard.real_price}}" bindtap="itemChecked"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
                     </view>
-                    <view class="weui-cell__bd" bindtap="o_p_detail">
-                        <!--<image bindtap="detail" id="{{item.oid}}" src="{{item.img}}" mode="scaleToFill" style="width:90rpx;height:90rpx;"></image>-->
-                        <view class="info" bindtap="org_detail" id="{{item.id}}">
+                    <view class="weui-cell__bd" bindtap="o_p_detail" id="{{item._id}}">
+                        <view class="info" bindtap="o_p_detail" id="{{item._id}}">
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
-                        <text style="font-size:16px;font-weight:bold">{{item.o_nm}}</text>
+                        <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
                         </view>
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
-                          <text style="font-size:14px;color:#F5053D;">￥{{item.zprice}}</text>
-                          <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.price}}</text>
+                          <text style="font-size:14px;color:#F5053D;">￥{{item.currentCard.real_price}}</text>
+                          <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.currentCard.price}}</text>
                           <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
                           <text style="font-size:12px;color:#666666">{{item.score}}分</text>
                           <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
                           <text style="font-size:12px;color:#666666">{{item.distance}}Km</text>
-                          <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
                         </view>
                       </view>
                     </view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </navigator>
-                <!--<navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                    <view class="weui-cell__hd">
-                        <image src="../../images/help2.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                    </view>
-                    <view class="weui-cell__bd">帮助手册</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </navigator>-->
-               <!--</view>-->
+                </view>
+                </radio-group>
             </view>
         </scroll-view>
     </view>

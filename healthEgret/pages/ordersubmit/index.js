@@ -9,11 +9,18 @@ Page({
       "zprice":"198",
       "num":1,
       "organize":"万年县人民医院"
-    }
+    },
+    orderInfo:{}
 
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      orderInfo:options
+    });
+
+    console.dirxml('orderInfo', this.data.orderInfo);
+
   },
   onReady:function(){
     // 页面渲染完成

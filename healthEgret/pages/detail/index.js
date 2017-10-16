@@ -23,8 +23,9 @@ Page({
     elecard:true,
     count: 0,
     totalPrice:0,
-    onePrice: 198,
-    org:''
+    onePrice: '',
+    selectedOrg:false,
+    org:'请先选择体检机构'
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -38,19 +39,39 @@ Page({
         },
 
         success: (res) => {
-          console.dirxml("card", res.data.data[0]);
-          this.setData({ card: res.data.data[0] })
+          var c = {};
+          if(res.data.data.length > 0){
+            c = res.data.data[0];
+          }else{
+            return false;
+          }
+          this.setData({ card: c })
           wx.request({
             url: 'https://www.afamilyhealth.cn/api/institution',
 
             data: {
-              city:that.card.city,
-              cards:that.card.name
+              city: c['city'],
+              'cards.name': c['name']
             },
 
             success: (res) => {
-              console.dirxml("organizes", res.data.data[0]);
-              this.setData({ organizes: res.data.data[0] })
+              var data = res.data.data;
+              console.dirxml("organizes", res.data.data);
+
+              for(var i = 0; i < data.length; i++){
+                 let card = data[i].cards.filter(function(item){
+                    if(item.name === that.data.card['name']) return true;
+                    return false;
+                  });
+                console.dirxml(card);
+                if(card.length > 0){
+                  data[i].currentCard = card[0];
+                }else{
+                  data[i].currentCard = {};
+                }
+                
+              }
+              this.setData({ organizes: data})
             },
 
             fail: (res) => {
@@ -151,25 +172,45 @@ Page({
       }.bind(this), 200)
   },
   next: function (res){
-    var ctype =  res.currentTarget.ctype;
-    var id =  res.currentTarget.id;
-    var num =  res.currentTarget.num;
+    // var ctype =  res.currentTarget.ctype;
+    // var id =  res.currentTarget.id;
+    // var num =  res.currentTarget.num;
+
+    var ctype = this.data.elecard?'elecard':'entity';
+    var num = this.data.count;
+    var card = this.data.card.name;
+    var org = this.data.org;
+    var oneprice = this.data.onePrice;
     wx.navigateTo({
-          url: '/pages/ordersubmit/index?id=' + id + '&ctype=' + ctype + '&num=' + num
+          url: '/pages/ordersubmit/index?org=' + org + '&ctype=' + ctype + '&num=' + num + '&oneprice=' + oneprice + '&card=' + card
       }) 
   },
   o_p_detail: function(e){
+    var id = e.currentTarget.id;
     wx.navigateTo({
-          url: '/pages/pckoforg/index'
+          url: '/pages/pckoforg/index?orgid=' + id + '&cardnm=' + this.data.card.name
       }) 
   },
   itemChecked: function(e){
+    console.dirxml(e.currentTarget.dataset.org);
+    this.setData({
+      org: e.currentTarget.dataset.org,
+      selectedOrg: true,
+      onePrice: e.currentTarget.dataset.real_price
+    });
 
-    console.dirxml(e);
+    // this.hideModal();
+    // console.dirxml(e);
 
   },
   radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
+    var arr =  e.detail.value.split('#');
+    this.setData({
+          org: arr[0],
+          selectedOrg: true,
+          onePrice: arr[1]
+        })
   },
   selectCardType: function(e){
     if(e.target.id == 'elecard'){

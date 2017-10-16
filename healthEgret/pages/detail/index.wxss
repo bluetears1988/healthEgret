@@ -310,13 +310,15 @@
     height: 40px;
     line-height: 40px;
     width: 100%;
-    background-color: #9E9E9E;
+    /*background-color: #9E9E9E;*/
+    background-color: #28C225;
     margin-top: -20rpx;
     padding-left: 20px;
-    font-size: 16px;
+    font-size: 14px;
     color:white;
     font-weight: bold;
 }
 .radio-group{
     display: inline-block
 }
+.fs_12{font-size:14px}
