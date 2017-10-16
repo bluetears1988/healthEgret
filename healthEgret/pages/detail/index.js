@@ -11,8 +11,10 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-    card:{"id":1,"nm":"妇女专项体检套餐","female":true,"male":false,"all":false,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"price":312,"sales":2000,
-    "img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg","count":34,"collect":false,"collect_num":300,"ship":"0.00"},
+    card:{},
+    isCollected:false,
+    // card:{"id":1,"nm":"妇女专项体检套餐","female":true,"male":false,"all":false,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"price":312,"sales":2000,
+    // "img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg","count":34,"collect":false,"collect_num":300,"ship":"0.00"},
     organizes:[{"code":123,"o_nm":"万年县人民医院","zprice":"198","price":"386","distance":"3.5","img":"http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg","score":"5"},
     {"code":123,"o_nm":"万年县中医院","zprice":"198","price":"386","distance":"3.5","img":"http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg","score":"5"}],
     showModalStatus:false,
@@ -20,31 +22,32 @@ Page({
     elecard:true,
     count: 0,
     totalPrice:0,
-    onePrice: 198
+    onePrice: 198,
+    org:''
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    console.log(options.query)  
-    // wx.request({
-    //     url: 'https://www.afamilyhealth.cn/api/card',
+    console.log(options)  
+    wx.request({
+        url: 'https://www.afamilyhealth.cn/api/card',
 
-    //     data: {
-    //       _id:city
-    //     },
+        data: {
+          _id:options.id
+        },
 
-    //     success: (res) => {
-    //       console.dirxml("o_infos", res.data.data);
-    //       this.setData({ o_infos: res.data.data })
-    //     },
+        success: (res) => {
+          console.dirxml("card", res.data.data[0]);
+          this.setData({ card: res.data.data[0] })
+        },
 
-    //     fail: (res) => {
-    //       // console.dirxml(res.data);
-    //     },
+        fail: (res) => {
+          // console.dirxml(res.data);
+        },
 
-    //     complete: (res) => {
-    //       // console.dirxml(res.data);
-    //     }
-    // });
+        complete: (res) => {
+          // console.dirxml(res.data);
+        }
+    });
   },
   onReady:function(){
     // 页面渲染完成
