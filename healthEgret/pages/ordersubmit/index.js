@@ -10,8 +10,11 @@ Page({
       "num":1,
       "organize":"万年县人民医院"
     },
-    orderInfo:{}
-
+    orderInfo:{},
+    reportArray:[{type:0,name:"自取"},{type:1,name:"快递"}],
+    payArray:[{type:0,name:"在线支付"},{type:1,name:"到院支付"}],
+    reportIndex:0,
+    payIndex:0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -38,5 +41,15 @@ Page({
     wx.navigateTo({
           url: '/pages/payment/index?id='
       }) 
+  },
+  bindReportPickerChange:function(e){
+    this.setData({
+      reportIndex: e.detail.value
+    })
+  },
+  bindPayPickerChange:function(e){
+    this.setData({
+      payIndex: e.detail.value
+    })
   }
 })

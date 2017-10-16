@@ -73,12 +73,24 @@
     <view class="bd">
         <view>
             <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both">
-                <text style="float:left;margin-left:13px">报告领取</text><i class="bottom-arrow" style="float:right;margin-right:30px"></i>
+                <!--<text style="float:left;margin-left:13px">报告领取</text>-->
+                 <picker bindchange="bindReportPickerChange" value="{{reportIndex}}" range="{{reportArray}}">
+                    <view class="picker">
+                     报告领取：{{reportArray[reportIndex]}}
+                    </view>
+                </picker>
+                <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
             </view>
         </view>
         <view>
             <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both">
-                <text style="float:left;margin-left:13px">支付方式</text><i class="bottom-arrow" style="float:right;margin-right:30px"></i>
+                <!--<text style="float:left;margin-left:13px">支付方式</text>-->
+                <picker bindchange="bindPayPickerChange" value="{{payIndex}}" range="{{payArray}}">
+                    <view class="picker">
+                     支付方式：{{payArray[payIndex]}}
+                    </view>
+                </picker>
+                <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
             </view>
         </view>
     </view>
