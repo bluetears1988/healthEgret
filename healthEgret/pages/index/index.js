@@ -254,7 +254,7 @@ Page({
           url: 'https://www.afamilyhealth.cn/api/card',
 
           data: {
-            params:{city:that.currentCity}
+            city:that.currentCity
           },
 
           success: (res) => {
