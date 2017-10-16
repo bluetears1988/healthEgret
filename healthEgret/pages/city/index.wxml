@@ -15,7 +15,7 @@
 <view class="city_group">
     <view class="head">热门城市</view>
     <view wx:if="{{hot}}" class="city_btns">
-        <view wx:for="{{hot}}" class="citybtn">
+        <view wx:for="{{hot}}" class="citybtn" wx:key="item.code">
             <text class="city">{{item.nm}}</text>
         </view>
     </view>
