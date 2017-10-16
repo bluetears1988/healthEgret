@@ -14,7 +14,8 @@ Page({
     reportArray:["纸质报告","电子报告","两者都要"],
     payArray:["在线支付","到院付款"],
     reportIndex:0,
-    payIndex:0
+    payIndex:0,
+    date:''
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -51,5 +52,10 @@ Page({
     this.setData({
       payIndex: e.detail.value
     })
-  }
+  },
+  bindDateChange: function(e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
 })

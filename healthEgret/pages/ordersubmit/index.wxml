@@ -60,8 +60,18 @@
                         <input class="weui-input" placeholder="(选填)请输入手机号" />
                     </view>
                 </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">体检时间</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                            <view class="weui-input">{{date}}</view>
+                        </picker>
+                    </view>
+            </view>
         </view>
-            <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">继续填写体检人信息</text><i class="bottom-arrow" style="float:right;margin-right:30px"></i></view>
+        <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">继续填写体检人信息</text><i class="bottom-arrow" style="float:right;margin-right:30px"></i></view>
         </view>
     </view>
     <!--<view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">体检机构</text><text style="float:right;margin-right:30px">{{item.organize}}</text></view>-->
