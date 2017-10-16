@@ -216,7 +216,7 @@ Page({
   },
   onLoad: function () {
     console.log('onLoad')
-    var that = this
+    var that = this;
   	// //调用应用实例的方法获取全局数据
     // app.getUserInfo(function(userInfo){
     //   //更新数据
@@ -259,42 +259,77 @@ Page({
     //   }
     // })
     //获取当前经纬度信息
-    wx.getLocation({
-      type: 'wgs84',//默认为"wgs84"返回gps坐标
-      success: ({latitude, longitude}) => {
-        // 调用后台API，获取地址信息
+    wx.showToast({
+      icon: 'loading',
+      success: function () {
+        wx.getLocation({
+            type: 'wgs84',//默认为"wgs84"返回gps坐标
+            success: ({latitude, longitude}) => {
+              // 调用后台API，获取地址信息
 
-        console.dirxml({latitude, longitude});
-        wx.request({
-          url: 'https://www.afamilyhealth.cn/api/address/location',
-
-          data: {
-            latitude: latitude,
-            longitude: longitude,
-          },
-
-          success: (res) => {
-            let city = res.data.regeocode.addressComponent.city;
-            let township = res.data.regeocode.addressComponent.township;
-            var streetnumber = res.data.regeocode.addressComponent.streetNumber.streetnumber;
-            var street = res.data.regeocode.addressComponent.streetNumber.street;
-            let streetinfo = street?street:'' + streetnumber?streetnumber:'';
-            let info = city + township + streetinfo;
-            that.data.currentCity = city;
-            console.dirxml(city);
-            this.setData({ address: info });
-
-
-            wx.request({
-                url: 'https://www.afamilyhealth.cn/api/card',
+              console.dirxml({latitude, longitude});
+              wx.request({
+                url: 'https://www.afamilyhealth.cn/api/address/location',
 
                 data: {
-                  city:city
+                  latitude: latitude,
+                  longitude: longitude,
                 },
 
                 success: (res) => {
-                  console.dirxml("infos", res.data.data);
-                  this.setData({ infos: res.data.data })
+                  let city = res.data.regeocode.addressComponent.city;
+                  let township = res.data.regeocode.addressComponent.township;
+                  var streetnumber = res.data.regeocode.addressComponent.streetNumber.streetnumber;
+                  var street = res.data.regeocode.addressComponent.streetNumber.street;
+                  let streetinfo = street?street:'' + streetnumber?streetnumber:'';
+                  let info = city + township + streetinfo;
+                  that.data.currentCity = city;
+                  console.dirxml(city);
+                  that.setData({ address: info });
+
+
+                  wx.request({
+                      url: 'https://www.afamilyhealth.cn/api/card',
+
+                      data: {
+                        city:city
+                      },
+
+                      success: (res) => {
+                        console.dirxml("infos", res.data.data);
+                        that.setData({ infos: res.data.data });
+                        wx.hideToast();
+                      },
+
+                      fail: (res) => {
+                        // console.dirxml(res.data);
+                      },
+
+                      complete: (res) => {
+                        // console.dirxml(res.data);
+                      }
+                  });
+
+                  wx.request({
+                      url: 'https://www.afamilyhealth.cn/api/institution',
+
+                      data: {
+                        city:city
+                      },
+
+                      success: (res) => {
+                        console.dirxml("o_infos", res.data.data);
+                        that.setData({ o_infos: res.data.data })
+                      },
+
+                      fail: (res) => {
+                        // console.dirxml(res.data);
+                      },
+
+                      complete: (res) => {
+                        // console.dirxml(res.data);
+                      }
+                  });
                 },
 
                 fail: (res) => {
@@ -304,42 +339,12 @@ Page({
                 complete: (res) => {
                   // console.dirxml(res.data);
                 }
-            });
-
-             wx.request({
-                url: 'https://www.afamilyhealth.cn/api/institution',
-
-                data: {
-                  city:city
-                },
-
-                success: (res) => {
-                  console.dirxml("o_infos", res.data.data);
-                  this.setData({ o_infos: res.data.data })
-                },
-
-                fail: (res) => {
-                  // console.dirxml(res.data);
-                },
-
-                complete: (res) => {
-                  // console.dirxml(res.data);
-                }
-            });
-          },
-
-          fail: (res) => {
-            // console.dirxml(res.data);
-          },
-
-          complete: (res) => {
-            // console.dirxml(res.data);
-          }
-        })
+              })
+            }
+          })
       }
     })
-
-    var that = this;
+  
     wx.getSystemInfo({
         success: function(res) {
             that.setData({
@@ -348,8 +353,6 @@ Page({
             });
         }
     });
-
-    
 
   },
   detail: function (res) {
