@@ -41,7 +41,6 @@ Page({
     arrow_down:false,
     filterSexy:'',
     filterType:'',
-    currentCity:''
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -224,16 +223,16 @@ Page({
             var street = res.data.regeocode.addressComponent.streetNumber.street;
             let streetinfo = street?street:'' + streetnumber?streetnumber:'';
             let info = city + township + streetinfo;
-            that.currentCity = city;
+            // that.currentCity = city;
             console.dirxml(city);
-            this.setData({ address: info })
+            this.setData({ address: info });
 
 
             wx.request({
                 url: 'https://www.afamilyhealth.cn/api/card',
 
                 data: {
-                  city:that.currentCity
+                  city:city
                 },
 
                 success: (res) => {
