@@ -8,8 +8,9 @@ Page({
   data: {
     sexy:[{'name':'通用','value':0},{'name':'男','value':1},{'name':'女','value':2}],
     hosipital_type:[{'name':'公立医院','value':1},{'name':'公立三甲','value':2},{'name':'专科医院','value':3},{'name':'体检机构','value':4},],
-    infos: [{"id":1,"nm":"妇女专项体检套餐","female":true,"male":false,"all":false,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"o_nm":"万年县人民医院","o_num":6,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"},
-    {"id":2,"nm":"妇女专项体检套餐","female":false,"male":true,"all":true,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
+    // infos: [{"id":1,"nm":"妇女专项体检套餐","female":true,"male":false,"all":false,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"o_nm":"万年县人民医院","o_num":6,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"},
+    // {"id":2,"nm":"妇女专项体检套餐","female":false,"male":true,"all":true,"people":"中老年已婚妇女","symptom":"卵巢","zprice":198,"price":312,"sales":2000,"img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
+    infos:[],
     o_infos:[{"oid":2,"o_nm":"万年县人民医院","address":"县政府路108号","score":"4.5","distance":"1.2","bprice":"200","img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg"}],
     id: '',
     indicatorDots: true,
@@ -39,7 +40,8 @@ Page({
     arrow_up:false,
     arrow_down:false,
     filterSexy:'',
-    filterType:''
+    filterType:'',
+    currentCity:''
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -222,7 +224,8 @@ Page({
             var street = res.data.regeocode.addressComponent.streetNumber.street;
             let streetinfo = street?street:'' + streetnumber?streetnumber:'';
             let info = city + township + streetinfo;
-            console.dirxml(info);
+            that.currentCity = city;
+            console.dirxml(city);
             this.setData({ address: info })
           },
 
@@ -246,6 +249,28 @@ Page({
             });
         }
     });
+
+    wx.request({
+          url: 'https://www.afamilyhealth.cn/api/card',
+
+          data: {
+            params:{city:that.currentCity}
+          },
+
+          success: (res) => {
+            console.dirxml("infos", res.data.data);
+            this.setData({ infos: res.data.data })
+          },
+
+          fail: (res) => {
+            // console.dirxml(res.data);
+          },
+
+          complete: (res) => {
+            // console.dirxml(res.data);
+          }
+    });
+
   },
   detail: function (res) {
       var id = res.currentTarget.id;

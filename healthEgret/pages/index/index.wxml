@@ -62,11 +62,11 @@
     </view>
     <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
     <view wx:if="{{infos}}">
-      <view class="card" wx:for="{{infos}}" wx:key="item.id">
-        <image bindtap="detail" id="{{item.id}}" src="{{item.img}}" mode="scaleToFill"></image>
-        <view class="info" bindtap="detail" id="{{item.id}}">
+      <view class="card" wx:for="{{infos}}" wx:key="item._id">
+        <image bindtap="detail" id="{{item._id}}" src="{{item.images[0]}}" mode="scaleToFill"></image>
+        <view class="info" bindtap="detail" id="{{item._id}}">
           <view class="p-name">
-            <text class="info_item" style="font-size:16px;font-weight:bold;height:28px;line-height:28px;">{{item.nm}}</text>
+            <text class="info_item" style="font-size:16px;font-weight:bold;height:28px;line-height:28px;">{{item.name}}</text>
             <!--<block wx:if="{{!item.all}}">
               <text class="female" wx:if="{{item['female']}}">
               </text>
@@ -78,21 +78,19 @@
             <text style="font-size:12px;color:#666666">{{item.people}}</text>
           </view>
           <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
-            <text style="font-size:12px;color:#666666">{{item.o_nm}}  等{{item.o_num}}家机构</text>
+            <text style="font-size:12px;color:#666666">{{item.institutions[0]}}  等{{item.institutions.length}}家机构</text>
           </view>
           <view class="weui-cell__ft weui-cell__ft_in-access arrow"></view>
-          <!--<view class="info_item" style="height:1px;border-bottom:1px solid #9E9E9E;margin-top:8px;"></view>-->
           <view class="info_item" style="border-top:1px solid #9E9E9E;margin-top:8px;position:relative;height:30px;line-height:30px">
             <view style="display:inline-block;position:absolute;">
               <text style="font-size:12px;color:#F5053D">￥</text>
-              <text style="font-size:18px;color:#F5053D;font-weight:bold;margin-right:3px">{{item.zprice}}</text>
+              <text style="font-size:18px;color:#F5053D;font-weight:bold;margin-right:3px">{{item.bprice}}</text>
               <text style="font-size:12px;color:#F5053D">起</text>
               <text style="font-size:12px;color:#666666;margin-left:10px;text-decoration:line-through;">￥{{item.price}}</text>
             </view>
             <block wx:if="{{item.sales > 0}}"><text style="font-size:12px;color:#666666;position:absolute;right:0;">销量{{item.sales}}件</text></block>
           </view>
         </view>
-        <!--<button class="buy" bindtap="buyTickets">购买</button>-->
       </view>
     </view>
     <view wx:else class="weui-loadmore weui-loadmore_line"><text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</text></view>
