@@ -179,10 +179,11 @@ Page({
     var ctype = this.data.elecard?'elecard':'entity';
     var num = this.data.count;
     var card = this.data.card.name;
+    var img = this.data.card.images[0];
     var org = this.data.org;
     var oneprice = this.data.onePrice;
     wx.navigateTo({
-          url: '/pages/ordersubmit/index?org=' + org + '&ctype=' + ctype + '&num=' + num + '&oneprice=' + oneprice + '&card=' + card
+          url: '/pages/ordersubmit/index?org=' + org + '&ctype=' + ctype + '&num=' + num + '&oneprice=' + oneprice + '&card=' + card + '&img=' + img
       }) 
   },
   o_p_detail: function(e){

@@ -11,8 +11,8 @@ Page({
       "organize":"万年县人民医院"
     },
     orderInfo:{},
-    reportArray:[{type:0,name:"自取"},{type:1,name:"快递"}],
-    payArray:[{type:0,name:"在线支付"},{type:1,name:"到院支付"}],
+    reportArray:["纸质报告","电子报告","两者都要"],
+    payArray:["在线支付","到院付款"],
     reportIndex:0,
     payIndex:0
   },

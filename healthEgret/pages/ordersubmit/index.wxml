@@ -14,8 +14,8 @@
         <text style="float:right;margin-right:21px;">共{{orderInfo.num}}件</text>
     </view>
     <view class="bd">
-        <image id="{{item.id}}" src="{{item.img}}" mode="scaleToFill"></image>
-         <view class="info" bindtap="detail" id="{{item.id}}">
+        <image src="{{orderInfo.img}}" mode="scaleToFill"></image>
+         <view class="info" bindtap="detail">
             <view class="info_item" style="font-weight:bold">{{orderInfo.card}}</view>
             <view class="info_item" style="color:#8A868A">类型：{{orderInfo.ctype === 'elecard'?'电子卡':'实体卡'}}</view>
             <view class="info_item" style="color:#FF4081">单价：￥{{orderInfo.oneprice}}</view>
@@ -26,7 +26,7 @@
     <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">体检机构</text><text style="float:right;margin-right:30px">{{orderInfo.org}}</text></view>
     <view class="gap"></view>
 
-    <view wx:if="{{ctype}}"><view style="font-size:12px;font-weight:bold;"><text>运费</text><text style="float:right;margin-right:30px">￥0.0</text></view></view>
+    <view wx:if="{{orderInfo.ctype === 'entity'}}"><view style="font-size:12px;font-weight:bold;"><text>运费</text><text style="float:right;margin-right:30px">￥6.0</text></view></view>
     <!--<view style="font-size:12px;font-weight:bold;"><text>小计：</text><text style="float:right;margin-right:30px">￥0.0</text></view>-->
 </view>
 
@@ -72,39 +72,36 @@
     </view>
     <view class="bd">
         <view>
-            <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both">
+            <view style="font-size:14px;font-weight:bold;height:40px;line-height:40px;clear:both">
                 <!--<text style="float:left;margin-left:13px">报告领取</text>-->
-                 <picker bindchange="bindReportPickerChange" value="{{reportIndex}}" range="{{reportArray}}">
-                    <view class="picker">
+                 <picker bindchange="bindReportPickerChange" value="{{reportIndex}}" range="{{reportArray}}" style="margin-left:13px">
+                    <view class="picker" style="display:inline-block">
                      报告领取：{{reportArray[reportIndex]}}
                     </view>
+                    <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
                 </picker>
-                <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
+                
             </view>
         </view>
         <view>
-            <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both">
+            <view style="font-size:14px;font-weight:bold;height:40px;line-height:40px;clear:both">
                 <!--<text style="float:left;margin-left:13px">支付方式</text>-->
-                <picker bindchange="bindPayPickerChange" value="{{payIndex}}" range="{{payArray}}">
-                    <view class="picker">
+                <picker bindchange="bindPayPickerChange" value="{{payIndex}}" range="{{payArray}}" style="margin-left:13px">
+                    <view class="picker" style="display:inline-block">
                      支付方式：{{payArray[payIndex]}}
                     </view>
+                    <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
                 </picker>
-                <i class="bottom-arrow" style="float:right;margin-right:30px"></i>
             </view>
         </view>
     </view>
-    <!--<view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">体检机构</text><text style="float:right;margin-right:30px">{{item.organize}}</text></view>-->
-    <!--<view class="gap"></view>-->
-    <!--<view wx:if="{{ctype}}"><view style="font-size:12px;font-weight:bold;"><text>运费</text><text style="float:right;margin-right:30px">￥0.0</text></view></view>-->
-    <!--<view style="font-size:12px;font-weight:bold;"><text>小计：</text><text style="float:right;margin-right:30px">￥0.0</text></view>-->
 </view>
-<view style="height:80rpx;font-size:12px;width:100%;line-height:80rpx;background-color: #E5E1E6;padding-left:13px">
+<view style="height:80rpx;font-size:12px;width:100%;line-height:80rpx;background-color: #E5E1E6;padding-left:13px;position:fixed;bottom:90rpx">
     <label class="checkbox">
         <checkbox value="0" checked="false"/>
     </label><text>一家健康获得本人的体检报告</text><text style="color:#28C225;">《用户授权协议》</text>
 </view>
-<view style="height:90rpx;background-color:white;width:100%;"></view>
+<view style="height:170rpx;background-color:white;width:100%;"></view>
 <view class="footer">
     <text style="margin-left:13px;">应付总金额：</text>
     <text>{{count}}</text>
