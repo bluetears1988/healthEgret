@@ -183,8 +183,9 @@ Page({
     var img = this.data.card.images[0];
     var org = this.data.org;
     var oneprice = this.data.onePrice;
+    var city = this.data.card.city;
     wx.navigateTo({
-          url: '/pages/ordersubmit/index?org=' + org + '&ctype=' + ctype + '&num=' + num + '&oneprice=' + oneprice + '&card=' + card + '&img=' + img
+          url: '/pages/ordersubmit/index?org=' + org + '&ctype=' + ctype + '&num=' + num + '&oneprice=' + oneprice + '&card=' + card + '&img=' + img + '&city=' + city
       }) 
   },
   o_p_detail: function(e){

@@ -1,6 +1,7 @@
 <!--pages/ordersubmit/imdex.wxml-->
 <!--<text>pages/ordersubmit/imdex.wxml</text>-->
 <view class="gap"></view>
+<form bindsubmit="formSubmit">
 <view wx:if="{{orderInfo.ctype === 'entity'}}">
     <view class="address">
         <image src="../../images/address.png" mode="scaleToFill"></image>
@@ -35,13 +36,13 @@
     </view>
     <view class="bd">
         <view>
-             <view class="weui-cells weui-cells_after-title">
+             <view class="weui-cells weui-cells_after-title" wx:for="{{formData.medicalMen}}" wx:key="{{index}}">
                 <view class="weui-cell weui-cell_input">
                     <view class="weui-cell__hd">
                         <view class="weui-label">姓名</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input class="weui-input" placeholder="请输入姓名"/>
+                        <input class="weui-input" placeholder="请输入姓名" data-index="{{index}}" data-attr="name" value="{{item.name}}" bindblur="updateMedicalMen"/>
                     </view>
                 </view>
                 <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -49,7 +50,7 @@
                         <view class="weui-label">身份证号</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input class="weui-input" placeholder="(必填)请输入身份证号" />
+                        <input class="weui-input" placeholder="(必填)请输入身份证号" data-index="{{index}}" data-attr="idcard" value="{{item.idcard}}" bindblur="updateMedicalMen"/>
                     </view>
                 </view>
                 <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -57,7 +58,7 @@
                         <view class="weui-label">手机号</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input class="weui-input" placeholder="(选填)请输入手机号" />
+                        <input class="weui-input" placeholder="(选填)请输入手机号" data-index="{{index}}" data-attr="phone" value="{{item.phone}}" bindblur="updateMedicalMen"/>
                     </view>
                 </view>
                 <view class="weui-cell weui-cell_input">
@@ -65,7 +66,7 @@
                         <view class="weui-label">体检时间</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                        <picker mode="date" value="{{item.date}}" start="2015-09-01" end="2018-09-01" bindchange="bindDateChange" data-index="{{index}}">
                             <view class="weui-input">{{date}}</view>
                         </picker>
                     </view>
@@ -79,7 +80,7 @@
                     </div>
                 </view>-->
         </view>
-        <view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">继续填写体检人信息</text><i class="bottom-arrow" style="float:right;margin-right:30px"></i></view>
+        <!--<view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">继续填写体检人信息</text><i class="bottom-arrow" style="float:right;margin-right:30px"></i></view>-->
         </view>
     </view>
     <!--<view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">体检机构</text><text style="float:right;margin-right:30px">{{item.organize}}</text></view>-->
@@ -107,20 +108,20 @@
                     <view class="weui-label">手机号</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入手机号" />
+                    <input class="weui-input" placeholder="请输入手机号" name="bookPhone"/>
                 </view>
-                <view class="weui-cell__ft">
+                <!--<view class="weui-cell__ft">
                     <view class="weui-vcode-btn">获取验证码</view>
-                </view>
+                </view>-->
             </view>
-            <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <!--<view class="weui-cell weui-cell_input weui-cell_vcode">
                 <view class="weui-cell__hd">
                     <view class="weui-label">验证码</view>
                 </view>
                 <view class="weui-cell__bd">
                     <input class="weui-input" placeholder="(必填)请输入短信验证码" />
                 </view>
-            </view>
+            </view>-->
         </view>
     </view>
     <!--<view style="font-size:12px;font-weight:bold;height:30px;line-height:30px;clear:both"><text style="float:left;margin-left:13px">体检机构</text><text style="float:right;margin-right:30px">{{item.organize}}</text></view>-->
@@ -137,7 +138,7 @@
         <view>
             <view style="font-size:14px;font-weight:bold;height:40px;line-height:40px;clear:both">
                 <!--<text style="float:left;margin-left:13px">报告领取</text>-->
-                 <picker bindchange="bindReportPickerChange" value="{{reportIndex}}" range="{{reportArray}}" style="margin-left:13px">
+                 <picker bindchange="bindReportPickerChange" value="{{reportIndex}}" range="{{reportArray}}" style="margin-left:13px" name="reportMethod">
                     <view class="picker" style="display:inline-block;font-weight:normal">
                      报告领取：{{reportArray[reportIndex]}}
                     </view>
@@ -149,7 +150,7 @@
         <view>
             <view style="font-size:14px;font-weight:bold;height:40px;line-height:40px;clear:both">
                 <!--<text style="float:left;margin-left:13px">支付方式</text>-->
-                <picker bindchange="bindPayPickerChange" value="{{payIndex}}" range="{{payArray}}" style="margin-left:13px">
+                <picker bindchange="bindPayPickerChange" value="{{payIndex}}" range="{{payArray}}" style="margin-left:13px" name="payMethod">
                     <view class="picker" style="display:inline-block;font-weight:normal">
                      支付方式：{{payArray[payIndex]}}
                     </view>
@@ -165,7 +166,7 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="备注：(选填)请输入文本" style="height: 2.0em" />
+                <textarea class="weui-textarea" placeholder="备注：(选填)请输入文本" style="height: 2.0em" name="remarks"/>
                 <view class="weui-textarea-counter">0/100</view>
             </view>
         </view>
@@ -174,13 +175,19 @@
 </view>
 <view class="gap"></view>
 <view style="height:80rpx;font-size:12px;width:100%;line-height:80rpx;background-color: #E5E1E6;padding-left:13px;position:fixed;bottom:90rpx">
-    <label class="checkbox">
-        <checkbox value="0" checked="false"/>
-    </label><text>一家健康获得本人的体检报告</text><text style="color:#28C225;">《用户授权协议》</text>
+    <checkbox-group name="authorized" class="checkbox">
+        <label>
+            <checkbox value="0" checked="true" />
+        </label>
+        <text>一家健康获得本人的体检报告</text><text style="color:#28C225;">《用户授权协议》</text>
+    </checkbox-group>
+    
+
 </view>
 <view style="height:170rpx;background-color:white;width:100%;"></view>
 <view class="footer">
     <text style="margin-left:13px;">应付总金额：</text>
-    <text>{{count}}</text>
-    <view class="submitBtn" bindtap="submitorder">提交订单</view>
+    <text style="color:#F5053D;font-weight:bold">￥{{orderInfo.oneprice * orderInfo.num}}</text>
+    <button class="submitBtn" disabled="{{!submitDisabled}}" formType="submit">提交订单</button>
 </view>
+</form>
