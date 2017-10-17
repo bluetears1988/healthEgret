@@ -217,6 +217,14 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     var that = this;
+    wx.getSystemInfo({
+        success: function(res) {
+            that.setData({
+                sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+                sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+            });
+        }
+    });
   	// //调用应用实例的方法获取全局数据
     // app.getUserInfo(function(userInfo){
     //   //更新数据
@@ -344,16 +352,6 @@ Page({
           })
       }
     })
-  
-    wx.getSystemInfo({
-        success: function(res) {
-            that.setData({
-                sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-                sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-            });
-        }
-    });
-
   },
   detail: function (res) {
       var id = res.currentTarget.id;

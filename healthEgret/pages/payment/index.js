@@ -1,17 +1,21 @@
 // pages/payment/index.js
 Page({
   data:{
-    item:{
-      'nm':'妇女专项体检套餐',
-      'num':2,
-      'zprice':198,
-      'org':'万年县人民医院',
-      'count':387
+    // item:{
+    //   'nm':'妇女专项体检套餐',
+    //   'num':2,
+    //   'zprice':198,
+    //   'org':'万年县人民医院',
+    //   'count':387
 
-    }
+    // },
+    orderInfo:{}
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      orderInfo:options,
+    });
   },
   onReady:function(){
     // 页面渲染完成

@@ -4,15 +4,19 @@
 <view class="detail">
     <view class="head">订单详情</view>
     <view class="d_item">
-        <text style="float:left;">{{item.nm}}</text>
-        <text style="float:right;color:#9E9E9E">{{item.num}}x￥{{item.zprice}}</text>        
+        <text style="float:left;">{{orderInfo.card}}</text>
+        <text style="float:right;color:#9E9E9E">{{orderInfo.num}}x￥{{orderInfo.oneprice}}</text>        
+    </view>
+    <view class="d_item">
+        <text style="float:left;color:#9E9E9E">类型</text>
+        <text style="float:right;">{{orderInfo.ctype === 'elecard'?'电子卡':'实体卡'}}</text>        
     </view>
     <view class="d_item">
         <text style="float:left;color:#9E9E9E">机构</text>
-        <text style="float:right;">{{item.org}}</text>        
+        <text style="float:right;">{{orderInfo.org}}</text>        
     </view>
     <view class="d_item">
-        <text style="float:right;color:#F5053D;">共计￥{{item.count}}</text>        
+        <text style="float:right;color:#F5053D;">共计￥{{orderInfo.oneprice * orderInfo.num}}.0</text>        
     </view>
 </view>
 <view class="gap"></view>
@@ -37,6 +41,6 @@
 </view>
 <view class="gap"></view>
 <view class="footer">
-    <view class="pay btn">立即支付</view>
+    <view class="pay btn" id="{{orderInfo.id}}">立即支付</view>
     <view class="laterpay btn" bindtap="laterpay">稍后支付</view>
 </view>

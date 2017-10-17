@@ -202,7 +202,7 @@ Page({
       onePrice: e.currentTarget.dataset.real_price
     });
 
-    // this.hideModal();
+    this.hideModal();
     // console.dirxml(e);
 
   },

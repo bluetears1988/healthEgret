@@ -62,11 +62,20 @@ Page({
         var D = new Date();
         var now = D.toLocaleDateString();
         var totalprice = that.data.orderInfo.oneprice * that.data.orderInfo.num;
+        e.detail.value.authorized = parseInt(e.detail.value.authorized[0]);
+        e.detail.value.payMethod = parseInt(e.detail.value.payMethod);
+        e.detail.value.reportMethod = parseInt(e.detail.value.reportMethod);
+        that.data.orderInfo.num = parseInt(that.data.orderInfo.num);
         console.dirxml(Object.assign(e.detail.value, that.data.orderInfo, that.data.formData, {bookDate: now,totalprice: totalprice,status: 0}));
-        var f = Object.assign(e.detail.value, that.data.orderInfo, that.data.formData, {bookDate: now,totalprice: totalprice,status: 0,user:res.userInfo.nickName});
+        var otherInfo = {'bookDate': now,'totalprice': totalprice.toString(),'status': 0,'user':res.userInfo.nickName};
+        // for(let i = 0; i < that.data.formData.medicalMen.length; i++){
+        //   that.data.formData.medicalMen[i] = JSON.stringify(that.data.formData.medicalMen[i]);
+        // }
+        console.dirxml(that.data.formData);
+        var f = Object.assign(e.detail.value, that.data.orderInfo, that.data.formData, otherInfo);
 
         // console.dirxml("usrInfo", that.globalData.userInfo);
-        var ogrInfo = {};
+        var orgInfo = {};
         wx.request({
             url: 'https://www.afamilyhealth.cn/api/institution',
 
@@ -79,23 +88,26 @@ Page({
               var data = res.data.data[0];
               console.dirxml("organizes", res.data.data);
 
-              ogrInfo = {
+              orgInfo = {
                 name:data.name,
                 address:data.address,
                 phone:data.telephone
               }
 
-              console.dirxml(Object.assign(f, {'org':ogrInfo}));
-
+              var postData = Object.assign(f, {'org':orgInfo});
+              console.dirxml(postData);
 
               wx.request({
                   url: 'https://www.afamilyhealth.cn/api/order',
                   method:'POST',
+                  // header: {  
+                  //   "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"  
+                  // }, 
                   header: {  
-                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"  
-                  }, 
+                    "Content-Type": "application/json;charset=UTF-8"  
+                  },
 
-                  data: Object.assign(f, {'org':ogrInfo}),
+                  data: postData,
 
                   success: (res) => {
                     // var data = res.data.data[0];
@@ -111,7 +123,17 @@ Page({
 
                     console.dirxml(res);
 
-                    
+                    wx.showToast({
+                      title:'提交成功',
+                      icon:"success",
+                      duration:300,
+                      success: function(){
+                        wx.navigateTo({
+                            url: '../payment/index?id=' + res._id +'&card=' + that.data.orderInfo['card'] + '&org=' + that.data.orderInfo['org'] 
+                            + '&num=' + that.data.orderInfo['num'] + '&oneprice=' + that.data.orderInfo['oneprice'] + '&ctype=' + that.data.orderInfo['ctype']
+                        })
+                      }
+                    })
 
                   },
 
