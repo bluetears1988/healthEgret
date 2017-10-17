@@ -44,8 +44,8 @@
       {
         "pagePath": "pages/groups/index",
         "text": "分类",
-        "iconPath":"images/group.png",
-        "selectedIconPath":"images/group_clk.png"
+        "iconPath":"images/classify.png",
+        "selectedIconPath":"images/classify_clk.png"
        },
        {
         "pagePath": "pages/family/index",
