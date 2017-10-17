@@ -91,6 +91,9 @@ Page({
               wx.request({
                   url: 'https://www.afamilyhealth.cn/api/order',
                   method:'POST',
+                  header: {  
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"  
+                  }, 
 
                   data: Object.assign(f, {'org':ogrInfo}),
 
