@@ -87,6 +87,42 @@ Page({
 
               console.dirxml(Object.assign(f, {'org':ogrInfo}));
 
+
+              wx.request({
+                  url: 'https://www.afamilyhealth.cn/api/order',
+                  method:'POST',
+
+                  data: Object.assign(f, {'org':ogrInfo}),
+
+                  success: (res) => {
+                    // var data = res.data.data[0];
+                    // console.dirxml("organizes", res.data.data);
+
+                    // ogrInfo = {
+                    //   name:data.name,
+                    //   address:data.address,
+                    //   phone:data.telephone
+                    // }
+
+                    // console.dirxml(Object.assign(f, {'org':ogrInfo}));
+
+                    console.dirxml(res);
+
+                    
+
+                  },
+
+                  fail: (res) => {
+                    // console.dirxml(res.data);
+                  },
+
+                  complete: (res) => {
+                    // console.dirxml(res.data);
+                  }
+                });
+
+
+
             },
 
             fail: (res) => {
@@ -101,9 +137,7 @@ Page({
       }
     })
     
-    // wx.navigateTo({
-    //       url: '/pages/payment/index?id='
-    //   }) 
+     
   },
   bindReportPickerChange:function(e){
     this.setData({
