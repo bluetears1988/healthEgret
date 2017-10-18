@@ -31,47 +31,61 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     console.log(options) 
     var that = this;
-    wx.request({
-        url: 'https://www.afamilyhealth.cn/api/card',
-
-        data: {
-          _id:options.id
-        },
-
-        success: (res) => {
-          var c = {};
-          if(res.data.data.length > 0){
-            c = res.data.data[0];
-          }else{
-            return false;
-          }
-          this.setData({ card: c })
+    wx.showToast({
+      icon: 'loading',
+      success: function (){
           wx.request({
-            url: 'https://www.afamilyhealth.cn/api/institution',
+            url: 'https://www.afamilyhealth.cn/api/card',
 
             data: {
-              city: c['city'],
-              'cards.name': c['name']
+              _id:options.id
             },
 
             success: (res) => {
-              var data = res.data.data;
-              console.dirxml("organizes", res.data.data);
-
-              for(var i = 0; i < data.length; i++){
-                 let card = data[i].cards.filter(function(item){
-                    if(item.name === that.data.card['name']) return true;
-                    return false;
-                  });
-                console.dirxml(card);
-                if(card.length > 0){
-                  data[i].currentCard = card[0];
-                }else{
-                  data[i].currentCard = {};
-                }
-                
+              var c = {};
+              if(res.data.data.length > 0){
+                c = res.data.data[0];
+              }else{
+                return false;
               }
-              this.setData({ organizes: data})
+              that.setData({ card: c });
+              wx.hideToast();
+              wx.request({
+                url: 'https://www.afamilyhealth.cn/api/institution',
+
+                data: {
+                  city: c['city'],
+                  'cards.name': c['name']
+                },
+
+                success: (res) => {
+                  var data = res.data.data;
+                  console.dirxml("organizes", res.data.data);
+
+                  for(var i = 0; i < data.length; i++){
+                    let card = data[i].cards.filter(function(item){
+                        if(item.name === that.data.card['name']) return true;
+                        return false;
+                      });
+                    console.dirxml(card);
+                    if(card.length > 0){
+                      data[i].currentCard = card[0];
+                    }else{
+                      data[i].currentCard = {};
+                    }
+                    
+                  }
+                  that.setData({ organizes: data})
+                },
+
+                fail: (res) => {
+                  // console.dirxml(res.data);
+                },
+
+                complete: (res) => {
+                  // console.dirxml(res.data);
+                }
+            });
             },
 
             fail: (res) => {
@@ -81,17 +95,11 @@ Page({
             complete: (res) => {
               // console.dirxml(res.data);
             }
-         });
-        },
+      });
 
-        fail: (res) => {
-          // console.dirxml(res.data);
-        },
-
-        complete: (res) => {
-          // console.dirxml(res.data);
-        }
+      }
     });
+    
   },
   onReady:function(){
     // 页面渲染完成

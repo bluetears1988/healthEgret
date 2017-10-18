@@ -31,7 +31,7 @@
 .collect{
     width: 20px;
     height: 20px;
-    background-image: url(../../images/shoucang2.png);
+    background-image: url('http://oxsopdu8e.bkt.clouddn.com/shoucang2.png');
     background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
     position: absolute;
     top:7px;
@@ -39,7 +39,7 @@
 .collect_not{
     width: 20px;
     height: 20px;
-    background-image: url(../../images/shoucang1.png);
+    background-image: url('http://oxsopdu8e.bkt.clouddn.com/shoucang1.png');
     background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
     position: absolute;
     top:7px;
@@ -151,7 +151,7 @@
 .home_img{
     width: 20px;
     height: 20px;
-    background-image: url(../../images/home.png);
+    background-image: url('http://oxsopdu8e.bkt.clouddn.com/home.png');
     background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
     position: absolute;
     top:19rpx;
@@ -175,7 +175,7 @@
 .kefu_img{
     width: 20px;
     height: 20px;
-    background-image: url(../../images/kefu2.png);
+    background-image: url('http://oxsopdu8e.bkt.clouddn.com/kefu2.png');
     background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
     position: absolute;
     top:19rpx;

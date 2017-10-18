@@ -7,7 +7,7 @@
     </view>
 </view>
 <view wx:if="{{members}}">
-    <view class="member" wx:for="{{members}}" bindtap="detail">
+    <view class="member" wx:for="{{members}}" bindtap="detail" wx:key="{{index}}">
         <!--<image bindtap="detail" id="{{item.id}}" src="{{item.portrait}}" mode="scaleToFill" class="portrait"></image>-->
         <text class="name">{{item.name}}</text>
         <text class="h_state">健康状况 {{item.score}}分</text>
