@@ -330,7 +330,8 @@ Page({
                       url: 'https://www.afamilyhealth.cn/api/institution',
 
                       data: {
-                        city:city
+                        city:city,
+                        location:latitude + ',' + longitude
                       },
 
                       success: (res) => {

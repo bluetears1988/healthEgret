@@ -3,8 +3,18 @@
     height: 292rpx;
     background-color: #28C225;
     width: 100%;
+    line-height: 292rpx;
+    text-align: center;
+    position: relative;
 }
 .gap{
     height:20rpx;
     background-color: #E5E1E6;
+}
+.portrait{
+    height: 150rpx;
+    width: 150rpx;
+    border-radius: 50% 50%;
+    margin: auto;
+    display:block;
 }
