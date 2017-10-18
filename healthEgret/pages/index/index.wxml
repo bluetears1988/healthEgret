@@ -117,12 +117,12 @@
                   <view wx:if="{{o_infos}}">
                     <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail" wx:key="item._id">
                         <image bindtap="o_detail" id="{{item._id}}" src="{{item.img}}" mode="scaleToFill"></image>
-                        <view class="info" bindtap="org_detail" id="{{item._id}}" style="margin-top: -95rpx;">
+                        <view class="info" bindtap="org_detail" id="{{item._id}}">
                           <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
                             <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
                           </view>
                           <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
-                            <text style="font-size:12px;color:#666666">{{item.address}}</text>
+                            <text style="font-size:12px;color:#666666;display:inline-block;width:90%;height:16px;line-height:16px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.address}}</text>
                           </view>
                           <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
                             <text style="font-size:12px;color:#666666">{{item.score}}分</text>
@@ -148,12 +148,12 @@
                       <view wx:if="{{o_infos}}">
                         <view class="organization_info" wx:for="{{o_infos}}" bindtap="o_detail" wx:key="item._id">
                             <image bindtap="o_detail" id="{{item._id}}" src="{{item.img}}" mode="scaleToFill"></image>
-                            <view class="info" bindtap="org_detail" id="{{item._id}}" style="margin-top: -95rpx;">
+                            <view class="info" bindtap="org_detail" id="{{item._id}}">
                               <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:28px;line-height:28px;">
                                 <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
                               </view>
                               <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
-                                <text style="font-size:12px;color:#666666">{{item.address}}</text>
+                                <text style="font-size:12px;color:#666666;display:inline-block;width:90%;height:16px;line-height:16px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.address}}</text>
                               </view>
                               <view class="info_item" style="display:flex;flex-direction:row;align-items:center;height:18px;line-height:18px;">
                                 <text style="font-size:14px;color:#F5053D;font-weight:bold">{{item.score}}分</text>

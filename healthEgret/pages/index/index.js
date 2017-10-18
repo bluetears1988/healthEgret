@@ -99,26 +99,32 @@ Page({
       asc = -1;
     }
 
-    wx.request({
-        url: 'https://www.afamilyhealth.cn/api/card',
+    wx.showToast({
+      icon: 'loading',
+      success: function (){
+        wx.request({
+            url: 'https://www.afamilyhealth.cn/api/card',
 
-        data: {
-          city:that.data.currentCity,
-          'sort.bprice':asc
-        },
+            data: {
+              city:that.data.currentCity,
+              'sort.bprice':asc
+            },
 
-        success: (res) => {
-          console.dirxml("infos", res.data.data);
-          this.setData({ infos: res.data.data })
-        },
+            success: (res) => {
+              console.dirxml("infos", res.data.data);
+              that.setData({ infos: res.data.data });
+              wx.hideToast();
+            },
 
-        fail: (res) => {
-          // console.dirxml(res.data);
-        },
+            fail: (res) => {
+              // console.dirxml(res.data);
+            },
 
-        complete: (res) => {
-          // console.dirxml(res.data);
-        }
+            complete: (res) => {
+              // console.dirxml(res.data);
+            }
+        });
+      }
     });
   },
   salesFirst: function(){
@@ -132,7 +138,10 @@ Page({
       filterShow:false
     });
 
-    wx.request({
+    wx.showToast({
+      icon: 'loading',
+      success: function (){
+        wx.request({
           url: 'https://www.afamilyhealth.cn/api/card',
 
           data: {
@@ -142,7 +151,8 @@ Page({
 
           success: (res) => {
             console.dirxml("infos", res.data.data);
-            this.setData({ infos: res.data.data })
+            that.setData({ infos: res.data.data });
+            wx.hideToast();
           },
 
           fail: (res) => {
@@ -152,11 +162,9 @@ Page({
           complete: (res) => {
             // console.dirxml(res.data);
           }
-      });
-
-
-
-
+        });
+      }
+    });
   },
   filter: function(){
     this.setData({
