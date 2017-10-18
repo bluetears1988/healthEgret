@@ -1,5 +1,4 @@
-<!--pages/organization/index.wxml-->
-<!--<text>pages/organization/index.wxml</text>-->
+<view class="page">
 <view class="title">
     <view class="title_bd"></view>
     <view class="title_txt">
@@ -11,37 +10,27 @@
         </view>
     </view>
 </view>
-<!--<view class="row">
-    <image></image><text></text>
-</view>
-<view class="row">
-    <image></image><text></text>
-</view>-->
 <view class="weui-cells weui-cells_after-title">
-    <!--<view wx:for="{{organizes}}">-->
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="../../images/kefu.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
         <view class="weui-cell__bd" style="width:95%;text-overflow:ellipsis;overflow:hidden">机构介绍</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="../../images/address.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
         <view class="weui-cell__bd" style="text-overflow:ellipsis" style="width:95%;text-overflow:ellipsis;overflow:hidden">{{org.address}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="../../images/kefu.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
         <view class="weui-cell__bd" style="width:95%;text-overflow:ellipsis;overflow:hidden">{{org.telephone}}</view>
-        <!--<view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
-    </navigator>
-    <!--</view>-->
+    </view>
 </view>
 <view class="gap"></view>
 <view class="block">
@@ -56,30 +45,27 @@
 </view>
 <view class="gap"></view>
 <view wx:if="{{org.pkgnum}}">
-<view class="block">
-    <view class="head">体检方案 (共{{org.pkgnum}}个)</view>
-    <view class="bd">
-    <!--<view wx:if="{{projects}}">-->
-        <view wx:for="{{projects}}">
-        <view class="project">
-            <image src="{{item.img}}" id="{{item.id}}" mode="scaleToFill"></image>
-                <view class="info"  id="{{item.id}}">
-                    <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
-                    <text style="font-size:16px;font-weight:bold">{{item.nm}}</text>
-                    <!--<text style="font-size:12px;color:#666666">{{item.people}}</text>-->
+    <view class="block">
+        <view class="head">体检方案 (共{{org.pkgnum}}个)</view>
+        <view class="bd">
+            <view wx:for="{{projects}}" wx:key="{{index}}">
+                <view class="project">
+                    <image src="{{item.img}}" id="{{item.id}}" mode="scaleToFill"></image>
+                    <view class="info"  id="{{item.id}}">
+                        <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                            <text style="font-size:16px;font-weight:bold">{{item.nm}}</text>
+                        </view>
+                        <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
+                            <text style="font-size:14px;color:#F5053D;">￥{{item.zprice}}</text>
+                            <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.price}}</text>
+                        </view>
                     </view>
-                    <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
-                        <text style="font-size:14px;color:#F5053D;">￥{{item.zprice}}</text>
-                        <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.price}}</text>
-                    </view>
+                    <button class="p_btn" bindtap="o_p_detail">预约</button>
                 </view>
-                <button class="p_btn" bindtap="o_p_detail">预约</button>
-        <!--</view>-->
+            </view>
+            <view class="ft" bindtap="more_project">更多<i class="bottom-arrow"></i></view>
         </view>
     </view>
-    <view class="ft" bindtap="more_project">更多<i class="bottom-arrow"></i></view>
-</view>
-</view>
 </view>
 <view class="gap"></view>
 <view class="block">
@@ -94,28 +80,29 @@
 </view>
 <view class="gap"></view>
 <view wx:if="{{org.msgnum}}">
-<view class="block">
-    <view class="head">用户评价 (共{{org.msgnum}}条)</view>
-    <view class="bd">
-        <view wx:for="{{messages}}">
-        <view class="message">
-                <view class="info">
-                    <view class="info_item">
-                        <text style="font-size:16px;font-weight:bold">{{item.account}}</text>
-                        <text style="font-size:12px;color:#666666;float:right;margin-right:10px">{{item.date}}</text>
-                    </view>
-                    <view class="info_item">
-                        <text style="font-size:14px;color:#F5053D;">￥{{item.score}}</text>
-                    </view>
-                    <view class="info_item">
-                        <text style="font-size:14px;margin-left:5px;color:#666666;">{{item.comment}}</text>
+    <view class="block">
+        <view class="head">用户评价 (共{{org.msgnum}}条)</view>
+        <view class="bd">
+            <view wx:for="{{messages}}" wx:key="{{index}}">
+                <view class="message">
+                    <view class="info">
+                        <view class="info_item">
+                            <text style="font-size:16px;font-weight:bold">{{item.account}}</text>
+                            <text style="font-size:12px;color:#666666;float:right;margin-right:10px">{{item.date}}</text>
+                        </view>
+                        <view class="info_item">
+                            <text style="font-size:14px;color:#F5053D;">￥{{item.score}}</text>
+                        </view>
+                        <view class="info_item">
+                            <text style="font-size:14px;margin-left:5px;color:#666666;">{{item.comment}}</text>
+                        </view>
                     </view>
                 </view>
-        </view>
+            </view>
+            <view class="ft" bindtap="all_comment">点击查看全部评论<i class="bottom-arrow"></i></view>
+         </view>
+        <view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
     </view>
-    <view class="ft" bindtap="all_comment">点击查看全部评论<i class="bottom-arrow"></i></view>
-</view>
-<view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
-</view>
 </view>
 <view class="gap"></view>
+</view>

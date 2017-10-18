@@ -51,6 +51,7 @@
     border-left: 4px solid #28C225;
     padding-left: 10px;
     border-bottom: 1px solid #9E9E9E;
+    box-sizing:border-box;
 }
 .block .bd{
     width: 95%;

@@ -17,7 +17,7 @@
             <view class="year">{{year}}</view>
             <view wx:for="{{item}}" wx:for-item="package"> 
                 <view class="weui-cells weui-cells_after-title" id="{{package.rid}}" bindtap="reportDetail">
-                    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" id="{{package.rid}}" bindtap="reportDetail">
+                    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                         <view class="weui-cell__hd">
                            {{package.time}}
                         </view>
