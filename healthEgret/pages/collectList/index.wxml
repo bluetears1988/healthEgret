@@ -5,7 +5,7 @@
        
         <block wx:for-items="{{collects}}" wx:key="item">
             <view class="collect" bindtap="cardDetail" id="{{item.id}}">
-                <image id="{{item.id}}" src="{{item.img}}" mode="scaleToFill" bindtap="cardDetail"></image>
+                <image src="{{item.img}}" mode="scaleToFill"></image>
                 <view style="width:90%;text-align:left;margin-left: 10px">{{item.name}}</view>
                 <view style="margin-left: 10px;width:90%;">
                     <text>￥{{item.bprice}}起</text>

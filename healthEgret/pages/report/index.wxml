@@ -11,7 +11,7 @@
         </view>
         <block wx:for-items="{{abnormal}}" wx:key="item">
             <view class="abnormal_item" >
-                <text class="" style="font-size:12px;margin-right:80px;display:inline-block;float:left">{{item.name}}</text>
+                <text class="" style="font-size:12px;margin-right:60px;display:inline-block;float:left">{{item.name}}</text>
                 <text class="" style="width:200px;display:inline-block;color:#F5053D;">{{item.detail}}</text>
                 <text class="" style="height:20px;width:20px;color:white;display:inline-block;background-color:#F5053D;line-height:20px;text-align:center;float:right;margin-right:43px">异</text>
             </view>
