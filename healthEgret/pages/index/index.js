@@ -299,9 +299,9 @@ Page({
                   var street = res.data.regeocode.addressComponent.streetNumber.street;
                   let streetinfo = street?street:'' + streetnumber?streetnumber:'';
                   let info = city + township + streetinfo;
-                  that.data.currentCity = city;
+                  // that.data.currentCity = city;
                   console.dirxml(city);
-                  that.setData({ address: info });
+                  that.setData({ address: info,currentCity:city});
 
 
                   wx.request({
@@ -415,8 +415,10 @@ Page({
       }
   },
   change_city: function(e){
+    // console.dirxml(e.currentTarget);
+    var city = e.currentTarget.dataset.city;
     wx.navigateTo({
-        url: '../city/index'
+        url: '../city/index?city=' + city
     })
   },
   o_detail: function(e){

@@ -29,7 +29,7 @@
       </view>
     </view>-->
     <view class="nav">
-      <view class="location" bindtap="change_city">{{address}}</view>
+      <view class="location" bindtap="change_city" data-city="{{currentCity}}">{{address}}</view>
       <view class="tab">
         <view class="pkg {{tab_pkg?'select':''}}" bindtap="tabpkgTran">套餐</view>
         <view class="organization {{tab_org?'select':''}}" bindtap="taborgTran">机构</view>

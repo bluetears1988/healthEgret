@@ -5,7 +5,7 @@
     <view class="head">定位城市</view>
     <view wx:if="{{open}}" class="city_btns">
         <view class="citybtn">
-           <text class="city">上饶</text>
+           <text class="city">{{currentCity}}</text>
         </view>
     </view>
     <view wx:else>
