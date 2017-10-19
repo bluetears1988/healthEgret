@@ -88,7 +88,8 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  sortByPrice: function(){  
+  sortByPrice: function(){
+    var that = this;
     this.setData({
       sortByPriceSelected:true,
       salesFirstSelected:false,
@@ -96,19 +97,53 @@ Page({
       filterShow:false
     })
 
+    var asc = null;
     if(this.data.arrow_up){
       this.setData({
         arrow_up: false,
         arrow_down: true
-      })
+      });
+
+      asc = 1;
     }else{
       this.setData({
         arrow_up: true,
         arrow_down: false
-      })
+      });
+
+      asc = -1;
     }
+
+    wx.showToast({
+      icon: 'loading',
+      success: function (){
+        wx.request({
+            // url: 'https://www.afamilyhealth.cn/api/card',
+
+            // data: {
+            //   city:that.data.currentCity,
+            //   'sort.bprice':asc
+            // },
+
+            // success: (res) => {
+            //   console.dirxml("infos", res.data.data);
+            //   that.setData({ infos: res.data.data });
+            //   wx.hideToast();
+            // },
+
+            // fail: (res) => {
+            //   // console.dirxml(res.data);
+            // },
+
+            // complete: (res) => {
+            //   // console.dirxml(res.data);
+            // }
+        });
+      }
+    });
   },
   salesFirst: function(){
+    var that = this;
     this.setData({
       sortByPriceSelected:false,
       arrow_up: false,
@@ -116,8 +151,66 @@ Page({
       salesFirstSelected:true,
       priceSortUp:false,
       filterShow:false
-    })
+    });
+
+    wx.showToast({
+      icon: 'loading',
+      success: function (){
+        // wx.request({
+        //   url: 'https://www.afamilyhealth.cn/api/card',
+
+        //   data: {
+        //     city:that.data.currentCity,
+        //     'sort.sales':-1
+        //   },
+
+        //   success: (res) => {
+        //     console.dirxml("infos", res.data.data);
+        //     that.setData({ infos: res.data.data });
+        //     wx.hideToast();
+        //   },
+
+        //   fail: (res) => {
+        //     // console.dirxml(res.data);
+        //   },
+
+        //   complete: (res) => {
+        //     // console.dirxml(res.data);
+        //   }
+        // });
+      }
+    });
   },
+  // sortByPrice: function(){  
+  //   this.setData({
+  //     sortByPriceSelected:true,
+  //     salesFirstSelected:false,
+  //     priceSortUp:false,
+  //     filterShow:false
+  //   })
+
+  //   if(this.data.arrow_up){
+  //     this.setData({
+  //       arrow_up: false,
+  //       arrow_down: true
+  //     })
+  //   }else{
+  //     this.setData({
+  //       arrow_up: true,
+  //       arrow_down: false
+  //     })
+  //   }
+  // },
+  // salesFirst: function(){
+  //   this.setData({
+  //     sortByPriceSelected:false,
+  //     arrow_up: false,
+  //     arrow_down: false,
+  //     salesFirstSelected:true,
+  //     priceSortUp:false,
+  //     filterShow:false
+  //   })
+  // },
   o_p_detail: function(e){
   wx.navigateTo({
         url: '/pages/pckoforg/index'

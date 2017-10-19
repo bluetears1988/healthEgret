@@ -13,9 +13,9 @@
 <view class="records">
     <view class="title">体检记录</view>
     <view wx:if="{{member.details}}">
-        <view class="detail" wx:for="{{member.details}}" wx:for-index="year">
+        <view class="detail" wx:for="{{member.details}}" wx:for-index="year" wx:key="{{index}}">
             <view class="year">{{year}}</view>
-            <view wx:for="{{item}}" wx:for-item="package"> 
+            <view wx:for="{{item}}" wx:for-item="package" wx:key="{{index}}"> 
                 <view class="weui-cells weui-cells_after-title" id="{{package.rid}}" bindtap="reportDetail">
                     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                         <view class="weui-cell__hd">

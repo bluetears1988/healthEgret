@@ -3,20 +3,36 @@
     <text class="textStyle">{{text}}</text>
   </view>
 </view>-->
+
 <view class="container">
-    <view style="position:fixed;top:0">
-        <scroll-view scroll-x="true" style="white-space: nowrap;height:100px" >
-            <!--<view style="background: red; width: 200px; height: 100px; display: inline-block" ></view>
-            <view style="background: green; width: 200px; height: 100px; display: inline-block"></view>
-            <view style="background: blue; width: 200px; height: 100px; display: inline-block"></view>
-            <view style="background: yellow; width: 200px; height: 100px; display: inline-block"></view>-->
-            <!--<view class=""  wx:key="id" >-->
-            <view wx:for="{{pkgUrls}}" wx:key="{{item.pkgname}}" style="background: {{item.color}}; width: 200px; height: 100px; display: inline-block">
+<!--<view style="position:fixed;top:0">-->
+        <scroll-view scroll-x="true" style="white-space:nowrap;height:100px;position:fixed;top:0" >
+            <view wx:for="{{pkgUrls}}" wx:key="{{item.pkgname}}" style="background: {{item.color}};width: 200px; height: 100px; display: inline-block">
                 <!--<image class="upload_Item_img" src="{{item.imgurl}}" data-id="{{item.id}}" bindtap="changePkg"></image>  -->
-                <view>{{item.pkgname}}</view>  
+                <view>{{item.pkgname}}</view>
             </view>  
-            <!--</view> -->
         </scroll-view>
+        <view class="{{tab_pkg?'show':'hidden'}}" style="position:fixed;top:100px;width:100%">
+            <view class="pick-area">
+                <view class="section" bindtap="sortByPrice">
+                        <view class="section_txt {{sortByPriceSelected?'pick-area-click':''}}">
+                            价格排序
+                        </view>
+                        <view class="arrow_gp">
+                            <view class="arrow_up {{arrow_up?'bc_red_up':'bc_gray_up'}} "></view>
+                            <view class="arrow_down {{arrow_down?'bc_red_down':'bc_gray_down'}}"></view>
+                        </view>
+                </view>
+                <view class="section" bindtap="salesFirst" style="border-left: 1px solid #9E9E9E;">
+                    <view class="{{salesFirstSelected?'pick-area-click':''}}">
+                        销量优先
+                    </view>
+                </view>
+            </view>
+        </view>
+    <!--</view>-->
+    <!--<view style="position:fixed;top:0">
+        
         <view class="{{tab_pkg?'show':'hidden'}}">
             <view class="pick-area">
                 <view class="section" bindtap="sortByPrice">
@@ -35,7 +51,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </view>-->
 <!--<view style="height:130px;width:100%"></view>-->
     <scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore" style="height:{{height}}px">
     <block wx:for-items="{{groups}}" wx:key="item">
