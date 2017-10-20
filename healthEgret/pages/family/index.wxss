@@ -24,8 +24,8 @@
     margin-left: -320rpx;
 }
 .member{
-    height: 160rpx;
-    line-height: 160rpx;
+    height: 90rpx;
+    line-height: 90rpx;
     width: 100%;
     position: relative;
     border-bottom: 1px dashed #E5E1E6;
@@ -40,14 +40,22 @@
     margin-top: -80rpx;
 }
 .name{
-    font-size: 20px;
+    font-size: 18px;
     /*margin-left: 200rpx;*/
     margin-left: 50rpx;
+    display:inline-block;
+    height: 90rpx;
+    /*text-align:center;*/
+    width:80px;
 }
 .h_state{
-    font-size: 20px;
-    margin-left: 16px;
+    font-size: 18px;
+    /*margin-left: 16px;*/
     color: #28C225;
+    display:inline-block;
+    height: 90rpx;
+    /*text-align:center;*/
+    width:150px;
 }
 .telephone,.messages{
     width: 30px;

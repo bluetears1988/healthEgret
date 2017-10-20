@@ -1,5 +1,3 @@
-<!--pages/ordersubmit/imdex.wxml-->
-<!--<text>pages/ordersubmit/imdex.wxml</text>-->
 <view class="gap"></view>
 <form bindsubmit="formSubmit">
 <view wx:if="{{orderInfo.ctype === 'entity'}}">
@@ -10,7 +8,7 @@
     <view class="gap"></view>
 </view>
 <view class="order">
-    <view class="head">
+  <view class="head">
         <text style="margin-left:13px;">1+品质</text>
         <text style="float:right;margin-right:21px;">共{{orderInfo.num}}件</text>
     </view>
@@ -30,7 +28,7 @@
 </view>
 
 <view class="people">
-    <view class="head">
+     <view class="head">
         <text style="margin-left:13px;font-weight:bold">体检人信息</text>
         <text style="float:right;margin-right:21px;">共{{orderInfo.num}}人</text>
     </view>

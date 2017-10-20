@@ -1,18 +1,12 @@
-<!--<view class="container">
-  <view class="textContainer">
-    <text class="textStyle">{{text}}</text>
-  </view>
-</view>-->
-
 <view class="container">
 <!--<view style="position:fixed;top:0">-->
-        <scroll-view scroll-x="true" style="white-space:nowrap;height:100px;position:fixed;top:0" >
+        <!--<scroll-view scroll-x="true" style="white-space:nowrap;height:100px;position:fixed;top:0" >
             <view wx:for="{{pkgUrls}}" wx:key="{{item.pkgname}}" style="background: {{item.color}};width: 200px; height: 100px; display: inline-block">
-                <!--<image class="upload_Item_img" src="{{item.imgurl}}" data-id="{{item.id}}" bindtap="changePkg"></image>  -->
+                <image class="upload_Item_img" src="{{item.imgurl}}" data-id="{{item.id}}" bindtap="changePkg"></image>
                 <view>{{item.pkgname}}</view>
             </view>  
-        </scroll-view>
-        <view class="{{tab_pkg?'show':'hidden'}}" style="position:fixed;top:100px;width:100%">
+        </scroll-view>-->
+        <view class="{{tab_pkg?'show':'hidden'}}" style="position:fixed;top:0;width:100%;">
             <view class="pick-area">
                 <view class="section" bindtap="sortByPrice">
                         <view class="section_txt {{sortByPriceSelected?'pick-area-click':''}}">
@@ -31,52 +25,32 @@
             </view>
         </view>
     <!--</view>-->
-    <!--<view style="position:fixed;top:0">
-        
-        <view class="{{tab_pkg?'show':'hidden'}}">
-            <view class="pick-area">
-                <view class="section" bindtap="sortByPrice">
-                        <view class="section_txt {{sortByPriceSelected?'pick-area-click':''}}">
-                            价格排序
-                        </view>
-                        <view class="arrow_gp">
-                            <view class="arrow_up {{arrow_up?'bc_red_up':'bc_gray_up'}} "></view>
-                            <view class="arrow_down {{arrow_down?'bc_red_down':'bc_gray_down'}}"></view>
-                        </view>
-                </view>
-                <view class="section" bindtap="salesFirst" style="border-left: 1px solid #9E9E9E;">
-                    <view class="{{salesFirstSelected?'pick-area-click':''}}">
-                        销量优先
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>-->
-<!--<view style="height:130px;width:100%"></view>-->
+    <!--<view style="height:20px;width:100%"></view>-->
     <scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore" style="height:{{height}}px">
-    <block wx:for-items="{{groups}}" wx:key="item">
-        <view class="group_item" bindtap="o_p_detail">
+    <block wx:for-items="{{currentClassify.pkgs}}" wx:key="item">
+        <view class="group_item" bindtap="o_p_detail" data-org="{{item.orgName}}" data-card="{{item.cardName}}"
+        data-price="{{item.price}}" data-realprice="{{item.real_price}}">
             <view class="title">
-                {{item.title}}
+                {{item.orgName}}+{{item.cardName}}
             </view>
             <view class="price">
-                <text><text style="font-size:16px">¥</text>{{item.shichang_price}}</text>
+                <text><text style="font-size:16px">¥</text>{{item.real_price}}</text>
             </view>
             <view class="price shichang_price">
-                <text>¥{{item.shichang_price}}</text>
+                <text>¥{{item.price}}</text>
             </view>
             <view class="checkedCount">
-                <view class="haveChecked"><text class="haveChecked_label">已体检：{{item.count}}人</text><text></text></view>
+                <view class="haveChecked"><text class="haveChecked_label">已体检：{{item.sales}}人</text><text></text></view>
                 <view class="open"><text>马上预约></text></view>
             </view>
         </view>
     </block>
     </scroll-view>
-    <view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
+    <!--<view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>-->
     <!--<view class="weui-loadmore weui-loadmore_line">
         <text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无更多数据</text>
     </view>-->
-    <view class="weui-loadmore weui-loadmore_line">
-    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">共有{{num}}个套餐</text>
+    <view class="weui-loadmore weui-loadmore_line" style="height:60px">
+    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">共有{{currentClassify.pkgs.length}}个套餐</text>
 </view>
 </view>

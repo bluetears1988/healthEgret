@@ -3,9 +3,9 @@
 <view class="gap"></view>
 <view class="city_group">
     <view class="head">定位城市</view>
-    <view wx:if="{{open}}" class="city_btns">
-        <view class="citybtn">
-           <text class="city">{{currentCity}}</text>
+    <view wx:if="{{currentCity}}" class="city_btns">
+        <view class="citybtn" data-city="{{currentCity.name}}" bindtap="changeCity" data-location="{{currentCity.location}}">
+           <text class="city">{{currentCity.name}}</text>
         </view>
     </view>
     <view wx:else>
@@ -15,8 +15,8 @@
 <view class="city_group">
     <view class="head">热门城市</view>
     <view wx:if="{{hot}}" class="city_btns">
-        <view wx:for="{{hot}}" class="citybtn" wx:key="item.code">
-            <text class="city">{{item.nm}}</text>
+        <view wx:for="{{hot}}" class="citybtn" wx:key="{{index}}" bindtap="changeCity" data-city="{{item.name}}" data-location="{{item.location}}">
+            <text class="city">{{item.name}}</text>
         </view>
     </view>
     <view wx:else><text>暂无其他</text></view>

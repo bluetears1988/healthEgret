@@ -12,7 +12,8 @@ Page({
         unpayOrderList:[],
         payOrderList:[],
         finishedList:[],
-        user:''
+        user:'',
+        status:["待支付", "已预约","已出报告"]
     },
     onLoad: function (options) {
         var that = this;
@@ -105,10 +106,69 @@ Page({
         })
     },
     tabClick: function (e) {
+        var activeIndex = e.currentTarget.id;
+        console.log('activeIndex', activeIndex);
         this.setData({
             sliderOffset: e.currentTarget.offsetLeft,
             activeIndex: e.currentTarget.id
         });
+
+        var status = '';
+        if(activeIndex === '0'){
+            status = 'all';
+        }else if(activeIndex === '1'){
+            status = 0;
+        }else if(activeIndex === '2'){
+            status = 1;
+        }else{
+            status = 2;
+        }
+        var that = this;
+        wx.showToast({
+            icon: 'loading',
+            success: function () {
+                wx.request({
+                    url: 'https://www.afamilyhealth.cn/api/order',
+
+                    data: {
+                        'user':that.data.user,
+                        'status':status
+                    },
+
+                    success: (res) => {
+                        console.dirxml(res);
+
+                        if(activeIndex === '0'){
+                            that.setData({
+                                allList: res.data.data
+                            });
+                        }else if(activeIndex === '1'){
+                            that.setData({
+                                unpayOrderList: res.data.data
+                            });
+                        }else if(activeIndex === '2'){
+                            that.setData({
+                                payOrderList: res.data.data
+                            });
+                        }else{
+                            that.setData({
+                                finishedList: res.data.data
+                            });
+                        }
+
+                        wx.hideToast();
+                    },
+
+                    fail: (res) => {
+                        // console.dirxml(res.data);
+                    },
+
+                    complete: (res) => {
+                        // console.dirxml(res.data);
+                    }
+                });
+            }
+        })
     },
     orderdetail: function(e){
         var id = e.currentTarget.id;
@@ -133,56 +193,66 @@ Page({
         //     status = 2;
         //     arr = 'finishedList';
         // }
+        wx.showModal({
+          title: '提示',
+          content: '确认删除该订单？',
+          success: function(res) {
+            if (res.confirm) {
+              wx.showToast({
+                title:'删除中',
+                icon: 'loading',
+                success: function () {
+                    wx.request({
+                        url: 'https://www.afamilyhealth.cn/api/order/' + e.currentTarget.id,
+                        method:'DELETE',
 
-        wx.showToast({
-            title:'删除中',
-            icon: 'loading',
-            success: function () {
-                wx.request({
-                    url: 'https://www.afamilyhealth.cn/api/order/' + e.currentTarget.id,
-                    method:'DELETE',
+                        success: (res) => {
+                            console.dirxml(res);
+                            // wx.request({
+                            //     url: 'https://www.afamilyhealth.cn/api/order',
 
-                    success: (res) => {
-                        console.dirxml(res);
-                        // wx.request({
-                        //     url: 'https://www.afamilyhealth.cn/api/order',
+                            //     data: {
+                            //         'user':that.data.user,
+                            //         'status':status
+                            //     },
 
-                        //     data: {
-                        //         'user':that.data.user,
-                        //         'status':status
-                        //     },
+                            //     success: (res) => {
+                            //         console.dirxml(res);
+                            //         that.setData({
+                            //             arr: res.data.data
+                            //         });
+                            //         wx.hideToast();
+                            //     },
 
-                        //     success: (res) => {
-                        //         console.dirxml(res);
-                        //         that.setData({
-                        //             arr: res.data.data
-                        //         });
-                        //         wx.hideToast();
-                        //     },
+                            //     fail: (res) => {
+                            //         // console.dirxml(res.data);
+                            //     },
 
-                        //     fail: (res) => {
-                        //         // console.dirxml(res.data);
-                        //     },
+                            //     complete: (res) => {
+                            //         // console.dirxml(res.data);
+                            //     }
+                            // });
+                            wx.navigateTo({
+                                // url: '/pages/orderlist/index?activeIndex=' + that.data.activeIndex
+                                url: '/pages/orderlist/index'
+                            }) 
+                        },
 
-                        //     complete: (res) => {
-                        //         // console.dirxml(res.data);
-                        //     }
-                        // });
-                        wx.navigateTo({
-                            // url: '/pages/orderlist/index?activeIndex=' + that.data.activeIndex
-                            url: '/pages/orderlist/index'
-                        }) 
-                    },
+                        fail: (res) => {
+                            // console.dirxml(res.data);
+                        },
 
-                    fail: (res) => {
-                        // console.dirxml(res.data);
-                    },
-
-                    complete: (res) => {
-                        // console.dirxml(res.data);
-                    }
-                });
-            }
-        })
+                        complete: (res) => {
+                            // console.dirxml(res.data);
+                        }
+                    });
+                }
+            })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+        
     }
 });

@@ -164,8 +164,9 @@
                           </label>
                       <image src="{{item.img}}" id="{{item._id}}" data-org="{{item.name}}" data-real_price="{{item.currentCard.real_price}}" bindtap="itemChecked"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
                     </view>
-                    <view class="weui-cell__bd" bindtap="o_p_detail" id="{{item._id}}">
-                        <view class="info" bindtap="o_p_detail" id="{{item._id}}">
+                    <view class="weui-cell__bd" bindtap="o_p_detail" data-org="{{item.name}}" data-card="{{item.currentCard.name}}"
+                    data-price="{{item.currentCard.price}}" data-realprice="{{item.currentCard.real_price}}">
+                        <view class="info">
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
                         <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
                         </view>
@@ -174,8 +175,8 @@
                           <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.currentCard.price}}</text>
                           <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
                           <text style="font-size:12px;color:#666666">{{item.score}}分</text>
-                          <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
-                          <text style="font-size:12px;color:#666666">{{item.distance}}Km</text>
+                          <!--<text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
+                          <text style="font-size:12px;color:#666666">{{item.distance}}Km</text>-->
                         </view>
                       </view>
                     </view>

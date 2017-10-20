@@ -3,42 +3,42 @@ Page({
     priceSortUp:false,
     filterShow:false,
     text:"Page packageDetail",
-    groups:[
-      {
-        title:"adfsdfsdfdsfeffef",
-        shichang_price:"9000",
-        lowest_price:"980",
-        count:200
-      },
-      {
-        title:"adfsdfsdfdsfeffeffsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdffsfsffs",
-        shichang_price:"900",
-        lowest_price:"680",
-        count:200
-      },
-      {
-        title:"adfsdfsdfdsfeffef",
-        shichang_price:"900",
-        lowest_price:"680",
-        count:200
-      },
-      {
-        title:"adfsdfsdfdsfeffef",
-        shichang_price:"900",
-        lowest_price:"680",
-        count:200
-      },
-      {
-        title:"adfsdfsdfdsfeffef",
-        shichang_price:"900",
-        lowest_price:"680",
-        count:200
-    },{
-        title:"adfsdfsdfdsfeffef",
-        shichang_price:"900",
-        lowest_price:"680",
-        count:200
-    }],
+    // groups:[
+    //   {
+    //     title:"adfsdfsdfdsfeffef",
+    //     shichang_price:"9000",
+    //     lowest_price:"980",
+    //     count:200
+    //   },
+    //   {
+    //     title:"adfsdfsdfdsfeffeffsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdffsfsffs",
+    //     shichang_price:"900",
+    //     lowest_price:"680",
+    //     count:200
+    //   },
+    //   {
+    //     title:"adfsdfsdfdsfeffef",
+    //     shichang_price:"900",
+    //     lowest_price:"680",
+    //     count:200
+    //   },
+    //   {
+    //     title:"adfsdfsdfdsfeffef",
+    //     shichang_price:"900",
+    //     lowest_price:"680",
+    //     count:200
+    //   },
+    //   {
+    //     title:"adfsdfsdfdsfeffef",
+    //     shichang_price:"900",
+    //     lowest_price:"680",
+    //     count:200
+    // },{
+    //     title:"adfsdfsdfdsfeffef",
+    //     shichang_price:"900",
+    //     lowest_price:"680",
+    //     count:200
+    // }],
     pkgUrls:[{
       imgurl:"",
       pkgname:"入职体检",
@@ -61,7 +61,8 @@ Page({
     arrow_up:false,
     arrow_down:false,
     height:'',
-    num:12
+    num:12,
+    currentClassify:{}
   },
   backHome: function(e){
     wx.navigateTo({
@@ -70,11 +71,40 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数\
-    var screen_height = wx.getSystemInfoSync().windowHeight - 225;
+    var screen_height = wx.getSystemInfoSync().windowHeight - 170;
 
     this.setData({
       height:screen_height
     });
+    var that = this;
+    wx.showToast({
+      icon: 'loading',
+      success: function (){
+        wx.request({
+            url: 'https://www.afamilyhealth.cn/api/classify',
+
+            data: {
+              _id:options.id
+            },
+
+            success: (res) => {
+              console.dirxml("classify", res.data.data[0]);
+              that.setData({
+                currentClassify:res.data.data[0]
+              });
+
+            },
+
+            fail: (res) => {
+              // console.dirxml(res.data);
+            },
+
+            complete: (res) => {
+              // console.dirxml(res.data);
+            }
+        });
+      }
+    })
   },
   onReady:function(){
     // 页面渲染完成
@@ -117,7 +147,7 @@ Page({
     wx.showToast({
       icon: 'loading',
       success: function (){
-        wx.request({
+        // wx.request({
             // url: 'https://www.afamilyhealth.cn/api/card',
 
             // data: {
@@ -138,7 +168,7 @@ Page({
             // complete: (res) => {
             //   // console.dirxml(res.data);
             // }
-        });
+        // });
       }
     });
   },
@@ -212,8 +242,12 @@ Page({
   //   })
   // },
   o_p_detail: function(e){
-  wx.navigateTo({
-        url: '/pages/pckoforg/index'
-    }) 
-  },
+    // var org = e.currentTarget.dataset.org;
+    // var card = e.currentTarget.dataset.card;
+    // var price = e.currentTarget.dataset.price;
+    // var realprice = e.currentTarget.dataset.realprice;
+    wx.navigateTo({
+          url: '/pages/pckoforg/index?card=' + e.currentTarget.dataset.card + '&org=' + e.currentTarget.dataset.org + '&dis=' + 0 + '&from=classify&price=' + e.currentTarget.dataset.price + '&realprice=' + e.currentTarget.dataset.realprice
+      }) 
+  }
 })

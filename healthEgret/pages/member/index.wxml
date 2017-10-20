@@ -3,34 +3,48 @@
 <view class="member">
     <view class="info">
         <!--<image id="{{member.id}}" src="{{member.portrait}}" mode="scaleToFill" class="portrait"></image>-->
-        <text class="name">{{member.name}}</text>
+        <text class="name">{{member.nickName}}</text>
         <text class="h_state">健康状况 {{member.score}}分</text>
-        <image bindtap="call" data-telephone="{{member.telephone}}" src="../../images/telephone.png" mode="scaleToFill" class="telephone"></image>
+        <image bindtap="makePhoneCall" data-telephone="{{member.telephone}}" src="../../images/telephone.png" mode="scaleToFill" class="telephone"></image>
         <image bindtap="send" data-telephone="{{member.telephone}}" src="../../images/message.png" mode="scaleToFill" class="messages"></image>
     </view>
 </view>
 <view class="tips">健康小提示:</view>
 <view class="records">
     <view class="title">体检记录</view>
-    <view wx:if="{{member.details}}">
-        <view class="detail" wx:for="{{member.details}}" wx:for-index="year" wx:key="{{index}}">
+    <view wx:if="{{reports}}">
+        <!--<view class="detail" wx:for="{{reports}}" wx:for-index="year" wx:key="{{index}}">
             <view class="year">{{year}}</view>
-            <view wx:for="{{item}}" wx:for-item="package" wx:key="{{index}}"> 
-                <view class="weui-cells weui-cells_after-title" id="{{package.rid}}" bindtap="reportDetail">
+            <view wx:for="{{item}}" wx:for-item="package" wx:key="{{index}}">
+                <view class="weui-cells weui-cells_after-title" id="{{item._id}}" bindtap="reportDetail">
                     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                         <view class="weui-cell__hd">
-                           {{package.time}}
+                           {{item.date}}
                         </view>
-                        <view class="weui-cell__bd" style="margin-left:20px;color:#28C225">{{package.nm}}</view>
+                        <view class="weui-cell__bd" style="margin-left:20px;color:#28C225">{{item.name}}</view>
                         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                     </view>
                 </view>
             </view>
+        </view>-->
+        <view class="detail" wx:for="{{reports}}" wx:for-index="year" wx:key="{{index}}">
+            <!--<view class="year">{{year}}</view>
+            <view wx:for="{{item}}" wx:for-item="package" wx:key="{{index}}"> -->
+                <view class="weui-cells weui-cells_after-title" id="{{item._id}}" bindtap="reportDetail">
+                    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                        <view class="weui-cell__hd">
+                           {{item.date}}
+                        </view>
+                        <view class="weui-cell__bd" style="margin-left:20px;color:#28C225">{{item.name}}</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                    </view>
+                </view>
+            <!--</view>-->
         </view>
     </view>
 </view>
-<view class="backFamily"><image src="../../images/family.png" bindtap="backFamily"></image></view>
-<button>取消关注</button>
+<!--<view class="backFamily"><image src="../../images/family.png" bindtap="backFamily"></image></view>-->
+<button bindtap="cancleFocus" id="{{member.id}}">取消关注</button>
 <view class="weui-loadmore weui-loadmore_line">
-    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经有{{num}}次体检</text>
+    <text class="weui-loadmore__tips weui-loadmore__tips_in-line">已经有{{reports.length}}次体检</text>
 </view>
