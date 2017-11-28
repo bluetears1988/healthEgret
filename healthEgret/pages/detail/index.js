@@ -115,7 +115,7 @@ Page({
   },
   backHome: function(e){
     console.log("23234");
-    wx.switchTab({
+    wx.navigateTo({
           url: '/pages/index/index'
       })
   },
@@ -197,13 +197,9 @@ Page({
       }) 
   },
   o_p_detail: function(e){
-    // console.dirxml(e.currentTarget.dataset.org);
-    // var org = e.currentTarget.dataset.org;
-    // var card = e.currentTarget.dataset.card;
-    // var price = e.currentTarget.dataset.price;
-    // var realprice = e.currentTarget.dataset.realprice;
+    var id = e.currentTarget.id;
     wx.navigateTo({
-          url: '/pages/pckoforg/index?card=' + e.currentTarget.dataset.card + '&org=' + e.currentTarget.dataset.org + '&dis=' + 0 + '&from=org&price=' + e.currentTarget.dataset.price + '&realprice=' + e.currentTarget.dataset.realprice
+          url: '/pages/pckoforg/index?orgid=' + id + '&cardnm=' + this.data.card.name
       }) 
   },
   itemChecked: function(e){

@@ -37,7 +37,7 @@
     align-items: center; 
     margin: 10rpx; 
     border-radius: 30%; 
-    height: 65%; 
+    height: 75%; 
     background:#00CD0D; 
 } 
   

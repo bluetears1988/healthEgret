@@ -1,3 +1,5 @@
+<!--pages/orderdetail/index.wxml-->
+<!--<text>pages/orderdetail/index.wxml</text>-->
 <view class="gap"></view>
 <view class="ordercode">订单号：{{orderInfo._id}}</view>
 <view wx:if="{{orderInfo.ctype !== 'elecard'}}">
@@ -29,6 +31,7 @@
     <view class="head">体检人信息({{index + 1}})</view>
     <view class="info">
         <view class="info_item"><text style="color:#9E9E9E">体检人：</text><text>{{item.name}}</text></view>
+        <!--<view class="info_item"><text style="color:#9E9E9E">性别：</text><text></text></view>-->
         <view class="info_item"><text style="color:#9E9E9E">手机号：</text><text>{{item.phone}}</text></view>
         <view class="info_item"><text style="color:#9E9E9E">身份证：</text><text>{{item.idcard}}</text></view>
         <view class="info_item"><text style="color:#9E9E9E">体检时间：</text><text>{{item.checkDate}}</text></view>
@@ -60,6 +63,7 @@
         <view class="info_item"><text style="color:#9E9E9E">报告领取：</text><text>{{orderInfo.reportMethod === 0?'纸质报告':(orderInfo.reportMethod === 1?'电子报告':'两者都要')}}</text></view>
         <view class="info_item"><text style="color:#9E9E9E">备注：</text><text>{{orderInfo.remarks}}</text></view>
     </view>
+    <!--<view class="gap"></view>-->
 </view>
 <view style="height:90rpx;background-color:white;width:100%;"></view>
 <view class="footer">

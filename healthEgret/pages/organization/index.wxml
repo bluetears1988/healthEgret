@@ -2,34 +2,34 @@
 <view class="title">
     <view class="title_bd"></view>
     <view class="title_txt">
-        <view class="txt_item" id="{{organizes._id}}" style="margin-top:25rpx;"><text style="opcity:1;">{{organizes.name}}</text></view>
+        <view class="txt_item" id="{{org.id}}" style="margin-top:25rpx;"><text style="opcity:1;">{{org.nm}}</text></view>
         <view class="txt_item">
-            <text>[{{hosipital_type[organizes.type]}}]</text>
-            <text style="margin-left:10px;">{{organizes.score}}分</text>
-            <text wx:if="{{organizes.num}}" style="margin-left:10px;">{{organizes.num}}人预约</text>
+            <text>[{{org.type}}]</text>
+            <text style="margin-left:10px;">{{org.score}}分</text>
+            <text style="margin-left:10px;">{{org.num}}人预约</text>
         </view>
     </view>
 </view>
 <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-            <image src="../../images/org.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            <image src="../../images/kefu.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
-        <view class="weui-cell__bd" style="width:95%;text-overflow:ellipsis;overflow:hidden" bindtap="showIntroduce">机构介绍</view>
+        <view class="weui-cell__bd" style="width:95%;text-overflow:ellipsis;overflow:hidden">机构介绍</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </view>
     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="../../images/address.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
-        <view class="weui-cell__bd" style="text-overflow:ellipsis" style="width:95%;text-overflow:ellipsis;overflow:hidden">{{organizes.address}}</view>
+        <view class="weui-cell__bd" style="text-overflow:ellipsis" style="width:95%;text-overflow:ellipsis;overflow:hidden">{{org.address}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </view>
     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="../../images/kefu.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
-        <view class="weui-cell__bd" style="width:95%;text-overflow:ellipsis;overflow:hidden">{{organizes.telephone}}</view>
+        <view class="weui-cell__bd" style="width:95%;text-overflow:ellipsis;overflow:hidden">{{org.telephone}}</view>
     </view>
 </view>
 <view class="gap"></view>
@@ -38,32 +38,32 @@
     <view class="bd mtb10">
         <view class="b_txt">1.<text style="color:#28C225;">体检时间：</text>周一至周六7点到10点</view>
         <view class="b_txt">2.<text style="color:#28C225;">预约时间：</text>至少提前一个工作日预约</view>
-        <view class="b_txt">3.<text style="color:#28C225;">体检地点：</text>{{organizes.address}}</view>
+        <view class="b_txt">3.<text style="color:#28C225;">体检地点：</text>{{org.address}}</view>
         <view class="b_txt">4.<text style="color:#28C225;">体检凭证：</text>体检当天凭借预定成功短信，报体检者姓名或者手机号码享受体检服务</view>
         <view class="b_txt">5.<text style="color:#28C225;">订单退改：</text>体检日前一天更改体检日期，无需支付任何费用</view>
     </view>
 </view>
 <view class="gap"></view>
-<view wx:if="{{organizes.cards}}">
+<view wx:if="{{org.pkgnum}}">
     <view class="block">
-        <view class="head">体检方案 (共{{organizes.cards.length}}个)</view>
+        <view class="head">体检方案 (共{{org.pkgnum}}个)</view>
         <view class="bd">
-            <view wx:for="{{organizes.cards}}" wx:key="{{index}}">
+            <view wx:for="{{projects}}" wx:key="{{index}}">
                 <view class="project">
-                    <image src="{{item.img}}" id="{{item._id}}" mode="scaleToFill"></image>
-                    <view class="info"  id="{{item._id}}">
+                    <image src="{{item.img}}" id="{{item.id}}" mode="scaleToFill"></image>
+                    <view class="info"  id="{{item.id}}">
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
-                            <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
+                            <text style="font-size:16px;font-weight:bold">{{item.nm}}</text>
                         </view>
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
-                            <text style="font-size:14px;color:#F5053D;">￥{{item.real_price}}</text>
+                            <text style="font-size:14px;color:#F5053D;">￥{{item.zprice}}</text>
                             <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.price}}</text>
                         </view>
                     </view>
-                    <button class="p_btn" bindtap="o_p_detail" data-name="{{item.name}}" data-price="{{item.price}}" data-realprice="{{item.real_price}}">预约</button>
+                    <button class="p_btn" bindtap="o_p_detail">预约</button>
                 </view>
             </view>
-            <view class="ft" bindtap="more_project" wx:if="{{organizes.cards.length > 3}}">更多<i class="bottom-arrow"></i></view>
+            <view class="ft" bindtap="more_project">更多<i class="bottom-arrow"></i></view>
         </view>
     </view>
 </view>
@@ -79,11 +79,11 @@
     </view>
 </view>
 <view class="gap"></view>
-<view wx:if="{{organizes.msgs}}">
+<view wx:if="{{org.msgnum}}">
     <view class="block">
-        <view class="head">用户评价 (共{{organizes.msgs.length}}条)</view>
+        <view class="head">用户评价 (共{{org.msgnum}}条)</view>
         <view class="bd">
-            <view wx:for="{{organizes.msgs}}" wx:key="{{index}}">
+            <view wx:for="{{messages}}" wx:key="{{index}}">
                 <view class="message">
                     <view class="info">
                         <view class="info_item">
@@ -101,12 +101,8 @@
             </view>
             <view class="ft" bindtap="all_comment">点击查看全部评论<i class="bottom-arrow"></i></view>
          </view>
-        <!--<view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>-->
+        <view class="backHome" bindtap="backHome"><image src="../../images/backhome.png" bindtap="backHome"></image></view>
     </view>
 </view>
 <view class="gap"></view>
-</view>
-<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-    <view style="margin:0 auto;width:90%;font-size:14px;display: -webkit-box !important;overflow: hidden;text-overflow: ellipsis;word-break: break-all;-webkit-box-orient: vertical;-webkit-line-clamp:10">{{organizes.introduce}}</view>
 </view>

@@ -23,7 +23,7 @@
 .page-body{
   width: 90%;
   margin:0 auto;
-  margin-top: 30px;
+  margin-top: 145px;
 }
 .group_item{
     width: 100%;
@@ -103,7 +103,7 @@
 .section{
   display: inline-block;
   text-align: center;
-  //padding: 10rpx;
+  padding: 10rpx;
   width: 50%;
 }
 .pick-area{

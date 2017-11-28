@@ -1,7 +1,6 @@
 // pages/comment/index.js
 Page({
   data:{
-    org:"万年县人民医院",
     msgnum:100,
     messages:[{
       "account":"18810296418",

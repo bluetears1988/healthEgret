@@ -26,11 +26,11 @@
     margin-top: -80rpx;
 }
 .name{
-    font-size: 18px;
-    margin-left: 40rpx;
+    font-size: 20px;
+    margin-left: 50rpx;
 }
 .h_state{
-    font-size: 18px;
+    font-size: 20px;
     margin-left: 8px;
     color: #28C225;
 }

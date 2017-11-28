@@ -52,54 +52,20 @@
     <view class="gap"></view>
     <view class="feature">
       <view class="title">套餐特色</view>
-      <view style="">
-       <view wx:for="{{card.feature}}" wx:key="{{index}}" style="display:inline-block;width:33%;text-align:center">
-          <view style="font-size:13px;">特色叫法</view>
-           <view style="font-size:12px;color:gray">{{item}}</view>
-       </view>
-      </view>
     </view>
     <view class="useflow">
-      <view class="m_title">使用流程</view>
-      <view style="font-size:14px">选择体检机构-->立即预约-->补充信息-->提交-->支付</view>
+      <view class="">使用流程</view>
     </view>
     <view class="gap"></view>
     <view class="project">
       <view class="p_title">体检项目内容</view>
-      <view class="table">
-        <view class="tr bg-w">
-          <view class="th" style="border-right: 1px dashed white;width:20%">序号</view>
-          <view class="th" style="border-right: 1px dashed white;width:45%">检查项目</view>
-          <view class="th" style="width:100%">项目内容</view>
-        </view>
-        <block wx:for="{{card.project}}" wx:key="{{index}}">
-          <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-            <view class="td" style="width:20%">{{index + 1}}</view>
-            <view class="td" style="width:45%">{{item}}</view>
-            <view class="td" style="width:100%;text-align: left;">{{item}}</view>
-          </view>
-          <view class="tr" wx:else>
-            <view class="td" style="width:20%">{{index + 1}}</view>
-            <view class="td" style="width:45%">{{item}}</view>
-            <view class="td" style="width:100%;text-align: left;">{{item}}</view>
-          </view>
-        </block>
-      </view>
-      <!--<view class="p_content">
+      <view class="p_content">
         <view class="">套餐特色</view>
-      </view>-->
+      </view>
     </view>
-    <view class="matters">
-      <view class="m_title">注意事项</view>
-      <view class="bd mt5" style="padding-bottom:10px">
-        <view class="b_txt">1.预约时请您认真核对体检人的身份信息</view>
-        <view class="b_txt">2.体检当天请务必携带体检人身份证件</view>
-        <view class="b_txt">3.体检前一天晚上19:30后不再进食，22:00至体检当天采血前禁止饮水</view>
-        <view class="b_txt">4.体检当天凭借预定成功短信，报体检者姓名或者手机号码享受体检服务</view>
-        <view class="b_txt">5.采血截止时间为上午10:30</view>
-     </view>
+    <view class="useflow">
+      <view class="">注意事项</view>
     </view>
-    <view style="height:106rpx;width:100%"></view>
     <!--不可删<view class="backHome" bindtap="backTop"><image src="../../images/backhome.png" bindtap="backTop"></image></view>-->
     <view class="footer">
       <view class="home" bindtap="backHome">
@@ -115,7 +81,6 @@
         <view class="cart_txt">体检车</view>
       </view>-->
       <!--<view class="addCart">加入体检车</view>-->
-
       <view class="order" bindtap="showModal">立即预约</view>
       <view class="s_organize {{selectedOrg?'fs_12':''}}" bindtap="selectOrg">{{selectedOrg?org:'选择体检机构'}}</view>
     </view>
@@ -164,9 +129,8 @@
                           </label>
                       <image src="{{item.img}}" id="{{item._id}}" data-org="{{item.name}}" data-real_price="{{item.currentCard.real_price}}" bindtap="itemChecked"  mode="scaleToFill" style="margin-right: 8px;vertical-align: middle;width:60px; height: 60px;border-radius:50%;"></image>
                     </view>
-                    <view class="weui-cell__bd" bindtap="o_p_detail" data-org="{{item.name}}" data-card="{{item.currentCard.name}}"
-                    data-price="{{item.currentCard.price}}" data-realprice="{{item.currentCard.real_price}}">
-                        <view class="info">
+                    <view class="weui-cell__bd" bindtap="o_p_detail" id="{{item._id}}">
+                        <view class="info" bindtap="o_p_detail" id="{{item._id}}">
                         <view class="info_item" style="display:flex;flex-direction:row;align-items:center">
                         <text style="font-size:16px;font-weight:bold">{{item.name}}</text>
                         </view>
@@ -175,8 +139,8 @@
                           <text style="font-size:14px;text-decoration:line-through;margin-left:5px;color:#666666;">￥{{item.currentCard.price}}</text>
                           <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
                           <text style="font-size:12px;color:#666666">{{item.score}}分</text>
-                          <!--<text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
-                          <text style="font-size:12px;color:#666666">{{item.distance}}Km</text>-->
+                          <text style="font-size:12px;color:#666666;margin-left:5px;margin-right:5px;">|</text>
+                          <text style="font-size:12px;color:#666666">{{item.distance}}Km</text>
                         </view>
                       </view>
                     </view>

@@ -201,7 +201,6 @@
 }
 .commodity_attr_box{
   top:0;
-  height:600rpx;
 }
 .box_slogan{
   font-size: 14px;

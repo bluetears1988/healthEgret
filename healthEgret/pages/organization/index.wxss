@@ -158,11 +158,3 @@
     top:10px;  
     left:-6px;  
 }
-.commodity_attr_box{
-  left:50%;
-  top:50%;
-  width:650rpx;
-  height:500rpx;
-  margin-top:-250rpx;
-  margin-left:-325rpx;
-}

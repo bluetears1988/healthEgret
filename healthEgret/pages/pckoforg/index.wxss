@@ -75,7 +75,6 @@
     color: white;
     text-align: center;
     line-height: 106rpx;
-    left: 0;
 }
 .head{
     width: 688rpx;
@@ -133,7 +132,6 @@
    font-size: 12px;
    margin: auto;
    border-bottom: 1px solid #9E9E9E;
-   /*position: relative;*/
 }
 .money{
    width: 688rpx; 
@@ -141,9 +139,9 @@
    /*line-height: 80rpx;*/
    font-size: 12px;
    margin: auto;
-   clear: both;
    /*border-bottom: 1px solid #9E9E9E;*/
 }
+
 .ctn{
     width: 100%;
     

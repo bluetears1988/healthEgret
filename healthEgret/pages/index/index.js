@@ -57,8 +57,8 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: '一家健康小程序',
-      path: '/pages/index/index',
+      title: '一家健康 一生守护',
+      path: '/page/user?id=123',
       success: function(res) {
         // 转发成功
       },
@@ -222,82 +222,7 @@ Page({
       //   })
       // }.bind(this), 200)
   },
-  onShow:function(){
-    // 页面显示
-    console.log('onShow');
-    var app = getApp()
-    var cityInfo = app.globalData.cityInfo;
-    console.dirxml("cityInfo",cityInfo);
-    var that = this;
-
-    if(cityInfo){
-        that.setData({ address: cityInfo.city, currentCity: cityInfo.city});
-        let city = cityInfo.city || '';
-        let data_insti = cityInfo.location?{city:city,location:cityInfo.location}:{city:city};
-        // let localtion = cityInfo.location?true:false;
-        wx.showToast({
-          icon: 'loading',
-          success: function () {
-              wx.request({
-                url: 'https://www.afamilyhealth.cn/api/card',
-
-                data: {
-                  city:city
-                },
-
-                success: (res) => {
-                  console.dirxml("infos", res.data.data);
-                  that.setData({ infos: res.data.data });
-                  wx.hideToast();
-                },
-
-                fail: (res) => {
-                  // console.dirxml(res.data);
-                },
-
-                complete: (res) => {
-                  // console.dirxml(res.data);
-                }
-              });
-
-              wx.request({
-                url: 'https://www.afamilyhealth.cn/api/institution',
-
-                data: cityInfo.location?{city:city,location:cityInfo.location}:{city:city},
-
-                success: (res) => {
-                  console.dirxml("o_infos", res.data.data);
-                  var result = [];
-                  if(cityInfo.location){
-                    for(var i = 0; i < res.data.data.length; i++){
-                      res.data.data[i].dis = (res.data.data[i].dis/10000).toFixed(2);
-                    }
-                    that.setData({ o_infos: res.data.data })
-                  }else{
-                    for(var i = 0; i < res.data.data.length; i++){
-                      result.push({
-                        dis:0,
-                        obj:res.data.data[i]
-                      });
-                    }
-                    that.setData({ o_infos: result })
-                  }
-                  
-                },
-
-                fail: (res) => {
-                  // console.dirxml(res.data);
-                },
-
-                complete: (res) => {
-                  // console.dirxml(res.data);
-                }
-            });
-          }
-        })
-    }
-  },
-  onLoad: function (options) {
+  onLoad: function () {
     console.log('onLoad')
     var that = this;
     wx.getSystemInfo({
@@ -368,18 +293,18 @@ Page({
                 },
 
                 success: (res) => {
-                    let city = res.data.regeocode.addressComponent.city;
-                    let township = res.data.regeocode.addressComponent.township;
-                    let streetnumber = res.data.regeocode.addressComponent.streetNumber.streetnumber;
-                    let street = res.data.regeocode.addressComponent.streetNumber.street;
-                    let streetinfo = street?street:'' + streetnumber?streetnumber:'';
-                    let info = city + township + streetinfo;
-                    console.dirxml(city);
-                    that.setData({ address: info,currentCity:city});
+                  let city = res.data.regeocode.addressComponent.city;
+                  let township = res.data.regeocode.addressComponent.township;
+                  var streetnumber = res.data.regeocode.addressComponent.streetNumber.streetnumber;
+                  var street = res.data.regeocode.addressComponent.streetNumber.street;
+                  let streetinfo = street?street:'' + streetnumber?streetnumber:'';
+                  let info = city + township + streetinfo;
+                  that.data.currentCity = city;
+                  console.dirxml(city);
+                  that.setData({ address: info });
 
-                    let location = latitude + ',' + longitude;
 
-                    wx.request({
+                  wx.request({
                       url: 'https://www.afamilyhealth.cn/api/card',
 
                       data: {
@@ -406,14 +331,11 @@ Page({
 
                       data: {
                         city:city,
-                        location:location
+                        location:latitude + ',' + longitude
                       },
 
                       success: (res) => {
                         console.dirxml("o_infos", res.data.data);
-                        for(var i = 0; i < res.data.data.length; i++){
-                          res.data.data[i].dis = (res.data.data[i].dis/10000).toFixed(2);
-                        }
                         that.setData({ o_infos: res.data.data })
                       },
 
@@ -493,17 +415,13 @@ Page({
       }
   },
   change_city: function(e){
-    // console.dirxml(e.currentTarget);
-    var city = e.currentTarget.dataset.city;
     wx.navigateTo({
-        url: '../city/index?city=' + city
+        url: '../city/index'
     })
   },
   o_detail: function(e){
-    var id = e.currentTarget.id;
-    var dis = e.currentTarget.dataset.dis;
     wx.navigateTo({
-        url: '../organization/index?id=' + id + '&dis=' + dis
+        url: '../organization/index'
     })
   },
   sexyRadioChange: function(e) {

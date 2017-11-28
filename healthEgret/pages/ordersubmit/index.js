@@ -1,6 +1,15 @@
 // pages/ordersubmit/index.js
 Page({
   data:{
+    // item:{
+    //   "img":"http://p0.meituan.net/165.220/movie/02ac72c0e8ee2987f7662ad921a2acc7999433.jpg",
+    //   "id":12,
+    //   "nm":"妇女专项体检套餐",
+    //   "ctype":"短信",
+    //   "zprice":"198",
+    //   "num":1,
+    //   "organize":"万年县人民医院"
+    // },
     orderInfo:{},
     reportArray:["纸质报告","电子报告","两者都要"],
     payArray:["在线支付","到院付款"],
@@ -119,7 +128,7 @@ Page({
                       icon:"success",
                       duration:300,
                       success: function(){
-                        wx.redirectTo({
+                        wx.navigateTo({
                             url: '../payment/index?id=' + res._id +'&card=' + that.data.orderInfo['card'] + '&org=' + that.data.orderInfo['org'] 
                             + '&num=' + that.data.orderInfo['num'] + '&oneprice=' + that.data.orderInfo['oneprice'] + '&ctype=' + that.data.orderInfo['ctype']
                         })

@@ -33,14 +33,14 @@
 }
 .project_info .head{
     height: 80rpx;
-    line-height:80rpx;
+    line-height:80rpx; 
     padding-left: 22px;
     border-bottom: 1px solid #9E9E9E;
-    box-sizing:border-box;
+
 }
 .project_info .info{
     font-size: 14px;
-    /*width: 100%;*/
+    width: 100%;
     padding-left: 22px;
     /*height: 155rpx;*/
     margin-top: 20rpx;

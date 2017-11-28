@@ -1,9 +1,9 @@
 <!--pages/comment/index.wxml-->
 <!--<text>pages/comment/index.wxml</text>-->
-    <view class="head">【{{org}}】用户评价 (共{{msgnum}}条)</view>
+    <view class="head">用户评价 (共{{msgnum}}条)</view>
     <scroll-view class="list" bindscrolltolower="loadMore" scroll-y="true">
     <view class="bd">
-        <view wx:for="{{messages}}" wx:key="{{index}}">
+        <view wx:for="{{messages}}">
         <view class="message">
                 <view class="info">
                     <view class="info_item">

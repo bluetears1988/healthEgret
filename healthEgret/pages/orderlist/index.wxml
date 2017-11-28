@@ -14,39 +14,6 @@
             <view class="weui-tab__panel">
                 <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
                      <view wx:if="{{allList}}">
-                        <view class="ctn" wx:for="{{allList}}" wx:key="item._id">
-                            <view class="gap"></view>
-                            <view class="item">
-                                <view class="head" id="{{item._id}}" bindtap="orderdetail">
-                                    <view class="time">
-                                        <view>1+品质</view>
-                                        <view>{{item.bookDate}}</view>
-                                    </view>
-                                    <text class="unpaid">{{status[item.status]}}</text>
-                                </view>
-                                <view class="bd" id="{{item._id}}" bindtap="orderdetail">
-                                    <image src="{{item.img}}" mode="scaleToFill"></image>
-                                    <view class="info">
-                                        <view class="info_item" style="font-weight:bold">{{item.card}}</view>
-                                        <view class="info_item" style="color:#8A868A">{{item.ctype === 'elecard'?'电子卡':'实体卡'}}-{{item.org.name}}</view>
-                                        <!--<view class="info_item" style="color:#8A868A"></view>-->
-                                        <view class="info_item" style="color:#FF4081">￥{{item.oneprice}}</view>
-                                    </view>
-                                    <view class="number"> 
-                                        <text class="">共{{item.num}}件</text>
-                                        <text class="p_num">></text>
-                                    </view>
-                                </view>
-                                <view class="btns">
-                                    <text>总价：</text><text style="color:#F5053D;">￥{{item.num * item.oneprice}}.0</text>
-                                    <view class="btn_group">
-                                        <button class="pay paybtn">支付</button>
-                                        <button class="change">更改</button>
-                                        <button class="cancal" bindtap="cancelOrder" id="{{item._id}}">取消</button>
-                                    </view>
-                                </view>
-                            </view>
-                        </view>
                      </view>
                      <view wx:else class="weui-loadmore weui-loadmore_line"><text class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</text></view>
                      <view class="weui-loadmore weui-loadmore_line">

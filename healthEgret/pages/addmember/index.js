@@ -42,48 +42,4 @@ Page({
       telephone : e.detail.value
     })
   },
-  formSubmit:function(e){
-      var that = this;
-      wx.getUserInfo({
-        success: function (res) {
-          var user = res.userInfo.nickName;
-          var postData = Object.assign(e.detail.value, {'user':user});
-          console.dirxml(postData);
-
-          wx.request({
-            url: 'https://www.afamilyhealth.cn/api/members',
-            method:'POST',
-            header: {  
-              "Content-Type": "application/json;charset=UTF-8"  
-            },
-
-            data: postData,
-
-            success: (res) => {
-              console.dirxml(res);
-
-              wx.showToast({
-                title:'提交成功',
-                icon:"success",
-                duration:300,
-                success: function(){
-                  wx.switchTab({
-                      url: '../family/index'
-                  })
-                }
-              })
-
-            },
-
-            fail: (res) => {
-              // console.dirxml(res.data);
-            },
-
-            complete: (res) => {
-              // console.dirxml(res.data);
-            }
-          });
-        }
-      })
-    }
 })
